@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXPasswordField?>
+<?import com.jfoenix.controls.JFXSpinner?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.Group?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.SepiaTone?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="effectFade" prefHeight="684.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.sltsclient.Controllers.LoginController">
+   <children>
+      <StackPane fx:id="stpane" layoutX="300.0" layoutY="200.0" prefHeight="226.0" prefWidth="354.0">
+         <children>
+            <Group fx:id="groups">
+               <children>
+                  <AnchorPane fx:id="formPane" prefHeight="226.0" prefWidth="440.0" />
+                  <JFXButton fx:id="close" focusTraversable="false" onAction="#closeClicked" prefHeight="25.0" prefWidth="24.0" text="X" translateX="410.0">
+                     <font>
+                        <Font name="Segoe UI Black" size="14.0" />
+                     </font>
+                  </JFXButton>
+               </children>
+            </Group>
+         </children>
+      </StackPane>
+      <AnchorPane id="AnchorPane" fx:id="blur" prefHeight="700.0" prefWidth="1062.0" style="-fx-background-color: #e0e2e5;" styleClass="mainFxmlClass">
+         <children>
+            <AnchorPane layoutX="641.0" layoutY="192.0" prefHeight="450.0" prefWidth="354.0" style="-fx-background-color: #ffffff;">
+               <children>
+                  <JFXTextField fx:id="username" focusColor="#1581d3" layoutX="66.0" layoutY="131.0" prefHeight="25.0" prefWidth="256.0" promptText="username" unFocusColor="#c9c1c1">
+                     <font>
+                        <Font name="Segoe UI" size="12.0" />
+                     </font>
+                  </JFXTextField>
+                  <JFXPasswordField fx:id="password" focusColor="#1581d3" layoutX="66.0" layoutY="211.0" prefHeight="25.0" prefWidth="256.0" promptText="Password" unFocusColor="#c9c1c1" />
+                  <JFXButton fx:id="login" layoutX="76.0" layoutY="303.0" onMouseClicked="#HandleLogin" prefHeight="33.0" prefWidth="189.0" ripplerFill="#dddbdb" style="-fx-background-color: #1581d3;" text="Log In" textFill="#f2efef" />
+                  <Label layoutX="121.0" layoutY="29.0" text="Sign In">
+                     <font>
+                        <Font size="32.0" />
+                     </font>
+                  </Label>
+                  <ImageView fitHeight="47.0" fitWidth="43.0" layoutX="13.0" layoutY="124.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/iconUser.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="43.0" fitWidth="43.0" layoutX="14.0" layoutY="200.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/iconPassword.png" />
+                     </image>
+                  </ImageView>
+                  <JFXButton fx:id="forgotpassword" layoutX="27.0" layoutY="259.0" onAction="#forgotpasswordgo" prefHeight="25.0" prefWidth="295.0" text="Forgot your password ?" />
+                  <JFXSpinner fx:id="loggingProgress" layoutX="152.0" layoutY="362.0" radius="20.0" />
+               </children>
+            </AnchorPane>
+            <ImageView fitHeight="710.0" fitWidth="1119.0" layoutX="-503.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/info.jpg" />
+               </image>
+            </ImageView>
+            <Label layoutX="692.0" layoutY="149.0" text=" Think in new dimensions with ITradeIt" textFill="#2c2929">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <effect>
+                  <SepiaTone />
+               </effect>
+            </Label>
+            <Label fx:id="exit" layoutX="1037.0" layoutY="-5.0" onMouseClicked="#handleExitClicked" onMouseEntered="#setHover" onMouseExited="#setDefault" text="X">
+               <font>
+                  <Font name="Segoe UI Black" size="28.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="86.0" fitWidth="98.0" layoutX="763.0" layoutY="48.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/logocomplete1.png" />
+               </image>
+            </ImageView>
+         </children>
+         <effect>
+            <DropShadow />
+         </effect>
+      </AnchorPane>
+   </children>
+</AnchorPane>

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXDrawer?>
+<?import com.jfoenix.controls.JFXHamburger?>
+<?import com.jfoenix.controls.JFXToolbar?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="900.0" prefWidth="1500.0" stylesheets="@custom.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.sltsclient.Controllers.HomeController">
+   <children>
+      <JFXToolbar layoutX="184.0" layoutY="14.0" prefHeight="152.0" prefWidth="1500.0" style="-fx-min-height: 42; -fx-background-color: #222D32;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <center>
+            <Label prefHeight="65.0" prefWidth="197.0" style="-fx-font-size: 20; -fx-text-fill: #7387A8; -fx-font-weight: bold;" text="ItradeIt" BorderPane.alignment="CENTER">
+               <padding>
+                  <Insets left="40.0" />
+               </padding>
+               <graphic>
+                  <ImageView fitHeight="65.0" fitWidth="102.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/logocomplete1.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Label>
+         </center>
+      </JFXToolbar>
+      <JFXDrawer fx:id="drawer" defaultDrawerSize="200.0" layoutX="7.0" layoutY="204.0" prefHeight="688.0" prefWidth="206.0" />
+      <JFXHamburger fx:id="hamburger" layoutX="14.0" layoutY="172.0" prefHeight="26.0" prefWidth="43.0" styleClass="jfx-hamburger" />
+      <AnchorPane fx:id="rootPane" layoutX="61.0" layoutY="172.0" prefHeight="703.0" prefWidth="1419.0" />
+      <Label fx:id="Username" layoutX="74.0" layoutY="101.0" text="Username" textFill="WHITE">
+         <font>
+            <Font name="Segoe UI" size="12.0" />
+         </font>
+      </Label>
+      <Label fx:id="emailUser" layoutX="73.0" layoutY="121.0" text="Email User" textFill="WHITE">
+         <font>
+            <Font name="Segoe UI" size="12.0" />
+         </font>
+      </Label>
+      <ImageView fx:id="imageUser" fitHeight="40.0" fitWidth="40.0" layoutX="24.0" layoutY="96.0" onMouseEntered="#imageHover" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../../../../deskop/1ere%20semestre%20INFINITY/javaprojectcarrefour/src/Img/iconUser.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="date" alignment="CENTER_RIGHT" layoutX="1301.0" layoutY="45.0" prefHeight="29.0" prefWidth="195.0" text="dateeeeee" textFill="WHITE">
+         <font>
+            <Font name="Segoe UI" size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="timee" alignment="CENTER_RIGHT" layoutX="1301.0" layoutY="75.0" prefHeight="29.0" prefWidth="195.0" text="tttttttt" textFill="WHITE">
+         <font>
+            <Font name="Segoe UI" size="20.0" />
+         </font>
+      </Label>
+      <JFXButton alignment="CENTER" contentDisplay="RIGHT" focusTraversable="false" layoutX="1399.0" layoutY="111.0" onAction="#logout" prefHeight="34.0" prefWidth="99.0" text="Logout" textFill="WHITE">
+         <font>
+            <Font name="Segoe UI Bold" size="14.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="25.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../../../../../deskop/1ere%20semestre%20INFINITY/javaprojectcarrefour/src/Img/icons8_Exit_96px.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+      <Label fx:id="exit" alignment="CENTER" contentDisplay="CENTER" layoutX="1470.0" layoutY="9.0" onMouseClicked="#handleExitClicked" onMouseEntered="#setHover" onMouseExited="#setDefault" prefHeight="29.0" prefWidth="40.0" text="X" textFill="WHITE">
+         <font>
+            <Font name="Segoe UI Black" size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="minimize" alignment="CENTER" contentDisplay="CENTER" layoutX="1448.0" layoutY="9.0" onMouseClicked="#handleMinimizeClicked" onMouseEntered="#setHover2" onMouseExited="#setDefault2" prefHeight="17.0" prefWidth="30.0" text="-" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font name="Segoe UI Black Italic" size="20.0" />
+         </font>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </Label>
+   </children>
+</AnchorPane>

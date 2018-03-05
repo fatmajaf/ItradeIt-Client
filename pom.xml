@@ -1,6 +1,4 @@
-
-   
- <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
 	<modelVersion>4.0.0</modelVersion>
@@ -19,18 +17,95 @@
 		</developer>
 	</developers>
 	<properties>
+	<maven.compiler.target>1.8</maven.compiler.target>
+		<maven.compiler.source>1.8</maven.compiler.source>
+	
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<javafx.version>2.2</javafx.version>
 		 <exec.mainClass>tn.esprit.sltsclient.App</exec.mainClass>
+	
 	</properties>
+			<dependencies>
+					<dependency>
+						<groupId>com.oracle</groupId>
+						<artifactId>ant-javafx</artifactId>
+						<version>${javafx.version}</version>
+						<systemPath>${java.home}/../lib/ant-javafx.jar</systemPath>
+						<scope>system</scope>
+					</dependency>
+				<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<version>4.3.10.Final</version>
+		</dependency>
+					<dependency>
+			<groupId>org.wildfly</groupId>
+			<artifactId>wildfly-ejb-client-bom</artifactId>
+			<version>9.0.0.Alpha1</version>
+			<type>pom</type>
+		</dependency>
+				<dependency>
+			<groupId>tn.esprit</groupId>
+			<artifactId>SLTS_server-ejb</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+			<type>ejb</type>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/com.jfoenix/jfoenix -->
+<dependency>
+    <groupId>com.jfoenix</groupId>
+    <artifactId>jfoenix</artifactId>
+    <version>1.4.0</version>
+</dependency>
+		<!-- https://mvnrepository.com/artifact/org.controlsfx/controlsfx -->
+<dependency>
+    <groupId>org.controlsfx</groupId>
+    <artifactId>controlsfx</artifactId>
+    <version>8.40.11</version>
+</dependency>
+<dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+            <scope>test</scope>
+        </dependency>
+		<dependency>
+      <groupId>com.dorkbox</groupId>
+      <artifactId>Notify</artifactId>
+      <version>3.7</version>
+    </dependency>
+    <!-- https://mvnrepository.com/artifact/de.jensd/fontawesomefx -->
+<dependency>
+    <groupId>de.jensd</groupId>
+    <artifactId>fontawesomefx</artifactId>
+    <version>8.9</version>
+</dependency>
+    <!-- https://mvnrepository.com/artifact/javax.mail/mail -->
+<dependency>
+    <groupId>javax.mail</groupId>
+    <artifactId>mail</artifactId>
+    <version>1.4</version>
+</dependency>
+    <!-- https://mvnrepository.com/artifact/log4j/log4j -->
+<dependency>
+    <groupId>log4j</groupId>
+    <artifactId>log4j</artifactId>
+    <version>1.2.17</version>
+</dependency>
+    <dependency>
+  <groupId>com.twilio.sdk</groupId>
+  <artifactId>twilio</artifactId>
+  <version>7.17.0</version>
+</dependency>
+  
+				</dependencies>
 	<build>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<configuration>
-					<source>1.7</source>
-					<target>1.7</target>
+					<source>1.8</source>
+					<target>1.8</target>
 				</configuration>
 			</plugin>
 			<plugin>
@@ -127,36 +202,7 @@
 						</goals>
 					</execution>
 				</executions>
-				<dependencies>
-					<dependency>
-						<groupId>com.oracle</groupId>
-						<artifactId>ant-javafx</artifactId>
-						<version>${javafx.version}</version>
-						<systemPath>${java.home}/../lib/ant-javafx.jar</systemPath>
-						<scope>system</scope>
-					</dependency>
-					<dependency>
-						<groupId>com.oracle</groupId>
-						<artifactId>javafx</artifactId>
-						<version>${javafx.version}</version>
-						<systemPath>${java.home}/lib/jfxrt.jar</systemPath>
-						<scope>system</scope>
-					</dependency>
-					<dependency>
-			<groupId>org.wildfly</groupId>
-			<artifactId>wildfly-ejb-client-bom</artifactId>
-			<version>9.0.0.Alpha1</version>
-			<type>pom</type>
-		</dependency>
-		<dependency>
-		<groupId>tn.esprit</groupId>
-		<artifactId>SLTS_server</artifactId>
-		<version>0.0.1-SNAPSHOT</version>
-			<type>ejb</type>
-		</dependency>
 		
-  
-				</dependencies>
 			</plugin>
 		
 		<plugin>
@@ -170,7 +216,6 @@
 			</plugin>
 		
 		</plugins>
-		<finalName>YourAppName</finalName>
-	</build>
-
+		<finalName>ITradeIt</finalName>
+	</build>	
 </project>
