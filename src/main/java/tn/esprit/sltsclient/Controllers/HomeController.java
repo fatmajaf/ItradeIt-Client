@@ -92,19 +92,23 @@ public class HomeController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+    	 
     	  bindToTime();
           time time = new time();
           date.setText(time.date());
     	   HamburgerBackArrowBasicTransition transition = new HamburgerBackArrowBasicTransition(hamburger);
            transition.setRate(-1);
+           
            hamburger.addEventHandler(MouseEvent.MOUSE_PRESSED, (MouseEvent e) -> {
                transition.setRate(transition.getRate() * -1);
                transition.play();
 
                if (drawer.isShown()) {
+            	   drawer.toBack();
                    drawer.close();
+                   
                } else {
-            	   
+            	   drawer.toFront();
                    drawer.open();
                }
 
@@ -116,7 +120,7 @@ public class HomeController implements Initializable {
                AnchorPane addtrader = FXMLLoader.load(getClass().getResource(nav.getAddtrader()));
                AnchorPane addcustomer =FXMLLoader.load(getClass().getResource(nav.getAddtrader()));
                AnchorPane homeman = FXMLLoader.load(getClass().getResource(nav.getHomemmanagement()));
-              
+               setNode(homeman);
                
 
                for (Node node : sidePane.getChildren()) {
