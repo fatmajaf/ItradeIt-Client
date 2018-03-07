@@ -54,6 +54,7 @@ import javafx.stage.StageStyle;
 import javafx.util.Duration;
 import sun.misc.BASE64Encoder;
 import tn.esprit.SLTS_server.persistence.Admin;
+import tn.esprit.SLTS_server.persistence.Customer;
 import tn.esprit.SLTS_server.persistence.Trader;
 import tn.esprit.SLTS_server.persistence.User;
 import tn.esprit.SLTS_server.services.UserServiceRemote;
@@ -119,9 +120,9 @@ public class LoginController implements Initializable {
 	private void setDefault(javafx.scene.input.MouseEvent event) {
 		exit.setStyle("-fx-background-color:  #4183D7;");
 	}
-	 private String encryptLdapPassword(String algorithm, String _password) {
-	        String sEncrypted = _password;
-	        if ((_password != null) && (_password.length() > 0)) {
+	 private String encryptLdapPassword(String algorithm, String password) {
+	        String sEncrypted = password;
+	        if ((password != null) && (password.length() > 0)) {
 	            boolean bMD5 = algorithm.equalsIgnoreCase("MD5");
 	            boolean bSHA = algorithm.equalsIgnoreCase("SHA")
 	                    || algorithm.equalsIgnoreCase("SHA1")
@@ -133,7 +134,7 @@ public class LoginController implements Initializable {
 	                }
 	                try {
 	                    MessageDigest md = MessageDigest.getInstance(sAlgorithm);
-	                    md.update(_password.getBytes("UTF-8"));
+	                    md.update(password.getBytes("UTF-8"));
 	                    sEncrypted = "{" + sAlgorithm + "}" + (new BASE64Encoder()).encode(md.digest());
 	                } catch (Exception e) {
 	                    sEncrypted = null;
@@ -172,7 +173,7 @@ public class LoginController implements Initializable {
 			
 			commonName=attr.get("cn").get(0).toString();
 			surName=attr.get("sn").get(0).toString();
-			//userp= ;
+
 			employeeNum=attr.get("employeeNumber").get(0).toString();
 			System.out.println("Name = "+commonName);
 			System.out.println("Surname  = "+surName);
@@ -183,7 +184,7 @@ public class LoginController implements Initializable {
 			System.out.println("---------------------------"+attr.get("userpassword").get(0).toString()+"---------------");
 			String passwsha=encryptLdapPassword("SHA",passw);
 			if (pass.equals(passwsha) && surName.equals(username)){
-				System.out.println("yeees");
+				
 				return true;
 			}
 			
@@ -194,9 +195,9 @@ public class LoginController implements Initializable {
 	@FXML
 	public void HandleLogin(MouseEvent event) throws IOException, NamingException {
 
-		String username_text = username.getText();
-		String password_text = password.getText();
-		if (username_text.equals("") || password_text.equals("")) {
+		String usernametext = username.getText();
+		String passwordtext = password.getText();
+		if (usernametext.equals("") || passwordtext.equals("")) {
 			nav.showAlert(Alert.AlertType.WARNING, "Warning", null, "Please fill all the inputs!!");
 			username.requestFocus();
 		} else {
@@ -204,43 +205,56 @@ public class LoginController implements Initializable {
 			Context context = new InitialContext();
 			UserServiceRemote service = (UserServiceRemote) context.lookup(jndiName);
 			User us = new User();
-			us.setPassword(encryptLdapPassword("SHA",password_text));
-			us.setLogin(username_text);
+			us.setPassword(encryptLdapPassword("SHA",passwordtext));
+			us.setLogin(usernametext);
 			User user = service.login(us);
 			System.out.println(user);
 
-			if (user == null || (loginfromLDAP(password_text, username_text)==false)) {
-
+			//if (user == null || (loginfromLDAP(passwordtext, usernametext)==false)) {
+			if (user == null){
 				System.out.println("not found");
 				nav.showAlert(Alert.AlertType.ERROR, "Error", null, "Username or password incorrect");
 
 			} else {
-
+				HomeController.idcurrentuser=user.getId();
 				if (user instanceof Admin) {
-					Notifications.create().title("ITradeIt").text("Welcome again ! " + username_text).darkStyle()
-							.showInformation();
-					Stage stage2 = (Stage) ((Node) event.getSource()).getScene().getWindow();
-					stage2.hide();
-					FXMLLoader loader = new FXMLLoader();
-					loader.setLocation(getClass().getResource(nav.getHome()));
-					try {
-						loader.load();
-					} catch (Exception e) {
-					}
-
-					HomeController hc = loader.getController();
-					Parent p = loader.getRoot();
-					Stage stage = new Stage();
-					Scene pp = new Scene(p);
-					pp.setFill(javafx.scene.paint.Color.TRANSPARENT);
-					stage.initStyle(StageStyle.TRANSPARENT);
-					stage.setScene(pp);
-					stage.setTitle("Home");
-					stage.getIcons().add(nav.applicationIcon);
-					mouseDrag md = new mouseDrag();
-					md.setDragged(p, stage);
-					stage.show();
+					
+					
+					HomeController.role="Admin";
+					
 				}
+				else if (user instanceof Trader){
+				
+					HomeController.role="Trader";
+				}
+				else if (user instanceof Customer){
+					
+					HomeController.role="Customer";
+				}
+				Notifications.create().title("ITradeIt").text("Welcome again ! " + usernametext).darkStyle()
+				.showInformation();
+		Stage stage2 = (Stage) ((Node) event.getSource()).getScene().getWindow();
+		stage2.hide();
+		FXMLLoader loader = new FXMLLoader();
+		loader.setLocation(getClass().getResource(nav.getHome()));
+		try {
+			loader.load();
+		} catch (Exception e) {
+		}
+
+		HomeController hc = loader.getController();
+	
+		Parent p = loader.getRoot();
+		Stage stage = new Stage();
+		Scene pp = new Scene(p);
+		pp.setFill(javafx.scene.paint.Color.TRANSPARENT);
+		stage.initStyle(StageStyle.TRANSPARENT);
+		stage.setScene(pp);
+		stage.setTitle("Home");
+		stage.getIcons().add(nav.applicationIcon);
+		mouseDrag md = new mouseDrag();
+		md.setDragged(p, stage);
+		stage.show();
 			}
 		}
 
@@ -255,9 +269,7 @@ public class LoginController implements Initializable {
 		  } catch (IOException ex) {
 		  Logger.getLogger(LoginController.class.getName()).log(Level.
 		  SEVERE, null, ex); } formPane.getChildren().setAll(pane);
-		
-
-	}
+}
 
 	@FXML
 	void closeClicked(ActionEvent event) {
@@ -267,8 +279,8 @@ public class LoginController implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		// TODO Auto-generated method stub
 
+		
 	}
 
 }

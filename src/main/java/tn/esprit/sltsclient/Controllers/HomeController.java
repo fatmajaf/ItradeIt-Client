@@ -55,6 +55,8 @@ import tn.esprit.sltsclient.Utils.exit;
  * @author AGORA
  */
 public class HomeController implements Initializable {
+	public static int idcurrentuser;
+	public static String role;
 	 exit ex = new exit();
     
 	 @FXML
@@ -92,6 +94,7 @@ public class HomeController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+    	 System.out.println("iddddddddddddd"+idcurrentuser);
     	 
     	  bindToTime();
           time time = new time();
@@ -115,14 +118,24 @@ public class HomeController implements Initializable {
            });
            try {
         	   Navigation nav= new Navigation();
-               VBox sidePane = FXMLLoader.load(getClass().getResource(nav.getMenu()));
+        	   
+        		   
                AnchorPane usermanagement = FXMLLoader.load(getClass().getResource(nav.getUsermanagement()));
                AnchorPane addtrader = FXMLLoader.load(getClass().getResource(nav.getAddtrader()));
-               AnchorPane addcustomer =FXMLLoader.load(getClass().getResource(nav.getAddtrader()));
+               AnchorPane addcustomer =FXMLLoader.load(getClass().getResource(nav.getAddcustomer()));
                AnchorPane homeman = FXMLLoader.load(getClass().getResource(nav.getHomemmanagement()));
-               setNode(homeman);
-               
-
+               AnchorPane profileuser = FXMLLoader.load(getClass().getResource(nav.getProfileuser()));
+               VBox sidePane = null;
+        	   if (role.equals("Admin")){
+              sidePane = FXMLLoader.load(getClass().getResource(nav.getMenu()));
+              setNode(homeman);
+        	   }
+        	   else if (role.equals("Trader")){
+                 sidePane = FXMLLoader.load(getClass().getResource(nav.getMenutrader()));
+                 setNode(addcustomer);
+            	   }
+        	   
+              
                for (Node node : sidePane.getChildren()) {
                    if (node.getAccessibleText() != null) {
                        node.addEventHandler(MouseEvent.MOUSE_PRESSED, (MouseEvent ev) -> {
@@ -137,9 +150,22 @@ public class HomeController implements Initializable {
                                    break;
                                case "addtrader":
                                    drawer.close();
-                                   //pp
                                    setNode(addtrader);
                                    break;
+                               case "addcustomer":
+                                   drawer.close();
+                                   setNode(addcustomer);
+                                   break;
+                                   
+                               case "testtrader":
+                                   drawer.close();
+                                   setNode(addcustomer);
+                                   break;  
+                               case "profileuser":
+                                   drawer.close();
+                                   setNode(profileuser);
+                                   break;  
+                                   
                                                              
                            }
                        });

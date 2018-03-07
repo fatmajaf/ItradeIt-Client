@@ -26,15 +26,7 @@
             <FontAwesomeIconView fill="#a1aec4" glyphName="GROUP" size="17.0" wrappingWidth="43.0" />
          </graphic>
       </JFXButton>
-      <JFXButton fx:id="btnProfile" accessibleText="addtrader" layoutX="10.0" layoutY="193.0" prefHeight="42.0" prefWidth="234.0" style="-fx-alignment: left;" styleClass="nav-button" text="         Add a Trader" textFill="#a1aec4">
-         <font>
-            <Font name="Roboto Bold" size="14.0" />
-         </font>
-         <graphic>
-            <FontAwesomeIconView fill="#a1aec4" glyphName="USER" size="17.0" wrappingWidth="43.0" />
-         </graphic>
-      </JFXButton>
-      <JFXButton fx:id="btnaddcustomer" accessibleText="addcustomer" prefHeight="42.0" prefWidth="234.0" style="-fx-alignment: left;" styleClass="nav-button" text="         Add a customer" textFill="#a1aec4">
+      <JFXButton fx:id="addtrader" accessibleText="addtrader" layoutX="10.0" layoutY="193.0" prefHeight="42.0" prefWidth="234.0" style="-fx-alignment: left;" styleClass="nav-button" text="         Add a Trader" textFill="#a1aec4">
          <font>
             <Font name="Roboto Bold" size="14.0" />
          </font>

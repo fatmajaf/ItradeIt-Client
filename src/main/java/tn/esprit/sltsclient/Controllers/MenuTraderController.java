@@ -24,41 +24,16 @@ import javafx.scene.paint.Color;
  *
  * @author Fatma Jaafar
  */
-public class MenuController implements Initializable {
+public class MenuTraderController implements Initializable {
     
-	
 
-    @FXML
-    private JFXButton btnHome;
-
-    @FXML
-    private JFXButton usermanagement;
-
-  
-
-    @FXML
-    private JFXButton btnWidgets;
-
-    @FXML
-    private JFXButton btnAlerts;
-
-    @FXML
-    private JFXButton btnControls;
     @FXML
     private JFXButton btnaddcustomer;
 
     @FXML
-    void exitclicked(ActionEvent event) {
+    private JFXButton addtrader;
 
-    }
-
-    @FXML
-    void logoutclicked(ActionEvent event) {
-
-    }
-
-  
-
+   
    
     /**
      * Initializes the controller class.

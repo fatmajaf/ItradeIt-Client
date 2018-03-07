@@ -14,8 +14,10 @@ public class Navigation {
 	private final String login = "/tn/esprit/sltsclient/Views/Login.fxml";
 	private final String home = "/tn/esprit/sltsclient/Views/Home.fxml";
 	private final String menu = "/tn/esprit/sltsclient/Views/Menu.fxml";
+	private final String menutrader = "/tn/esprit/sltsclient/Views/MenuTrader.fxml";
 	private final String usermanagement = "/tn/esprit/sltsclient/Views/Usermanagement.fxml";
 	private final String profile = "/tn/esprit/sltsclient/Views/profile.fxml";
+	private final String profileuser = "/tn/esprit/sltsclient/Views/profileUser.fxml";
 	private final String homemmanagement = "/tn/esprit/sltsclient/Views/HomeManagement.fxml";
 	private final String addtrader = "/tn/esprit/sltsclient/Views/AddTrader.fxml";
 	private final String forgetPassword = "/tn/esprit/sltsclient/Views/forgotpassword.fxml";
@@ -34,6 +36,12 @@ public class Navigation {
 
 	public String getHome() {
 		return home;
+	}
+	public String getProfileuser() {
+		return profileuser;
+	}
+	public String getMenutrader() {
+		return menutrader;
 	}
 public String getAddtrader() {
 	return addtrader;
