@@ -22,6 +22,10 @@ public class Navigation {
 	private final String addtrader = "/tn/esprit/sltsclient/Views/AddTrader.fxml";
 	private final String forgetPassword = "/tn/esprit/sltsclient/Views/forgotpassword.fxml";
 	private final String addcustomer = "/tn/esprit/sltsclient/Views/Addcustomer.fxml";
+	private final String editaddress = "/tn/esprit/sltsclient/Views/editaddress.fxml";
+	//asma 
+	private final String addinstrument = "/tn/esprit/sltsclient/Views/addinstrument.fxml";
+	private final String instrumentman = "/tn/esprit/sltsclient/Views/instrumentmanagement.fxml";
 	public Image applicationIcon = new Image(getClass().getResourceAsStream("/tn/esprit/sltsclient/Images/logo.png"));
 
 	public String getLogin() {
@@ -33,9 +37,17 @@ public class Navigation {
 	public String getTest() {
 		return test;
 	}
-
+public String getAddinstrument() {
+	return addinstrument;
+}
 	public String getHome() {
 		return home;
+	}
+	public String getEditaddress() {
+		return editaddress;
+	}
+	public String getInstrumentman() {
+		return instrumentman;
 	}
 	public String getProfileuser() {
 		return profileuser;

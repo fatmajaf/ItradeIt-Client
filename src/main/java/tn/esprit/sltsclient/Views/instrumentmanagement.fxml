@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXTreeTableView?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" fx:id="att" prefHeight="700.0" prefWidth="1400.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.sltsclient.Controllers.instrumentmanagementController">
+   <children>
+      <Label layoutX="19.0" layoutY="17.0" prefHeight="30.0" prefWidth="353.0" style="-fx-font-size: 20; -fx-font-weight: bold; -fx-text-fill: #7387A8;" text="Instruments management" />
+      <Separator layoutX="3.0" layoutY="52.0" prefHeight="0.0" prefWidth="1389.0" />
+      <AnchorPane layoutX="30.0" layoutY="146.0" prefHeight="513.0" prefWidth="723.0" style="-fx-background-color: white;" styleClass="card">
+         <children>
+            <Pane layoutY="-4.0" prefHeight="65.0" prefWidth="760.0" style="-fx-background-color: rgb(41, 61, 82,0.9); -fx-background-radius: 8;">
+               <children>
+                  <HBox alignment="CENTER" layoutX="29.0" layoutY="23.0" spacing="10.0">
+                     <children>
+                        <FontAwesomeIconView fill="#447dee" glyphName="PLUS" size="18.0" />
+                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Instrument">
+                           <font>
+                              <Font name="FontAwesome Regular" size="17.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </HBox>
+               </children>
+            </Pane>
+            <Label layoutX="177.0" layoutY="85.0" prefHeight="21.0" prefWidth="385.0" text="Instruments waiting for approbation from Administrator">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="507.0" layoutY="482.0" prefHeight="17.0" prefWidth="230.0" text="*Double Click to delete before approbation" textFill="#8d1818">
+               <font>
+                  <Font name="System Italic" size="12.0" />
+               </font>
+            </Label>
+            <JFXTreeTableView fx:id="tableInstrumentAll" layoutX="10.0" layoutY="122.0" prefHeight="346.0" prefWidth="738.0" />
+         </children>
+      </AnchorPane>
+      <PieChart fx:id="piechart" layoutX="825.0" layoutY="79.0" prefHeight="597.0" prefWidth="551.0" />
+   </children>
+</AnchorPane>

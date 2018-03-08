@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXRadioButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIconView?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="700.0" prefWidth="1400.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.sltsclient.Controllers.addinstrumentController">
+   <children>
+      <Label layoutX="19.0" layoutY="17.0" prefHeight="29.0" prefWidth="207.0" style="-fx-font-size: 20; -fx-font-weight: bold; -fx-text-fill: #7387A8;" text="Add an instrument" />
+      <Separator layoutX="3.0" layoutY="52.0" prefHeight="0.0" prefWidth="1389.0" />
+      <AnchorPane layoutX="48.0" layoutY="74.0" prefHeight="590.0" prefWidth="698.0" style="-fx-background-color: white;" styleClass="card">
+         <children>
+            <JFXTextField fx:id="parValue" layoutX="14.0" layoutY="147.0" maxWidth="653.0" minWidth="196.0" onKeyTyped="#emailval" prefHeight="37.0" prefWidth="653.0" promptText="fatma@gmail.com" text="Par value">
+               <font>
+                  <Font name="Roboto Medium" size="13.0" />
+               </font>
+            </JFXTextField>
+            <JFXTextField fx:id="salePrice" layoutX="14.0" layoutY="293.0" maxWidth="669.0" minWidth="196.0" onKeyTyped="#emailval" prefHeight="37.0" prefWidth="660.0" promptText="fatma@gmail.com" text="Sale price">
+               <font>
+                  <Font name="Roboto Medium" size="13.0" />
+               </font>
+            </JFXTextField>
+            <JFXTextField fx:id="couponRate" layoutX="14.0" layoutY="228.0" maxWidth="653.0" minWidth="196.0" onKeyTyped="#emailval" prefHeight="37.0" prefWidth="653.0" promptText="fatma@gmail.com" text="Coupon rate">
+               <font>
+                  <Font name="Roboto Medium" size="13.0" />
+               </font>
+            </JFXTextField>
+            <Pane prefHeight="65.0" prefWidth="698.0" style="-fx-background-color: rgb(41, 61, 82,0.9); -fx-background-radius: 8;">
+               <children>
+                  <HBox alignment="CENTER" layoutX="29.0" layoutY="23.0" spacing="10.0">
+                     <children>
+                        <FontAwesomeIconView fill="#447dee" glyphName="PLUS" size="18.0" />
+                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Bond">
+                           <font>
+                              <Font name="FontAwesome Regular" size="17.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </HBox>
+               </children>
+            </Pane>
+            <JFXComboBox fx:id="currency" layoutX="14.0" layoutY="90.0" prefHeight="32.0" prefWidth="653.0" promptText="currency" />
+            <JFXComboBox fx:id="instrumentBackround" layoutX="14.0" layoutY="391.0" prefHeight="32.0" prefWidth="660.0" />
+            <JFXRadioButton fx:id="collableType" layoutX="444.0" layoutY="539.0" text="Collable" />
+            <JFXRadioButton fx:id="convertibleType" layoutX="152.0" layoutY="548.0" text="Convertable" />
+            <JFXDatePicker fx:id="maturityDate" layoutX="14.0" layoutY="464.0" prefHeight="25.0" prefWidth="660.0" />
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="770.0" layoutY="198.0" prefHeight="273.0" prefWidth="600.0" style="-fx-background-color: white;" styleClass="card">
+         <children>
+            <JFXComboBox fx:id="instrumentType" layoutX="310.0" layoutY="89.0" prefHeight="32.0" prefWidth="276.0" />
+            <JFXComboBox fx:id="instrumentIsserType" layoutX="310.0" layoutY="142.0" prefHeight="32.0" prefWidth="276.0" />
+            <JFXComboBox fx:id="instrumentIssuer" layoutX="309.0" layoutY="197.0" prefHeight="28.0" prefWidth="276.0" />
+            <Text fill="#aeaeae" layoutX="14.0" layoutY="226.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Instrument Issuer" wrappingWidth="164.00000190734863">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+            <Text fill="#aeaeae" layoutX="14.0" layoutY="174.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Instrument Issuer Profile  " wrappingWidth="233.00000190734863">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+            <Text fill="#aeaeae" layoutX="14.0" layoutY="121.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Instrument type" wrappingWidth="220.00000190734863">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+            <Pane layoutY="-4.0" prefHeight="65.0" prefWidth="600.0" style="-fx-background-color: rgb(41, 61, 82,0.9); -fx-background-radius: 8;">
+               <children>
+                  <HBox alignment="CENTER" layoutX="29.0" layoutY="23.0" spacing="10.0">
+                     <children>
+                        <FontAwesomeIconView fill="#447dee" glyphName="PLUS" size="18.0" />
+                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Instrument">
+                           <font>
+                              <Font name="FontAwesome Regular" size="17.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </HBox>
+               </children>
+            </Pane>
+         </children>
+      </AnchorPane>
+      <JFXButton fx:id="btnSave" buttonType="RAISED" layoutX="943.0" layoutY="498.0" onAction="#saveinstrumentClicked" prefHeight="46.0" prefWidth="276.0" ripplerFill="#3f25d7" style="-fx-background-color: rgb(0, 170, 207);" text="Save" textFill="WHITE">
+         <font>
+            <Font name="Roboto Medium" size="15.0" />
+         </font>
+         <graphic>
+            <MaterialDesignIconView fill="WHITE" glyphName="CHECK_ALL" size="18.0" wrappingWidth="22.0" />
+         </graphic>
+      </JFXButton>
+   </children>
+</AnchorPane>
