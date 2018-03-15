@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.Group?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="550.0" prefWidth="443.0" style="-fx-background-color: #4183d7;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.sltsclient.Controllers.EditaddressController">
+   <children>
+      <Group>
+         <children>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="11.0" stroke="WHITE" strokeType="INSIDE" width="447.0" />
+            <Label alignment="CENTER" layoutY="27.0" prefHeight="41.0" prefWidth="258.0" text="Address details" textFill="WHITE" translateX="85.0">
+               <font>
+                  <Font name="System Bold" size="26.0" />
+               </font>
+            </Label>
+            <HBox layoutY="450.0" prefHeight="100.0" prefWidth="441.0">
+               <children>
+                  <JFXButton fx:id="editB" onAction="#editClicked" prefHeight="66.0" prefWidth="280.0" style="-fx-background-color: white;" text="Edit" textFill="#4183d7" translateX="85.0" translateY="15.0">
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font>
+                  </JFXButton>
+               </children>
+            </HBox>
+            <Label fx:id="ide" layoutX="364.0" layoutY="18.0" text="Label" visible="false" />
+            <JFXComboBox fx:id="countries" layoutX="34.0" layoutY="101.0" onAction="#countrychoice" prefHeight="32.0" prefWidth="379.0" />
+            <JFXComboBox fx:id="cities" layoutX="34.0" layoutY="187.0" prefHeight="32.0" prefWidth="380.0" />
+            <JFXTextField fx:id="street" focusColor="#008f82" labelFloat="true" layoutX="34.0" layoutY="310.0" maxWidth="243.0" minWidth="158.0" prefHeight="37.0" prefWidth="243.0" unFocusColor="#6b6969">
+               <font>
+                  <Font name="Roboto Medium" size="13.0" />
+               </font>
+            </JFXTextField>
+            <JFXTextField fx:id="zipcode" focusColor="#008f82" labelFloat="true" layoutX="319.0" layoutY="308.0" maxWidth="216.0" minWidth="91.0" prefHeight="37.0" prefWidth="91.0" unFocusColor="#6b6969">
+               <font>
+                  <Font name="Roboto Medium" size="13.0" />
+               </font>
+            </JFXTextField>
+            <JFXTextField fx:id="nationality" focusColor="#008f82" labelFloat="true" layoutX="38.0" layoutY="404.0" maxWidth="384.0" minWidth="158.0" prefHeight="37.0" prefWidth="384.0" unFocusColor="#6b6969">
+               <font>
+                  <Font name="Roboto Medium" size="13.0" />
+               </font>
+            </JFXTextField>
+            <Text fill="#aeaeae" layoutX="35.0" layoutY="90.0" strokeType="OUTSIDE" strokeWidth="0.0" text="COUNTRY" wrappingWidth="184.00000190734863">
+               <font>
+                  <Font name="Roboto Medium" size="14.0" />
+               </font>
+            </Text>
+            <Text fill="#aeaeae" layoutX="35.0" layoutY="168.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CITY" wrappingWidth="184.00000190734863">
+               <font>
+                  <Font name="Roboto Medium" size="14.0" />
+               </font>
+            </Text>
+            <Text fill="#aeaeae" layoutX="35.0" layoutY="280.0" strokeType="OUTSIDE" strokeWidth="0.0" text="STREET" wrappingWidth="139.00000190734863">
+               <font>
+                  <Font name="Roboto Medium" size="14.0" />
+               </font>
+            </Text>
+            <Text fill="#aeaeae" layoutX="344.0" layoutY="279.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ZIPCODE" wrappingWidth="67.00000190734863">
+               <font>
+                  <Font name="Roboto Medium" size="14.0" />
+               </font>
+            </Text>
+            <Text fill="#aeaeae" layoutX="35.0" layoutY="385.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NATIONALITY" wrappingWidth="139.00000190734863">
+               <font>
+                  <Font name="Roboto Medium" size="14.0" />
+               </font>
+            </Text>
+         </children>
+      </Group>
+   </children>
+   <effect>
+      <DropShadow />
+   </effect>
+</AnchorPane>

@@ -17,7 +17,23 @@
             <FontAwesomeIconView fill="#a1aec4" glyphName="USER" size="17.0" wrappingWidth="43.0" />
          </graphic>
       </JFXButton>
-      <JFXButton fx:id="addtrader" accessibleText="profileuser" layoutX="10.0" layoutY="193.0" prefHeight="42.0" prefWidth="234.0" style="-fx-alignment: left;" styleClass="nav-button" text="Profile" textFill="#a1aec4">
+      <JFXButton fx:id="addtrader1" accessibleText="profileuser" prefHeight="42.0" prefWidth="234.0" style="-fx-alignment: left;" styleClass="nav-button" text="Profile" textFill="#a1aec4">
+         <font>
+            <Font name="Roboto Bold" size="14.0" />
+         </font>
+         <graphic>
+            <FontAwesomeIconView fill="#a1aec4" glyphName="USER" size="17.0" wrappingWidth="43.0" />
+         </graphic>
+      </JFXButton>
+      <JFXButton fx:id="instrumentsmanagementbtn" accessibleText="instrumentmanagement" layoutX="10.0" layoutY="193.0" prefHeight="42.0" prefWidth="234.0" style="-fx-alignment: left;" styleClass="nav-button" text="Instruments management" textFill="#a1aec4">
+         <font>
+            <Font name="Roboto Bold" size="14.0" />
+         </font>
+         <graphic>
+            <FontAwesomeIconView fill="#a1aec4" glyphName="USER" size="17.0" wrappingWidth="43.0" />
+         </graphic>
+      </JFXButton>
+      <JFXButton fx:id="addinstrumentbtn" accessibleText="addinstrument" prefHeight="42.0" prefWidth="234.0" style="-fx-alignment: left;" styleClass="nav-button" text="Add instrument" textFill="#a1aec4">
          <font>
             <Font name="Roboto Bold" size="14.0" />
          </font>

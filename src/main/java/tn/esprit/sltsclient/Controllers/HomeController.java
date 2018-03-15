@@ -125,6 +125,9 @@ public class HomeController implements Initializable {
                AnchorPane addcustomer =FXMLLoader.load(getClass().getResource(nav.getAddcustomer()));
                AnchorPane homeman = FXMLLoader.load(getClass().getResource(nav.getHomemmanagement()));
                AnchorPane profileuser = FXMLLoader.load(getClass().getResource(nav.getProfileuser()));
+               //asma
+               AnchorPane addinstrument = FXMLLoader.load(getClass().getResource(nav.getAddinstrument()));
+               AnchorPane instrumentmanagement = FXMLLoader.load(getClass().getResource(nav.getInstrumentman()));
                VBox sidePane = null;
         	   if (role.equals("Admin")){
               sidePane = FXMLLoader.load(getClass().getResource(nav.getMenu()));
@@ -165,7 +168,15 @@ public class HomeController implements Initializable {
                                    drawer.close();
                                    setNode(profileuser);
                                    break;  
-                                   
+                               case "addinstrument":
+                                   drawer.close();
+                                   setNode(addinstrument);
+                                   break;  
+                               case "instrumentmanagement":
+                                   drawer.close();
+                                   setNode(instrumentmanagement);
+                                   break;  
+                              
                                                              
                            }
                        });

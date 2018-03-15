@@ -337,7 +337,7 @@ public class AddTraderController implements Initializable {
 			@Override
 			public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
 				if (!newValue.isEmpty()) {
-					progress3 = 0.1;
+					progress3 = 0.2;
 
 				} else {
 					progress3 = 0.0;
@@ -531,7 +531,7 @@ public class AddTraderController implements Initializable {
 		trader.setFirstName(fname.getText());
 		trader.setLastName(lname.getText());
 		trader.setBirthdate(Date.valueOf(bdate.getValue()));
-		trader.setIsactive(0);
+		trader.setIsactive(1);
 		trader.setEmail(email.getText());
 		trader.setIsbanned(0);
 		trader.setLogin(login.getText());

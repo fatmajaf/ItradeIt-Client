@@ -76,8 +76,10 @@ public class LoginController implements Initializable {
 	 */
 	Navigation nav = new Navigation();
 	@FXML
-	private AnchorPane effectFade, blur;
+	private AnchorPane effectFade;
 
+    @FXML
+    private AnchorPane blur;
 	@FXML
 	private Label exit;
 
@@ -183,7 +185,7 @@ public class LoginController implements Initializable {
 	        System.out.println("=> userPassword : " + pass);
 			System.out.println("---------------------------"+attr.get("userpassword").get(0).toString()+"---------------");
 			String passwsha=encryptLdapPassword("SHA",passw);
-			if (pass.equals(passwsha) && surName.equals(username)){
+			if (pass.equals(passwsha) && commonName.equals(username)){
 				
 				return true;
 			}
@@ -210,8 +212,8 @@ public class LoginController implements Initializable {
 			User user = service.login(us);
 			System.out.println(user);
 
-			//if (user == null || (loginfromLDAP(passwordtext, usernametext)==false)) {
-			if (user == null){
+			if (user == null || (loginfromLDAP(passwordtext, usernametext)==false)) {
+		//	if (user == null){
 				System.out.println("not found");
 				nav.showAlert(Alert.AlertType.ERROR, "Error", null, "Username or password incorrect");
 

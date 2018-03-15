@@ -50,6 +50,8 @@ import javafx.scene.paint.Color;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import tn.esprit.SLTS_server.persistence.Address;
+import tn.esprit.SLTS_server.persistence.Company;
+import tn.esprit.SLTS_server.persistence.Customer;
 import tn.esprit.SLTS_server.persistence.Trader;
 import tn.esprit.SLTS_server.persistence.User;
 import tn.esprit.SLTS_server.services.UserServiceRemote;
@@ -70,6 +72,17 @@ import webservicefatma.GlobalWeatherDelegate;
  * @author AGORA
  */
 public class AddCustomerController implements Initializable {
+	
+
+   
+
+  
+
+ 
+    @FXML
+    private JFXTextField risk;
+
+
 
 	@FXML
 	private ProgressBar progressPersonal;
@@ -115,14 +128,11 @@ public class AddCustomerController implements Initializable {
 	@FXML
 	private JFXTextField password;
 
-	@FXML
-	private JFXRadioButton level1;
+	   @FXML
+	    private JFXTextField companyname;
 
-	@FXML
-	private JFXRadioButton level3;
-
-	@FXML
-	private JFXRadioButton level2;
+	    @FXML
+	    private JFXDatePicker companycreatiodate;
 	private static double progress1 = 0;
 	private static double progress2 = 0;
 	private static double progress3 = 0;
@@ -173,23 +183,10 @@ public class AddCustomerController implements Initializable {
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {
 		fillcountries();
-		ToggleGroup group = new ToggleGroup();
-		level1.setToggleGroup(group);
-		level2.setToggleGroup(group);
-		level3.setToggleGroup(group);
+	
 		updateProgress();
 		inputvalidation();
-		group.selectedToggleProperty().addListener(new ChangeListener<Toggle>() {
-			public void changed(ObservableValue<? extends Toggle> ov, Toggle old_toggle, Toggle new_toggle) {
-				if (group.getSelectedToggle() != null) {
-
-					RadioButton button1 = (RadioButton) group.getSelectedToggle();
-					System.out.println("Button: " + button1.getText());
-					leveltrader = button1.getText();
-
-				}
-			}
-		});
+		
 
 	}
 
@@ -335,7 +332,7 @@ public class AddCustomerController implements Initializable {
 			@Override
 			public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
 				if (!newValue.isEmpty()) {
-					progress3 = 0.1;
+					progress3 = 0.2;
 
 				} else {
 					progress3 = 0.0;
@@ -479,39 +476,14 @@ public class AddCustomerController implements Initializable {
 				lblComplete.setText(decimalFormat.format(sum * 100) + "% complete");
 			}
 		});
-		level1.selectedProperty().addListener(new ChangeListener<Boolean>() {
+	risk.textProperty().addListener(new ChangeListener<String>() {
 			@Override
-			public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
-				if (!oldValue) {
-					progress12 = 0.1;
+			public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+				if (!newValue.isEmpty()) {
+					progress11 = 0.3;
 
-				}
-				double sum = (progress13 + progress12 + progress11 + progress10 + progress1 + progress2 + progress3
-						+ progress4 + progress5 + progress6 + progress7 + progress8 + progress9);
-				progressPersonal.setProgress(sum);
-				lblComplete.setText(decimalFormat.format(sum * 100) + "% complete");
-			}
-		});
-		level2.selectedProperty().addListener(new ChangeListener<Boolean>() {
-			@Override
-			public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
-				if (!oldValue) {
-					progress12 = 0.1;
-
-				}
-
-				double sum = (progress13 + progress12 + progress11 + progress10 + progress1 + progress2 + progress3
-						+ progress4 + progress5 + progress6 + progress7 + progress8 + progress9);
-				progressPersonal.setProgress(sum);
-				lblComplete.setText(decimalFormat.format(sum * 100) + "% complete");
-			}
-		});
-
-		level3.selectedProperty().addListener(new ChangeListener<Boolean>() {
-			@Override
-			public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
-				if (!oldValue) {
-					progress13 = 0.1;
+				} else {
+					progress11 = 0.0;
 
 				}
 				double sum = (progress13 + progress12 + progress11 + progress10 + progress1 + progress2 + progress3
@@ -525,30 +497,37 @@ public class AddCustomerController implements Initializable {
 
 	@FXML
 	void savetraderclicked(ActionEvent event) throws NamingException {
-		Trader trader = new Trader();
-		trader.setFirstName(fname.getText());
-		trader.setLastName(lname.getText());
-		trader.setBirthdate(Date.valueOf(bdate.getValue()));
-		trader.setIsactive(0);
-		trader.setEmail(email.getText());
-		trader.setIsbanned(0);
-		trader.setLogin(login.getText());
-		trader.setNationality(nationality.getText());
-		trader.setPassword(encryptLdapPassword("SHA", password.getText()));
-		trader.setPhone(Integer.parseInt(phonenumber.getText()));
-		trader.setTradertype(leveltrader);
+		Customer customer = new Customer();
+		
+		customer.setFirstName(fname.getText());
+		customer.setLastName(lname.getText());
+		customer.setBirthdate(Date.valueOf(bdate.getValue()));
+		customer.setIsactive(0);
+		customer.setEmail(email.getText());
+		
+		customer.setLogin(login.getText());
+		customer.setCreationDate(new java.util.Date());
+		customer.setNationality(nationality.getText());
+		customer.setPassword(encryptLdapPassword("SHA", password.getText()));
+		customer.setPhone(Integer.parseInt(phonenumber.getText()));
+		customer.setRisk(Integer.parseInt(risk.getText()));
+		customer.setMoney(2500d);
 		Address address = new Address();
 		address.setSountry(countries.getValue());
 		address.setState(cities.getValue());
 		address.setStreet(street.getText());
 		address.setZipcode(Integer.parseInt(zipcode.getText()));
-		trader.setAddress(address);
-
+		customer.setAddress(address);
+Company company = new Company();
+company.setCreationDate(Date.valueOf(LocalDate.now()));
+company.setName(companyname.getText());
+customer.setCompany(company);
 		context = new InitialContext();
 		service = (UserServiceRemote) context.lookup(jndiName);
-
-		service.ajouterUser(trader);
-		String emailadr= trader.getEmail();
+		Trader trader = (Trader) service.findUserById(HomeController.idcurrentuser);
+		customer.setTrader(trader);
+		service.ajouterUser(customer);
+		String emailadr= customer.getEmail();
         String recipient= emailadr;
          Mail mail = new Mail();
         mail.setMailAddressRecipient(recipient);
@@ -557,7 +536,7 @@ public class AddCustomerController implements Initializable {
         mail.setMailAddressSender("fatma.jaafar404@gmail.com");
         mail.setMailSubject("Confirmed Registration");
       
-        String msg="Dear: "+trader.getFirstName()+" "+trader.getLastName()+"\nWelcome to ITrade It \n ITradeIt Team.";
+        String msg="Dear: "+customer.getFirstName()+" "+customer.getLastName()+"\nWelcome to ITrade It \n ITradeIt Team.";
        
         mail.setMailObject(msg);
     
@@ -570,7 +549,7 @@ public class AddCustomerController implements Initializable {
         mc.SendMessage();
 
 		/// ldp
-		
+		    User user= service.login(customer);
 			Hashtable<String, String> ldapEnv = new Hashtable<>();
 			ldapEnv.put(Context.INITIAL_CONTEXT_FACTORY, "com.sun.jndi.ldap.LdapCtxFactory");
 			ldapEnv.put(Context.PROVIDER_URL, "ldap://localhost:10389");
@@ -593,11 +572,9 @@ public class AddCustomerController implements Initializable {
 			attributes.put("telephoneNumber", phonenumber.getText());
 
 			attributes.put(new BasicAttribute("userpassword", encryptLdapPassword("SHA", password.getText())));
-			context.createSubcontext("employeeNumber=568 ,ou=users,o=itradeit", attributes);
-
 			
-		
-	}
+			context.createSubcontext("employeeNumber="+user.getId() +",ou=users,o=itradeit", attributes);
+}
 
 	private String encryptLdapPassword(String algorithm, String password) {
 		String sEncrypted = password;

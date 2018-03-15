@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTabPane?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import com.jfoenix.controls.JFXTreeTableView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Group?>
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.ContextMenu?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" fx:id="rootpane" prefHeight="700.0" prefWidth="1400.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.sltsclient.Controllers.ProfileUserController">
+   <children>
+      <Label layoutX="19.0" layoutY="17.0" prefHeight="29.0" prefWidth="207.0" style="-fx-font-size: 20; -fx-font-weight: bold; -fx-text-fill: #7387A8;" text="Profile" />
+      <Separator layoutX="3.0" layoutY="52.0" prefHeight="0.0" prefWidth="1389.0" />
+      <StackPane fx:id="stpane" layoutX="17.0" layoutY="67.0" prefHeight="682.0" prefWidth="1379.0">
+         <children>
+            <Group fx:id="groups">
+               <children>
+                  <AnchorPane fx:id="formPane" prefHeight="550.0" prefWidth="443.0" />
+                  <JFXButton fx:id="close" focusTraversable="false" onAction="#closeClicked" prefHeight="25.0" prefWidth="24.0" text="X" translateX="410.0">
+                     <font>
+                        <Font name="Segoe UI Black" size="14.0" />
+                     </font>
+                  </JFXButton>
+               </children>
+            </Group>
+         </children>
+      </StackPane>
+      <AnchorPane fx:id="blur" layoutX="10.0" layoutY="10.0" prefHeight="732.0" prefWidth="1379.0">
+         <children>
+            <AnchorPane layoutX="13.0" layoutY="104.0" prefHeight="603.0" prefWidth="228.0" style="-fx-background-color: white; -fx-background-radius: 3; -fx-border-color: #3C8DBC; -fx-border-radius: 3; -fx-border-width: 4 0 0 0; -fx-effect: dropshadow(gaussian, rgb(0.0, 0.0, 0.0, 0.15), 6.0, 0.7, 0.0,1.5); -fx-padding: 4;">
+               <children>
+                  <Separator layoutX="13.0" layoutY="45.0" prefHeight="4.0" prefWidth="244.0" />
+                  <Label fx:id="name" layoutX="14.0" layoutY="14.0" prefHeight="17.0" prefWidth="189.0" style="-fx-text-fill: #162E3B; -fx-font-size: 16; -fx-font-weight: bold; -fx-alignment: left;" text="name" />
+                  <Separator layoutX="14.0" layoutY="283.0" prefHeight="4.0" prefWidth="244.0" />
+                  <Separator layoutX="14.0" layoutY="235.0" prefHeight="4.0" prefWidth="244.0" />
+                  <Separator layoutX="18.0" layoutY="535.0" prefHeight="4.0" prefWidth="244.0" />
+                  <JFXTextField fx:id="emailedit" layoutX="56.0" layoutY="293.0" onAction="#emaileditdone" prefHeight="25.0" prefWidth="201.0" visible="false" />
+                  <Label fx:id="email" layoutX="28.0" layoutY="290.0" onMouseClicked="#updateemail" prefHeight="31.0" prefWidth="244.0" text="Email" wrapText="true">
+                     <font>
+                        <Font name="Roboto Light" size="14.0" />
+                     </font>
+                     <graphic>
+                        <ImageView fitHeight="105.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/63098-200.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Label>
+                  <Label fx:id="role" layoutX="7.0" layoutY="253.0" prefHeight="17.0" prefWidth="94.0" style="-fx-alignment: center; -fx-background-color: #DD4B39; -fx-background-radius: 6; -fx-text-fill: white; -fx-font-size: 12; -fx-font-weight: bold;" text="role">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </Label>
+                  <Label fx:id="typetrader" layoutX="133.0" layoutY="250.0" prefHeight="20.0" prefWidth="132.0" style="-fx-alignment: center; -fx-background-color: #F39C12; -fx-background-radius: 6; -fx-text-fill: white; -fx-font-size: 12; -fx-font-weight: bold;" text="type trader / trader">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </Label>
+                  <ImageView fitHeight="186.0" fitWidth="201.0" layoutX="27.0" layoutY="51.0" pickOnBounds="true">
+                     <image>
+                        <Image url="@../images/contacts-256.png" />
+                     </image>
+                  </ImageView>
+                  <JFXTextField fx:id="phoneedit" layoutX="58.0" layoutY="331.0" onAction="#editphonedone" prefHeight="25.0" prefWidth="214.0" visible="false" />
+                  <Label fx:id="phone" layoutX="28.0" layoutY="328.0" onMouseClicked="#phoneeditshow" prefHeight="31.0" prefWidth="244.0" text="Phone" wrapText="true">
+                     <font>
+                        <Font name="Roboto Light" size="14.0" />
+                     </font>
+                     <graphic>
+                        <ImageView fitHeight="105.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/old_phone-512.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Label>
+                  <Label fx:id="address" layoutX="28.0" layoutY="367.0" onMouseClicked="#openEdit" prefHeight="31.0" prefWidth="244.0" text="Address" wrapText="true">
+                     <font>
+                        <Font name="Roboto Light" size="14.0" />
+                     </font>
+                     <graphic>
+                        <ImageView fitHeight="105.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/33.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Label>
+                  <Label fx:id="bdate" layoutX="28.0" layoutY="398.0" prefHeight="31.0" prefWidth="244.0" text="Address" wrapText="true">
+                     <font>
+                        <Font name="Roboto Light" size="14.0" />
+                     </font>
+                     <graphic>
+                        <ImageView fitHeight="105.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/15082-200.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Label>
+                  <Label fx:id="since" layoutX="13.0" layoutY="554.0" prefHeight="31.0" prefWidth="244.0" text="Since" wrapText="true">
+                     <font>
+                        <Font name="Roboto Light" size="14.0" />
+                     </font>
+                     <graphic>
+                        <ImageView fitHeight="105.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/55238.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Label>
+                  <Label fx:id="nationality" layoutX="28.0" layoutY="437.0" prefHeight="31.0" prefWidth="244.0" text="Nationality" wrapText="true">
+                     <font>
+                        <Font name="Roboto Light" size="14.0" />
+                     </font>
+                     <graphic>
+                        <ImageView fitHeight="105.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/nationality.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Label>
+                  <Label fx:id="banned" layoutX="41.0" layoutY="486.0" prefHeight="20.0" prefWidth="169.0" style="-fx-alignment: center; -fx-background-color: #00A65A; -fx-background-radius: 6; -fx-text-fill: white; -fx-font-size: 12; -fx-font-weight: bold;" text="Banned for the moment">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </Label>
+                  <Label fx:id="active" layoutX="89.0" layoutY="515.0" prefHeight="17.0" prefWidth="70.0" style="-fx-alignment: center; -fx-background-color: #00C0EF; -fx-background-radius: 6; -fx-text-fill: white; -fx-font-size: 12; -fx-font-weight: bold;" text="active /not">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </Label>
+               </children>
+            </AnchorPane>
+            <JFXTabPane layoutX="305.0" layoutY="436.0" prefHeight="271.0" prefWidth="669.0">
+               <tabs>
+                  <Tab fx:id="tab1" text="Customers">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <JFXTreeTableView fx:id="customerstableview" layoutX="14.0" layoutY="12.0" prefHeight="220.0" prefWidth="646.0" />
+                           </children>
+                        </AnchorPane>
+                     </content>
+                  </Tab>
+                  <Tab fx:id="tab2" text="Trades">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="819.0">
+                           <children>
+                              <JFXTreeTableView fx:id="traderstableview" layoutY="9.0" prefHeight="242.0" prefWidth="662.0">
+                                 <contextMenu>
+                                    <ContextMenu>
+                                       <items>
+                                          <MenuItem mnemonicParsing="false" text="confirme" />
+                                          <MenuItem mnemonicParsing="false" text="refuse" />
+                                       </items>
+                                    </ContextMenu>
+                                 </contextMenu>
+                              </JFXTreeTableView>
+                           </children>
+                        </AnchorPane>
+                     </content>
+                  </Tab>
+                  <Tab fx:id="tab3" text="Infos">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <VBox layoutX="40.0" layoutY="29.0" prefHeight="119.0" prefWidth="103.0" styleClass="card-unpadded" stylesheets="@styles.css">
+                                 <children>
+                                    <ImageView fitHeight="121.0" fitWidth="103.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../images/airtel.png" />
+                                       </image>
+                                    </ImageView>
+                                    <Label fx:id="cash" prefHeight="30.0" prefWidth="390.0" style="-fx-font-size: 16; -fx-font-weight: bold; -fx-text-fill: black;" text="cash" textAlignment="CENTER" />
+                                 </children>
+                              </VBox>
+                           </children>
+                        </AnchorPane>
+                    </content>
+                  </Tab>
+               </tabs>
+            </JFXTabPane>
+            <BarChart fx:id="bc" layoutX="305.0" layoutY="95.0" prefHeight="311.0" prefWidth="660.0">
+               <xAxis>
+                  <CategoryAxis side="BOTTOM" fx:id="xAxis" />
+               </xAxis>
+               <yAxis>
+                  <NumberAxis fx:id="yAxis" side="LEFT" />
+               </yAxis>
+            </BarChart>
+            <Pane layoutX="979.0" layoutY="426.0" prefHeight="271.0" prefWidth="408.0" style="-fx-effect: dropshadow(gaussian, rgb(0.0, 0.0, 0.0, 0.15), 6.0, 0.7, 0.0,1.5); -fx-background-color: white;">
+               <children>
+                  <ImageView fx:id="im" fitHeight="150.0" fitWidth="200.0" layoutX="129.0" layoutY="55.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/company.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="rightfl" fitHeight="40.0" fitWidth="45.0" layoutX="354.0" layoutY="116.0" onMouseClicked="#gorightgal" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/scroll-arrow-2.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="leftfl" fitHeight="40.0" fitWidth="45.0" layoutX="14.0" layoutY="114.0" onMouseClicked="#goleftgal" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/scroll-arrow-1.png" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="labelcompany" layoutX="10.0" layoutY="5.0" prefHeight="29.0" prefWidth="207.0" style="-fx-font-size: 20; -fx-font-weight: bold; -fx-text-fill: #7387A8;" text="Companies" />
+                  <Label fx:id="companynamegal" layoutX="147.0" layoutY="219.0" prefHeight="30.0" prefWidth="169.0" style="-fx-font-size: 20; -fx-font-weight: bold; -fx-text-fill: black;" text="Companies" />
+                  <Separator layoutX="12.0" layoutY="43.0" prefHeight="3.0" prefWidth="390.0" />
+               </children>
+            </Pane>
+            <ImageView fx:id="back" fitHeight="25.0" fitWidth="39.0" layoutX="1343.0" layoutY="47.0" onMouseClicked="#backClicked" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/remove.png" />
+               </image>
+            </ImageView>
+            <Pane layoutX="980.0" layoutY="98.0" prefHeight="271.0" prefWidth="408.0" style="-fx-effect: dropshadow(gaussian, rgb(0.0, 0.0, 0.0, 0.15), 6.0, 0.7, 0.0,1.5); -fx-background-color: white;">
+               <children>
+                  <Label layoutX="10.0" layoutY="5.0" prefHeight="29.0" prefWidth="207.0" style="-fx-font-size: 20; -fx-font-weight: bold; -fx-text-fill: #7387A8;" text="Latest trade" />
+                  <Label fx:id="latesttradecust" layoutX="14.0" layoutY="46.0" prefHeight="30.0" prefWidth="390.0" style="-fx-font-size: 20; -fx-font-weight: bold; -fx-text-fill: black;" text="Customer :" />
+                  <Separator layoutX="12.0" layoutY="43.0" prefHeight="3.0" prefWidth="390.0" />
+                  <Label fx:id="latesttradedatecreation" layoutX="14.0" layoutY="76.0" prefHeight="30.0" prefWidth="390.0" style="-fx-font-size: 20; -fx-font-weight: bold; -fx-text-fill: black;" text="Date :" />
+                  <Label fx:id="bondlabelll" layoutX="14.0" layoutY="106.0" prefHeight="30.0" prefWidth="390.0" style="-fx-font-size: 20; -fx-font-weight: bold; -fx-text-fill: black;" text="Bond :" />
+                  <Separator fx:id="separateuur" layoutX="15.0" layoutY="133.0" prefHeight="3.0" prefWidth="367.0" />
+                  <Label fx:id="latesttradecouponrate" layoutX="14.0" layoutY="135.0" prefHeight="30.0" prefWidth="390.0" style="-fx-font-size: 16; -fx-font-weight: bold; -fx-text-fill: black;" text="Coupon rate:" />
+                  <Label fx:id="latesttradematuritydate" layoutX="14.0" layoutY="164.0" prefHeight="30.0" prefWidth="390.0" style="-fx-font-size: 16; -fx-font-weight: bold; -fx-text-fill: black;" text="Maturity date : " />
+                  <Label fx:id="latesttradesaleprice" layoutX="14.0" layoutY="193.0" prefHeight="30.0" prefWidth="390.0" style="-fx-font-size: 16; -fx-font-weight: bold; -fx-text-fill: black;" text="Sale price :" />
+                  <Label fx:id="latesttradeparvalue" layoutX="14.0" layoutY="222.0" prefHeight="30.0" prefWidth="390.0" style="-fx-font-size: 16; -fx-font-weight: bold; -fx-text-fill: black;" text="Par value : " />
+                  <ImageView fx:id="latesttradenotfound" fitHeight="186.0" fitWidth="273.0" layoutX="67.0" layoutY="57.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/nooo.gif" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+         </children></AnchorPane>
+   </children>
+</AnchorPane>
