@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXTabPane?>
+<?import com.jfoenix.controls.JFXTextArea?>
 <?import com.jfoenix.controls.JFXTreeTableView?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.chart.BarChart?>
@@ -121,14 +122,14 @@
                   <Insets />
                </opaqueInsets>
             </Label>
-            <Label fx:id="active" layoutX="89.0" layoutY="515.0" prefHeight="17.0" prefWidth="70.0" style="-fx-alignment: center; -fx-background-color: #00C0EF; -fx-background-radius: 6; -fx-text-fill: white; -fx-font-size: 12; -fx-font-weight: bold;" text="active /not">
+            <Label fx:id="active" layoutX="79.0" layoutY="518.0" prefHeight="17.0" prefWidth="94.0" style="-fx-alignment: center; -fx-background-color: #00C0EF; -fx-background-radius: 6; -fx-text-fill: white; -fx-font-size: 12; -fx-font-weight: bold;" text="active /not">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
             </Label>
          </children>
       </AnchorPane>
-      <JFXTabPane layoutX="300.0" layoutY="395.0" prefHeight="271.0" prefWidth="669.0">
+      <JFXTabPane layoutX="300.0" layoutY="395.0" prefHeight="292.0" prefWidth="669.0">
          <tabs>
             <Tab fx:id="tab1" text="Customers">
                <content>
@@ -171,6 +172,42 @@
                               <Label fx:id="cash" prefHeight="30.0" prefWidth="390.0" style="-fx-font-size: 16; -fx-font-weight: bold; -fx-text-fill: black;" text="cash" textAlignment="CENTER" />
                            </children>
                         </VBox>
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
+            <Tab text="Comments">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="267.0" prefWidth="669.0">
+                     <children>
+                        <JFXTextArea layoutX="10.0" layoutY="7.0" prefHeight="25.0" prefWidth="649.0" />
+                        <Pane layoutX="10.0" layoutY="60.0" prefHeight="193.0" prefWidth="647.0" style="-fx-effect: dropshadow(gaussian, rgb(0.0, 0.0, 0.0, 0.15), 6.0, 0.7, 0.0,1.5); -fx-background-color: white;">
+                           <children>
+                              <Label layoutX="3.0" layoutY="8.0" prefHeight="40.0" prefWidth="638.0" style="-fx-alignment: center; -fx-background-color: #F5F5F5; -fx-background-radius: 6; -fx-text-fill: black; -fx-font-size: 12; -fx-font-weight: bold;" text="tetette">
+                                 <opaqueInsets>
+                                    <Insets />
+                                 </opaqueInsets>
+                              </Label>
+                              <Label layoutX="3.0" layoutY="56.0" prefHeight="40.0" prefWidth="638.0" style="-fx-alignment: center; -fx-background-color: #F5F5F5; -fx-background-radius: 6; -fx-text-fill: black; -fx-font-size: 12; -fx-font-weight: bold;" text="tetette">
+                                 <opaqueInsets>
+                                    <Insets />
+                                 </opaqueInsets>
+                              </Label>
+                              <Label layoutX="30.0" layoutY="13.0" prefHeight="40.0" prefWidth="132.0" text="Label" />
+                              <Label layoutX="25.0" layoutY="54.0" prefHeight="40.0" prefWidth="132.0" text="Label" />
+                              <Label layoutX="3.0" layoutY="105.0" prefHeight="40.0" prefWidth="638.0" style="-fx-alignment: center; -fx-background-color: #F5F5F5; -fx-background-radius: 6; -fx-text-fill: black; -fx-font-size: 12; -fx-font-weight: bold;" text="tetette">
+                                 <opaqueInsets>
+                                    <Insets />
+                                 </opaqueInsets>
+                              </Label>
+                              <Label layoutX="25.0" layoutY="103.0" prefHeight="40.0" prefWidth="132.0" text="Label" />
+                              <Label layoutX="13.0" layoutY="115.0" prefHeight="40.0" prefWidth="638.0" style="-fx-alignment: center; -fx-background-color: #F5F5F5; -fx-background-radius: 6; -fx-text-fill: black; -fx-font-size: 12; -fx-font-weight: bold;" text="tetette">
+                                 <opaqueInsets>
+                                    <Insets />
+                                 </opaqueInsets>
+                              </Label>
+                           </children>
+                        </Pane>
                      </children>
                   </AnchorPane>
               </content>
