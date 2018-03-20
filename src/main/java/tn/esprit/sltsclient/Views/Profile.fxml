@@ -185,7 +185,7 @@
                         <JFXTextArea fx:id="commentadd" labelFloat="true" layoutX="10.0" layoutY="12.0" prefHeight="25.0" prefWidth="649.0" promptText="Add comment..." />
                         <Pane layoutX="8.0" layoutY="60.0" prefHeight="230.0" prefWidth="649.0" style="-fx-effect: dropshadow(gaussian, rgb(0.0, 0.0, 0.0, 0.15), 6.0, 0.7, 0.0,1.5); -fx-background-color: white;">
                            <children>
-                              <Label fx:id="comment1" layoutX="3.0" layoutY="6.0" prefHeight="40.0" prefWidth="638.0" style="-fx-alignment: center; -fx-background-color: #F5F5F5; -fx-background-radius: 6; -fx-text-fill: black; -fx-font-size: 12; -fx-font-weight: bold;" text="tttetetetteeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee">
+                              <Label fx:id="comment1" layoutX="3.0" layoutY="6.0" prefHeight="40.0" prefWidth="638.0" style="-fx-alignment: center; -fx-background-color: #F5F5F5; -fx-background-radius: 6; -fx-text-fill: black; -fx-font-size: 12; -fx-font-weight: bold;" text="gggggg">
                                  <opaqueInsets>
                                     <Insets />
                                  </opaqueInsets>
@@ -222,9 +222,11 @@
             </Tab>
             <Tab text="Analysis">
               <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                <AnchorPane fx:id="analysis" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <PieChart layoutX="54.0" layoutY="-108.0" prefWidth="244.0" />
+                        <PieChart fx:id="chart1" layoutX="24.0" layoutY="14.0" prefHeight="269.0" prefWidth="201.0" />
+                        <PieChart fx:id="chart2" layoutX="239.0" layoutY="12.0" prefHeight="269.0" prefWidth="201.0" />
+                        <PieChart fx:id="chart3" layoutX="454.0" layoutY="15.0" prefHeight="269.0" prefWidth="201.0" />
                      </children>
                   </AnchorPane>
               </content>

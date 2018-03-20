@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.ResourceBundle;
@@ -70,14 +71,25 @@ import tn.esprit.sltsclient.Utils.Trades;
 import tn.esprit.sltsclient.main.SentimentAnalysisWithCount;
 import twitter4j.TwitterException;
 import javafx.scene.control.Separator;
-
+import javafx.scene.chart.PieChart;
+import javafx.event.EventHandler;
 /**
  * FXML Controller class
  *
  * @author AGORA
  */
 public class ProfileController implements Initializable {
+	HashMap map;
+	@FXML
+    private AnchorPane analysis;
+	@FXML
+    private PieChart chart1;
 
+    @FXML
+    private PieChart chart2;
+
+    @FXML
+    private PieChart chart3;
 	@FXML
 	private Label comment1;
 
@@ -337,13 +349,110 @@ public class ProfileController implements Initializable {
 	public void preparecomments() {
 		comments = servicecommenr.viewusercomments(user);
 		try {
-			SentimentAnalysisWithCount.commentsanalysis(comments);
+			map=SentimentAnalysisWithCount.commentsanalysis(comments);
 		} catch (TwitterException | IOException | NamingException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
+System.out.println(map);
+setpiecharttwitter();
+setpiechartcomments();
+setpiechartall();
 	}
+	   private void setpiecharttwitter(){
+	        
+	        int nbpositivetwitter= Integer.parseInt(map.get("positivetwitter").toString());
+	        int nbnegativetwitter = Integer.parseInt(map.get("negativetwitter").toString());
+	          ObservableList<PieChart.Data> pieChartData =
+	                FXCollections.observableArrayList(
+	                new PieChart.Data("Positive impressions", nbpositivetwitter),
+	                new PieChart.Data("Negative impressions", nbnegativetwitter));
+            chart1 = new PieChart(pieChartData);
+	        chart1.setTitle("Twitter");
+	        final Label caption = new Label("");
+	        caption.setTextFill(Color.DARKORANGE);
+	        caption.setStyle("-fx-font: 10 arial;");
+            chart1.setMaxSize(201, 269);
+            chart1.setLayoutY(15);
+	        for (final PieChart.Data data : chart1.getData()) {
+	            data.getNode().addEventHandler(MouseEvent.MOUSE_PRESSED,
+	                    new EventHandler<MouseEvent>() {
+	                        @Override public void handle(MouseEvent e) {
+	                            caption.setTranslateX(e.getSceneX());
+	                            caption.setTranslateY(e.getSceneY());
+	                            caption.setText(String.valueOf(data.getPieValue()) 
+	                                + "%");
+	                        }
+	                    });
+	        }
+	  analysis.getChildren().addAll(chart1, caption);
+   }
+	    
+	   private void setpiechartcomments(){
+	        
+	        int nbpositivecomments= Integer.parseInt(map.get("positivecomments").toString());
+	        int nbnegativecomments = Integer.parseInt(map.get("negativecomments").toString());
+	        
+	          ObservableList<PieChart.Data> pieChartData =
+	                FXCollections.observableArrayList(
+	                new PieChart.Data("Positive impressions", nbpositivecomments),
+	                new PieChart.Data("Negative impressions", nbnegativecomments));
+           chart2 = new PieChart(pieChartData);
+	        chart2.setTitle("Comments");
+	        final Label caption = new Label("");
+	        caption.setTextFill(Color.DARKORANGE);
+	        caption.setStyle("-fx-font: 10 arial;");
+           chart2.setMaxSize(201, 269);
+           chart2.setLayoutX(239);
+           chart2.setLayoutY(15);
+	        for (final PieChart.Data data : chart2.getData()) {
+	            data.getNode().addEventHandler(MouseEvent.MOUSE_PRESSED,
+	                    new EventHandler<MouseEvent>() {
+	                        @Override public void handle(MouseEvent e) {
+	                            caption.setTranslateX(e.getSceneX());
+	                            caption.setTranslateY(e.getSceneY());
+	                            caption.setText(String.valueOf(data.getPieValue()) 
+	                                + "%");
+	                        }
+	                    });
+	        }
+	  analysis.getChildren().addAll(chart2, caption);
+  } 
+	   private void setpiechartall(){
+	        
+		   int nbpositivecomments= Integer.parseInt(map.get("positivecomments").toString());
+	        int nbnegativecomments = Integer.parseInt(map.get("negativecomments").toString());
+	        int nbpositivetwitter= Integer.parseInt(map.get("positivetwitter").toString());
+	        int nbnegativetwitter = Integer.parseInt(map.get("negativetwitter").toString());
+	        
+	        int positiveimp = nbpositivecomments+nbpositivetwitter;
+	        int negativeimp = nbnegativecomments+nbnegativetwitter;
+	          ObservableList<PieChart.Data> pieChartData =
+	                FXCollections.observableArrayList(
+	                new PieChart.Data("Positive impressions", positiveimp),
+	                new PieChart.Data("Negative impressions", negativeimp));
+          chart3 = new PieChart(pieChartData);
+	        chart3.setTitle("Summary");
+	        final Label caption = new Label("");
+	        caption.setTextFill(Color.DARKORANGE);
+	        caption.setStyle("-fx-font: 10 arial;");
+          chart3.setMaxSize(201, 269);
+          chart3.setLayoutX(454);
+          chart3.setLayoutY(15);
+	        for (final PieChart.Data data : chart3.getData()) {
+	            data.getNode().addEventHandler(MouseEvent.MOUSE_PRESSED,
+	                    new EventHandler<MouseEvent>() {
+	                        @Override public void handle(MouseEvent e) {
+	                            caption.setTranslateX(e.getSceneX());
+	                            caption.setTranslateY(e.getSceneY());
+	                            caption.setText(String.valueOf(data.getPieValue()) 
+	                                + "%");
+	                        }
+	                    });
+	        }
+	  analysis.getChildren().addAll(chart3, caption);
+ }
+	   
 	public AnchorPane createPage(int pageIndex) {
 
 		AnchorPane box = new AnchorPane();
