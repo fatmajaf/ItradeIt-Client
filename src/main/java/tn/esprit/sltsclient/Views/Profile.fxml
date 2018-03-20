@@ -7,9 +7,11 @@
 <?import javafx.scene.chart.BarChart?>
 <?import javafx.scene.chart.CategoryAxis?>
 <?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.chart.PieChart?>
 <?import javafx.scene.control.ContextMenu?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Pagination?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.image.Image?>
@@ -23,13 +25,13 @@
    <children>
       <Label layoutX="19.0" layoutY="17.0" prefHeight="29.0" prefWidth="207.0" style="-fx-font-size: 20; -fx-font-weight: bold; -fx-text-fill: #7387A8;" text="Profile" />
       <Separator layoutX="3.0" layoutY="52.0" prefHeight="0.0" prefWidth="1389.0" />
-      <AnchorPane layoutX="13.0" layoutY="63.0" prefHeight="603.0" prefWidth="228.0" style="-fx-background-color: white; -fx-background-radius: 3; -fx-border-color: #3C8DBC; -fx-border-radius: 3; -fx-border-width: 4 0 0 0; -fx-effect: dropshadow(gaussian, rgb(0.0, 0.0, 0.0, 0.15), 6.0, 0.7, 0.0,1.5); -fx-padding: 4;">
+      <AnchorPane layoutX="13.0" layoutY="63.0" prefHeight="630.0" prefWidth="280.0" style="-fx-background-color: white; -fx-background-radius: 3; -fx-border-color: #3C8DBC; -fx-border-radius: 3; -fx-border-width: 4 0 0 0; -fx-effect: dropshadow(gaussian, rgb(0.0, 0.0, 0.0, 0.15), 6.0, 0.7, 0.0,1.5); -fx-padding: 4;">
          <children>
             <Separator layoutX="13.0" layoutY="45.0" prefHeight="4.0" prefWidth="244.0" />
             <Label fx:id="name" layoutX="14.0" layoutY="14.0" prefHeight="17.0" prefWidth="189.0" style="-fx-text-fill: #162E3B; -fx-font-size: 16; -fx-font-weight: bold; -fx-alignment: left;" text="name" />
             <Separator layoutX="14.0" layoutY="283.0" prefHeight="4.0" prefWidth="244.0" />
             <Separator layoutX="14.0" layoutY="235.0" prefHeight="4.0" prefWidth="244.0" />
-            <Separator layoutX="18.0" layoutY="535.0" prefHeight="4.0" prefWidth="244.0" />
+            <Separator layoutX="18.0" layoutY="553.0" prefHeight="4.0" prefWidth="244.0" />
             <Label fx:id="email" layoutX="28.0" layoutY="290.0" prefHeight="31.0" prefWidth="244.0" text="Email" wrapText="true">
                <font>
                   <Font name="Roboto Light" size="14.0" />
@@ -93,7 +95,7 @@
                   </ImageView>
                </graphic>
             </Label>
-            <Label fx:id="since" layoutX="13.0" layoutY="554.0" prefHeight="31.0" prefWidth="244.0" text="Since" wrapText="true">
+            <Label fx:id="since" layoutX="13.0" layoutY="582.0" prefHeight="31.0" prefWidth="244.0" text="Since" wrapText="true">
                <font>
                   <Font name="Roboto Light" size="14.0" />
                </font>
@@ -129,7 +131,7 @@
             </Label>
          </children>
       </AnchorPane>
-      <JFXTabPane layoutX="300.0" layoutY="395.0" prefHeight="292.0" prefWidth="669.0">
+      <JFXTabPane layoutX="300.0" layoutY="368.0" prefHeight="327.0" prefWidth="669.0">
          <tabs>
             <Tab fx:id="tab1" text="Customers">
                <content>
@@ -180,41 +182,56 @@
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="267.0" prefWidth="669.0">
                      <children>
-                        <JFXTextArea layoutX="10.0" layoutY="7.0" prefHeight="25.0" prefWidth="649.0" />
-                        <Pane layoutX="10.0" layoutY="60.0" prefHeight="193.0" prefWidth="647.0" style="-fx-effect: dropshadow(gaussian, rgb(0.0, 0.0, 0.0, 0.15), 6.0, 0.7, 0.0,1.5); -fx-background-color: white;">
+                        <JFXTextArea fx:id="commentadd" labelFloat="true" layoutX="10.0" layoutY="12.0" prefHeight="25.0" prefWidth="649.0" promptText="Add comment..." />
+                        <Pane layoutX="8.0" layoutY="60.0" prefHeight="230.0" prefWidth="649.0" style="-fx-effect: dropshadow(gaussian, rgb(0.0, 0.0, 0.0, 0.15), 6.0, 0.7, 0.0,1.5); -fx-background-color: white;">
                            <children>
-                              <Label layoutX="3.0" layoutY="8.0" prefHeight="40.0" prefWidth="638.0" style="-fx-alignment: center; -fx-background-color: #F5F5F5; -fx-background-radius: 6; -fx-text-fill: black; -fx-font-size: 12; -fx-font-weight: bold;" text="tetette">
+                              <Label fx:id="comment1" layoutX="3.0" layoutY="6.0" prefHeight="40.0" prefWidth="638.0" style="-fx-alignment: center; -fx-background-color: #F5F5F5; -fx-background-radius: 6; -fx-text-fill: black; -fx-font-size: 12; -fx-font-weight: bold;" text="tttetetetteeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee">
                                  <opaqueInsets>
                                     <Insets />
                                  </opaqueInsets>
                               </Label>
-                              <Label layoutX="3.0" layoutY="56.0" prefHeight="40.0" prefWidth="638.0" style="-fx-alignment: center; -fx-background-color: #F5F5F5; -fx-background-radius: 6; -fx-text-fill: black; -fx-font-size: 12; -fx-font-weight: bold;" text="tetette">
+                              <Label fx:id="comment2" layoutX="3.0" layoutY="52.0" prefHeight="40.0" prefWidth="638.0" style="-fx-alignment: center; -fx-background-color: #F5F5F5; -fx-background-radius: 6; -fx-text-fill: black; -fx-font-size: 12; -fx-font-weight: bold;" text="tetette">
                                  <opaqueInsets>
                                     <Insets />
                                  </opaqueInsets>
                               </Label>
-                              <Label layoutX="30.0" layoutY="13.0" prefHeight="40.0" prefWidth="132.0" text="Label" />
-                              <Label layoutX="25.0" layoutY="54.0" prefHeight="40.0" prefWidth="132.0" text="Label" />
-                              <Label layoutX="3.0" layoutY="105.0" prefHeight="40.0" prefWidth="638.0" style="-fx-alignment: center; -fx-background-color: #F5F5F5; -fx-background-radius: 6; -fx-text-fill: black; -fx-font-size: 12; -fx-font-weight: bold;" text="tetette">
+                              <Label fx:id="namecommenter1" layoutX="24.0" layoutY="9.0" prefHeight="40.0" prefWidth="132.0" text="Label" />
+                              <Label fx:id="namecommenter2" layoutX="25.0" layoutY="50.0" prefHeight="40.0" prefWidth="132.0" text="Label" />
+                              <Label fx:id="comment3" layoutX="3.0" layoutY="98.0" prefHeight="40.0" prefWidth="638.0" style="-fx-alignment: center; -fx-background-color: #F5F5F5; -fx-background-radius: 6; -fx-text-fill: black; -fx-font-size: 12; -fx-font-weight: bold;" text="tetette">
                                  <opaqueInsets>
                                     <Insets />
                                  </opaqueInsets>
                               </Label>
-                              <Label layoutX="25.0" layoutY="103.0" prefHeight="40.0" prefWidth="132.0" text="Label" />
-                              <Label layoutX="13.0" layoutY="115.0" prefHeight="40.0" prefWidth="638.0" style="-fx-alignment: center; -fx-background-color: #F5F5F5; -fx-background-radius: 6; -fx-text-fill: black; -fx-font-size: 12; -fx-font-weight: bold;" text="tetette">
+                              <Label fx:id="namecommenter3" layoutX="25.0" layoutY="96.0" prefHeight="40.0" prefWidth="132.0" text="Label" />
+                              <Label fx:id="comment4" layoutX="4.0" layoutY="144.0" prefHeight="40.0" prefWidth="638.0" style="-fx-alignment: center; -fx-background-color: #F5F5F5; -fx-background-radius: 6; -fx-text-fill: black; -fx-font-size: 12; -fx-font-weight: bold;" text="tetette">
                                  <opaqueInsets>
                                     <Insets />
                                  </opaqueInsets>
                               </Label>
+                              <Label fx:id="namecommenter4" layoutX="25.0" layoutY="147.0" prefHeight="40.0" prefWidth="132.0" text="Label" />
+                              <Pagination fx:id="pagination" layoutX="163.0" layoutY="186.0" prefHeight="25.0" prefWidth="281.0" />
+                              <Label fx:id="id1" layoutX="607.0" layoutY="18.0" text="Label" visible="false" />
+                              <Label fx:id="id2" layoutX="607.0" layoutY="62.0" text="Label" visible="false" />
+                              <Label fx:id="id3" layoutX="607.0" layoutY="108.0" text="Label" visible="false" />
+                              <Label fx:id="id4" layoutX="607.0" layoutY="156.0" text="Label" visible="false" />
                            </children>
                         </Pane>
                      </children>
                   </AnchorPane>
               </content>
             </Tab>
+            <Tab text="Analysis">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <PieChart layoutX="54.0" layoutY="-108.0" prefWidth="244.0" />
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
          </tabs>
       </JFXTabPane>
-      <BarChart fx:id="bc" layoutX="321.0" layoutY="74.0" prefHeight="311.0" prefWidth="669.0">
+      <BarChart fx:id="bc" layoutX="303.0" layoutY="59.0" prefHeight="304.0" prefWidth="669.0">
          <xAxis>
             <CategoryAxis side="BOTTOM" fx:id="xAxis" />
          </xAxis>
@@ -222,33 +239,33 @@
             <NumberAxis fx:id="yAxis" side="LEFT" />
          </yAxis>
       </BarChart>
-      <Pane layoutX="979.0" layoutY="395.0" prefHeight="271.0" prefWidth="408.0" style="-fx-effect: dropshadow(gaussian, rgb(0.0, 0.0, 0.0, 0.15), 6.0, 0.7, 0.0,1.5); -fx-background-color: white;">
+      <Pane layoutX="979.0" layoutY="368.0" prefHeight="327.0" prefWidth="408.0" style="-fx-effect: dropshadow(gaussian, rgb(0.0, 0.0, 0.0, 0.15), 6.0, 0.7, 0.0,1.5); -fx-background-color: white;">
          <children>
-            <ImageView fx:id="im" fitHeight="150.0" fitWidth="200.0" layoutX="129.0" layoutY="55.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="im" fitHeight="150.0" fitWidth="200.0" layoutX="129.0" layoutY="78.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/company.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="rightfl" fitHeight="40.0" fitWidth="45.0" layoutX="354.0" layoutY="116.0" onMouseClicked="#gorightgal" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="rightfl" fitHeight="40.0" fitWidth="45.0" layoutX="354.0" layoutY="139.0" onMouseClicked="#gorightgal" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/scroll-arrow-2.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="leftfl" fitHeight="40.0" fitWidth="45.0" layoutX="14.0" layoutY="114.0" onMouseClicked="#goleftgal" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="leftfl" fitHeight="40.0" fitWidth="45.0" layoutX="14.0" layoutY="137.0" onMouseClicked="#goleftgal" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/scroll-arrow-1.png" />
                </image>
             </ImageView>
-            <Label fx:id="labelcompany" layoutX="10.0" layoutY="5.0" prefHeight="29.0" prefWidth="207.0" style="-fx-font-size: 20; -fx-font-weight: bold; -fx-text-fill: #7387A8;" text="Companies" />
-            <Label fx:id="companynamegal" layoutX="147.0" layoutY="219.0" prefHeight="30.0" prefWidth="169.0" style="-fx-font-size: 20; -fx-font-weight: bold; -fx-text-fill: black;" text="Companies" />
-            <Separator layoutX="12.0" layoutY="43.0" prefHeight="3.0" prefWidth="390.0" />
+            <Label fx:id="labelcompany" layoutX="10.0" layoutY="11.0" prefHeight="29.0" prefWidth="207.0" style="-fx-font-size: 20; -fx-font-weight: bold; -fx-text-fill: #7387A8;" text="Companies" />
+            <Label fx:id="companynamegal" layoutX="147.0" layoutY="261.0" prefHeight="30.0" prefWidth="169.0" style="-fx-font-size: 20; -fx-font-weight: bold; -fx-text-fill: black;" text="Companies" />
+            <Separator layoutX="12.0" layoutY="58.0" prefHeight="3.0" prefWidth="390.0" />
          </children></Pane>
       <ImageView fx:id="back" fitHeight="25.0" fitWidth="39.0" layoutX="1352.0" layoutY="19.0" onMouseClicked="#backClicked" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/remove.png" />
          </image>
       </ImageView>
-      <Pane layoutX="979.0" layoutY="94.0" prefHeight="271.0" prefWidth="408.0" style="-fx-effect: dropshadow(gaussian, rgb(0.0, 0.0, 0.0, 0.15), 6.0, 0.7, 0.0,1.5); -fx-background-color: white;">
+      <Pane layoutX="979.0" layoutY="62.0" prefHeight="280.0" prefWidth="408.0" style="-fx-effect: dropshadow(gaussian, rgb(0.0, 0.0, 0.0, 0.15), 6.0, 0.7, 0.0,1.5); -fx-background-color: white;">
          <children>
             <Label layoutX="10.0" layoutY="5.0" prefHeight="29.0" prefWidth="207.0" style="-fx-font-size: 20; -fx-font-weight: bold; -fx-text-fill: #7387A8;" text="Latest trade" />
             <Label fx:id="latesttradecust" layoutX="14.0" layoutY="46.0" prefHeight="30.0" prefWidth="390.0" style="-fx-font-size: 20; -fx-font-weight: bold; -fx-text-fill: black;" text="Customer :" />
