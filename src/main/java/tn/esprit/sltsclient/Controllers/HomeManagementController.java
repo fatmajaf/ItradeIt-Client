@@ -5,6 +5,8 @@
  */
 package tn.esprit.sltsclient.Controllers;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
@@ -12,6 +14,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Currency;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
@@ -30,10 +33,14 @@ import com.jfoenix.controls.JFXTreeTableColumn;
 import com.jfoenix.controls.JFXTreeTableView;
 import com.jfoenix.controls.RecursiveTreeItem;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
+import com.zoicapital.stockchartsfx.BarData;
+import com.zoicapital.stockchartsfx.CandleStickChart;
+import com.zoicapital.stockchartsfx.DecimalAxisFormatter;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -60,13 +67,16 @@ import tn.esprit.sltsclient.Utils.*;
 import javafx.beans.value.ObservableValue;
 import javafx.util.Callback;
 import javafx.scene.control.TreeItem;
+import javafx.stage.Stage;
 /**
  * FXML Controller class
  *
  * @author AGORA
  */
 public class HomeManagementController implements Initializable {
-	  @FXML
+     @FXML
+    private JFXButton candlestickgo;
+	     @FXML
 	    private Label nameactivetrader;
 
 	    @FXML
@@ -149,6 +159,8 @@ public class HomeManagementController implements Initializable {
 
     @FXML
     private JFXTreeTableView<Stocks> tableviewstocks;
+    ObservableList<Stocks> stocks;
+    List<HistoricalQuote> listehq;
 
 	    String jndiName = "SLTS_server-ear/SLTS_server-ejb/UserService!tn.esprit.SLTS_server.services.UserServiceRemote";
 	     Context context;
@@ -321,13 +333,13 @@ public void searchforStocksbysymbol(String period , int num){
 			Calendar to = Calendar.getInstance();
 			if(period.equals("Month")){
 			from.add(Calendar.MONTH, -num);
-			stock= YahooFinance.get("GOOG", from, to, Interval.MONTHLY);}
+			stock= YahooFinance.get(symbole.getText(), from, to, Interval.MONTHLY);}
 			else if (period.equals("Year")){
 				from.add(Calendar.YEAR, -num);
-				stock= YahooFinance.get("GOOG", from, to, Interval.WEEKLY);}
+				stock= YahooFinance.get(symbole.getText(), from, to, Interval.WEEKLY);}
 			else if (period.equals("Day")){
 				from.add(Calendar.DAY_OF_YEAR, -num);
-				stock= YahooFinance.get("GOOG", from, to, Interval.DAILY);}
+				stock= YahooFinance.get(symbole.getText(), from, to, Interval.DAILY);}
 			
 			
 		} catch (IOException ex) {
@@ -417,8 +429,9 @@ public void searchforStocksbysymbol(String period , int num){
 	        
 	        
 	        
-	        ObservableList<Stocks> leaves = FXCollections.observableArrayList();
-	    	List<HistoricalQuote> listehq=new ArrayList<HistoricalQuote>();
+	       stocks = FXCollections.observableArrayList();
+	     
+	     listehq=new ArrayList<HistoricalQuote>();
 			try {
 				listehq = stock.getHistory();
 				
@@ -449,17 +462,22 @@ public void searchforStocksbysymbol(String period , int num){
 	            	System.out.println("nn");
 	                System.out.println(historicalQuote.getClose());
 	            	Stocks ltable=new Stocks(historicalQuote.getAdjClose().toString(), historicalQuote.getClose().toString(), historicalQuote.getDate().getTime().toString(), historicalQuote.getHigh().toString(), historicalQuote.getLow().toString(), historicalQuote.getOpen().toString(), historicalQuote.getVolume().toString());
-	             leaves.add(ltable);}
+	            	stocks.add(ltable);}
 	         }
 	        //leaves.add(new Leavess("2012", "kkkk", "hjj", "jjj", "jjjj"));   leaves.add(new Leavess("2012", "kkkk", "hjj", "jjj", "jjjj"));
 
 	         final TreeItem<Stocks> root;
-	         root = new RecursiveTreeItem<Stocks>(leaves, RecursiveTreeObject::getChildren);
+	         root = new RecursiveTreeItem<Stocks>(stocks, RecursiveTreeObject::getChildren);
 	         tableviewstocks.getColumns().setAll(adjclose,close,date,highh,low,open,volume);
 	         tableviewstocks.setRoot(root);
 	         tableviewstocks.setShowRoot(false);
 
-	      
+	         try {
+				writeincsv();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 	        
 	        //////
 		
@@ -544,7 +562,96 @@ public void searchforStocksbysymbol(String period , int num){
 	    	}
 
 	    }
+	    @FXML
+	    void candlestickgoclicked(ActionEvent event) {
+	    	  CandleStickChart candleStickChart = new CandleStickChart(symbolyf.getText(), buildBars());
+	          Scene scene = new Scene(candleStickChart);
+	          scene.getStylesheets().add("/styles/CandleStickChartStyles.css");
+	          Stage stage= new Stage();
+	          stage.setTitle("Candle stick -"+symbolyf+"-");
+	          stage.setScene(scene);
+	          stage.show();
+	          
+	          candleStickChart.setYAxisFormatter(new DecimalAxisFormatter("#000.00"));
+	    }
+	    void gettreetableviewstocksdata(){
+	    	for (HistoricalQuote historicalQuote : listehq) {
+				System.out.println("symbol "+historicalQuote.getSymbol());
+				System.out.println("adj close"+historicalQuote.getAdjClose());
+				System.out.println("close " +historicalQuote.getClose());
+				System.out.println("date "+historicalQuote.getDate().getTime());
+				System.out.println("high"+historicalQuote.getHigh());
+				System.out.println("low "+historicalQuote.getLow());
+				System.out.println("open "+historicalQuote.getOpen());
+				System.out.println("volume "+historicalQuote.getVolume());
+				
+				
+			} 
+	    }
+	    public List<BarData> buildBars() {
+          final List<BarData> bars = new ArrayList<>();
+	        GregorianCalendar now = new GregorianCalendar();
+	        for (int i = 0; i < listehq.size(); i++) {
+	        	double open;
+	        	double close;
+	        	double high;
+	        	 double low;
+	        	if (listehq.get(i).getOpen()!=null){
+	        		open= listehq.get(i).getOpen().doubleValue();
+	        	}
+	        	else {open= 0;}
+	            if (listehq.get(i).getClose()!=null){
+	            close = listehq.get(i).getClose().doubleValue();}
+	            else {close =0;}
+	            if (listehq.get(i).getHigh()!=null)
+	             {high =listehq.get(i).getHigh().doubleValue();}
+	            else {high=0;}
+	            if (listehq.get(i).getLow()!=null)
+	            {low = listehq.get(i).getLow().doubleValue();}
+	            else {low=0;}
+	           
+	            
+	            BarData bar = new BarData((GregorianCalendar) now.clone(), open, high, low, close, 1);
+	            now.add(Calendar.MINUTE, 5);
+	            bars.add(bar);
+	        }
+	        return bars;
+	    }
+	    void writeincsv() throws IOException{
+	    	  BufferedWriter bw = new BufferedWriter(new FileWriter("src/main/resources/test.csv"));
+	    	  String open;
+	    	  String close;
+	    	  String high;
+	    	  String low;
+	    	  String date;
+	    	  String symbol;
+	    	  
+	    		for (HistoricalQuote historicalQuote : listehq) {
+				
+					
+					date=historicalQuote.getDate().getTime().toString();
+					symbol=historicalQuote.getSymbol();
+					if (historicalQuote.getOpen()!=null)
+					{open=historicalQuote.getOpen().toString();}
+					else {open="";}
+					if (historicalQuote.getClose()!=null)
+					{close=historicalQuote.getClose().toString();}
+					else {close="";}
+					if (historicalQuote.getLow()!=null)
+					{low=historicalQuote.getLow().toString();}
+					else {low="";}
+					if (historicalQuote.getHigh()!=null)
+					{high=historicalQuote.getHigh().toString();}
+					else {high="";}
+					bw.write(date+symbol+open + close+ low +high);
+					  bw.newLine();
+				} 
+	         
+	       
+	          bw.close();
+	    }
 	    
-	    
+	   
+	   
     
 }
