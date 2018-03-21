@@ -7,6 +7,7 @@ package tn.esprit.sltsclient.Controllers;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -599,7 +600,7 @@ public class UsermanagementController implements Initializable {
                 return param.getValue().getValue().id;
             }});
         ObservableList<Traders> atts = FXCollections.observableArrayList();
-      
+     
         
         listeuserr = service.findAllTraders();
         System.out.println(listeuserr);
@@ -636,8 +637,10 @@ public class UsermanagementController implements Initializable {
              
              
             atts.add(atable);
+            
+           
         }
-     
+       
         final TreeItem<Traders> root;
         root = new RecursiveTreeItem<Traders>(atts, RecursiveTreeObject::getChildren);
         tableviewtraders.getColumns().setAll(name, login, phone, nationality, address, birthdate, creationdate, activee, email, isbanned, tradertype);
@@ -1055,6 +1058,7 @@ settableviewTraders();
 	    void tabletradersclicked(MouseEvent event) throws IOException {
 	    	if(event.getClickCount() == 2)
 	        {
+	    		
 	            Integer idt = Integer.parseInt(tableviewtraders.getSelectionModel().getSelectedItem().getValue().getId().getValue().toString());
 	           
 	            ProfileController.iduserprofile=idt;
@@ -1069,14 +1073,15 @@ settableviewTraders();
 	    }
 	    @FXML
 	    void tabletcustomersclicked(MouseEvent event) throws IOException {
+	    	
 	    	if(event.getClickCount() == 2)
 	        {
+	    		
 	            Integer idt = Integer.parseInt(tableviewcustomers.getSelectionModel().getSelectedItem().getValue().getId().getValue().toString());
 	            
 	            ProfileController.iduserprofile=idt;
 	          
-	        
-	            rootpane.getChildren().clear();
+	           /* rootpane.getChildren().clear();
 	            rootpane.setOpacity(0);
 	            new FadeInTransition(rootpane).play();
 	            
@@ -1092,7 +1097,11 @@ settableviewTraders();
 	                    
 	              rootpane.getChildren().setAll(pane);
 	               
-	           
+	           */
+	            AnchorPane profile = FXMLLoader.load(getClass().getResource(nav.getProfile()));
+		           
+		        
+	            setNode(profile);
 	        }
 	    }
 	    
