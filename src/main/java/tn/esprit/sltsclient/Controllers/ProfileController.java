@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
@@ -20,10 +21,12 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 
 import com.jfoenix.controls.JFXTextArea;
+import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.controls.JFXTreeTableColumn;
 import com.jfoenix.controls.JFXTreeTableView;
 import com.jfoenix.controls.RecursiveTreeItem;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
+import com.jfoenix.validation.RequiredFieldValidator;
 
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -31,6 +34,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Pagination;
@@ -46,6 +50,7 @@ import tn.esprit.SLTS_server.persistence.TradingExchange;
 import tn.esprit.SLTS_server.persistence.User;
 import tn.esprit.SLTS_server.services.CommentServiceRemote;
 import tn.esprit.SLTS_server.services.UserServiceRemote;
+import tn.esprit.sltsclient.Utils.BadWordFilter;
 import tn.esprit.sltsclient.Utils.Customers;
 import tn.esprit.sltsclient.Utils.FadeInRightTransition;
 import tn.esprit.sltsclient.Utils.FadeInTransition;
@@ -124,7 +129,7 @@ public class ProfileController implements Initializable {
     private Pagination pagination;
 
 	@FXML
-	private JFXTextArea commentadd;
+	private JFXTextField commentadd;
 
 	List<Comment> comments;
 	String jndiNamec = "SLTS_server-ear/SLTS_server-ejb/CommentService!tn.esprit.SLTS_server.services.CommentServiceRemote";
@@ -342,19 +347,36 @@ public class ProfileController implements Initializable {
 				return createPage(pageIndex);
 			}
 		});
+	
+		  RequiredFieldValidator validator = new RequiredFieldValidator();
+		    validator.setMessage("Input Required");
+		    commentadd.getValidators().add(validator);
+		    commentadd.focusedProperty().addListener(( o,  oldVal,  newVal) -> {
+		        if (!newVal)
+		        	 commentadd.validate();
+		        
+		    });
+		    
+	
 	}
 	public int itemsPerPage() {
 		return 4;
 	}
 	public void preparecomments() {
+		
 		comments = servicecommenr.viewusercomments(user);
+		
 		try {
 			map=SentimentAnalysisWithCount.commentsanalysis(comments);
 		} catch (TwitterException | IOException | NamingException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
 System.out.println(map);
+System.out.println("ggggggggggggggggggggggggggggggggggggggggg");
+System.out.println("siiiiiiiiize"+map.size());
+System.out.println("hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh");
 setpiecharttwitter();
 setpiechartcomments();
 setpiechartall();
@@ -490,7 +512,8 @@ setpiechartall();
 				comment4.setVisible(true);
 				namecommenter1.setText(comments.get(i).getCommenter().getFirstName() + " " + comments.get(i).getCommenter().getLastName());
 				id1.setText(comments.get(i).getId().toString());
-				comment1.setText(comments.get(i).getBody());
+				
+				comment1.setText(BadWordFilter.getCensoredText(comments.get(i).getBody()));
 				
 				
 
@@ -518,7 +541,7 @@ setpiechartall();
 				namecommenter2.setText(comments.get(i + 1).getCommenter().getFirstName() + " " + comments.get(i + 1).getCommenter().getLastName());
 				id2.setText(comments.get(i + 1).getId().toString());
 				
-				comment2.setText(comments.get(i+1).getBody());
+				comment2.setText(BadWordFilter.getCensoredText(comments.get(i+1).getBody()));
 				
 
 			}
@@ -542,7 +565,7 @@ setpiechartall();
 
 				id3.setText(comments.get(i + 2).getId().toString());
 				
-				comment3.setText(comments.get(i + 2).getBody());
+				comment3.setText(BadWordFilter.getCensoredText(comments.get(i + 2).getBody()));
 				
 
 			}
@@ -562,13 +585,49 @@ setpiechartall();
 				namecommenter4.setText(comments.get(i + 3).getCommenter().getFirstName() + " " + comments.get(i + 2).getCommenter().getLastName());
 				id4.setText(comments.get(i + 3).getId().toString());
 				
-				comment4.setText(comments.get(i + 3).getBody());
+				comment4.setText(BadWordFilter.getCensoredText(comments.get(i + 3).getBody()));
 				
 			}
 		}
 		return box;
 	}
+	  @FXML
+	    void commentaddaction(ActionEvent event) {
+			String output = BadWordFilter.getCensoredText(commentadd.getText());
+			System.out.println(output);
+			if (output.contains("*")){
+				 nav.showAlert(Alert.AlertType.WARNING, "Warning", null, "This comment should be censored for profanity existence.");
+			}
+		  int idcurrent=HomeController.idcurrentuser ;
+		  System.out.println("commenter :"+idcurrent);
+		  System.out.println("user prof commented "+ iduserprofile);
+		  User commenter= service.findUserById(idcurrent);
+		  User user= service.findUserById(iduserprofile);
+		  Comment comment = new Comment();
+		  comment.setCommenter(commenter);
+		  comment.setUser(user);
+		  comment.setCreationDate(new Date());
+		  comment.setBody(commentadd.getText());
+		  int a=servicecommenr.addComment(comment);
+		  comment.setId(a);
+		// comments.add(comment);
+		 preparecomments();
+			double b = Math.ceil((float) comments.size() / 4);
+			pagination.setPageCount((int) b);
+			pagination.setCurrentPageIndex(0);
+			
+			pagination.setMaxPageIndicatorCount((int) a);
+			
 
+			pagination.setPageFactory((Integer pageIndex) -> {
+				if (pageIndex >= comments.size()) {
+					return null;
+				} else {
+					return createPage(pageIndex);
+				}
+			});
+		
+	    }
 
 	private void latesttradepopulate() {
 
@@ -1085,5 +1144,7 @@ setpiechartall();
 		}
 
 	}
+	
+	
 
 }
