@@ -738,6 +738,26 @@ public class ProfileController implements Initializable {
 	}
 
 	void commentsview() {
+		if (comments.isEmpty()){
+			namecommenter1.setVisible(false);
+			comment1.setVisible(false);
+			namecommenter2.setVisible(false);
+			comment2.setVisible(false);
+			namecommenter3.setVisible(false);
+			comment3.setVisible(false);
+			namecommenter4.setVisible(false);
+			comment4.setVisible(false);
+			commentsupp1.setVisible(false);
+			commentsupp2.setVisible(false);
+			commentsupp3.setVisible(false);
+			commentsupp4.setVisible(false);
+			commentedit1.setVisible(false);
+			commentedit2.setVisible(false);
+			commededit3.setVisible(false);
+			commentedit4.setVisible(false);
+			pagination.setVisible(false);
+		}
+		else{
 		double a = Math.ceil((float) comments.size() / 4);
 		pagination.setPageCount((int) a);
 		pagination.setCurrentPageIndex(0);
@@ -751,7 +771,7 @@ public class ProfileController implements Initializable {
 				return createPage(pageIndex);
 			}
 		});
-
+		}
 		RequiredFieldValidator validator = new RequiredFieldValidator();
 		validator.setMessage("Input Required");
 		commentadd.getValidators().add(validator);

@@ -174,16 +174,16 @@ public class LoginController implements Initializable {
 			Attributes attr=searchResult.getAttributes();
 			
 			commonName=attr.get("cn").get(0).toString();
-			surName=attr.get("sn").get(0).toString();
+			/**surName=attr.get("sn").get(0).toString();***/
 
-			employeeNum=attr.get("employeeNumber").get(0).toString();
-			System.out.println("Name = "+commonName);
+			/***employeeNum=attr.get("employeeNumber").get(0).toString();***/
+			/***System.out.println("Name = "+commonName);
 			System.out.println("Surname  = "+surName);
-			System.out.println("Employee number = "+employeeNum);
+			System.out.println("Employee number = "+employeeNum);*****/
 			Attribute pwd = attr.get("userPassword");
 	        String pass= new String((byte[])pwd.get());
-	        System.out.println("=> userPassword : " + pass);
-			System.out.println("---------------------------"+attr.get("userpassword").get(0).toString()+"---------------");
+	       /**** System.out.println("=> userPassword : " + pass);
+			System.out.println("---------------------------"+attr.get("userpassword").get(0).toString()+"---------------");****/
 			String passwsha=encryptLdapPassword("SHA",passw);
 			if (pass.equals(passwsha) && commonName.equals(username)){
 				
@@ -210,11 +210,14 @@ public class LoginController implements Initializable {
 			us.setPassword(encryptLdapPassword("SHA",passwordtext));
 			us.setLogin(usernametext);
 			User user = service.login(us);
-			System.out.println(user);
+			/***System.out.println(user);*////
 
-			if (user == null || (loginfromLDAP(passwordtext, usernametext)==false)) {
-		//	if (user == null){
-				System.out.println("not found");
+			if (user == null || (!loginfromLDAP(passwordtext, usernametext))) {
+		/**	if (user == null){**/
+				/**System.out.println("not found");**/
+				
+				Logger.getLogger(LoginController.class.getName()).log(Level.
+						  SEVERE, null, "not found");
 				nav.showAlert(Alert.AlertType.ERROR, "Error", null, "Username or password incorrect");
 
 			} else {
@@ -242,6 +245,8 @@ public class LoginController implements Initializable {
 		try {
 			loader.load();
 		} catch (Exception e) {
+			Logger.getLogger(LoginController.class.getName()).log(Level.
+					  SEVERE, null, e);
 		}
 
 		HomeController hc = loader.getController();
@@ -281,7 +286,7 @@ public class LoginController implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-
+//do something
 		
 	}
 
