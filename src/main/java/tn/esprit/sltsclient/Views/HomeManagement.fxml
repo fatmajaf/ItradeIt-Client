@@ -22,56 +22,62 @@
    <children>
       <Label layoutX="19.0" layoutY="17.0" prefHeight="29.0" prefWidth="207.0" style="-fx-font-size: 20; -fx-font-weight: bold; -fx-text-fill: #7387A8;" text="Home" />
       <Separator layoutX="3.0" layoutY="52.0" prefHeight="0.0" prefWidth="1389.0" />
-      <Pane layoutX="14.0" layoutY="71.0" prefHeight="180.0" prefWidth="307.0" style="-fx-effect: dropshadow(gaussian, rgb(0.0, 0.0, 0.0, 0.15), 6.0, 0.7, 0.0,1.5); -fx-background-color: white;">
+      <Pane layoutX="5.0" layoutY="71.0" prefHeight="149.0" prefWidth="216.0" style="-fx-effect: dropshadow(gaussian, rgb(0.0, 0.0, 0.0, 0.15), 6.0, 0.7, 0.0,1.5); -fx-background-color: white;">
          <children>
-            <Label layoutX="5.0" layoutY="3.0" prefHeight="29.0" prefWidth="207.0" style="-fx-font-size: 20; -fx-font-weight: bold; -fx-text-fill: #7387A8;" text="Most Active Trader" />
-            <Separator layoutX="2.0" layoutY="31.0" prefHeight="3.0" prefWidth="299.0" />
-            <Label fx:id="nameactivetrader" layoutX="3.0" layoutY="36.0" prefHeight="30.0" prefWidth="299.0" style="-fx-font-size: 20; -fx-font-weight: bold; -fx-text-fill: blavk;" text="Name " />
-            <Label layoutX="4.0" layoutY="69.0" prefHeight="30.0" prefWidth="125.0" style="-fx-font-size: 13; -fx-font-weight: bold; -fx-text-fill: blavk;" text="Number of trades :" />
-            <Label layoutX="4.0" layoutY="104.0" prefHeight="30.0" prefWidth="146.0" style="-fx-font-size: 13; -fx-font-weight: bold; -fx-text-fill: blavk;" text="Number of customers :" />
-            <Label fx:id="acctivetradergetnbtrades" layoutX="154.0" layoutY="69.0" prefHeight="30.0" prefWidth="58.0" style="-fx-font-size: 13; -fx-font-weight: bold; -fx-text-fill: blavk;" text="1022" />
-            <ImageView fitHeight="75.0" fitWidth="155.0" layoutX="152.0" layoutY="105.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../images/employee-recognition-programs.png" />
-               </image>
-            </ImageView>
-            <Label fx:id="activetradernbcustomers" layoutX="157.0" layoutY="104.0" prefHeight="30.0" prefWidth="58.0" style="-fx-font-size: 13; -fx-font-weight: bold; -fx-text-fill: blavk;" text="1022" />
+            <Label layoutX="5.0" layoutY="3.0" prefHeight="29.0" prefWidth="207.0" style="-fx-font-size: 15; -fx-font-weight: bold; -fx-text-fill: #7387A8;" text="Most Active Trader">
+               <graphic>
+                  <ImageView fitHeight="65.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/employee-recognition-programs.png" />
+                     </image>
+                  </ImageView>
+               </graphic></Label>
+            <Separator layoutX="2.0" layoutY="38.0" prefHeight="3.0" prefWidth="207.0" />
+            <Label fx:id="nameactivetrader" layoutX="3.0" layoutY="43.0" prefHeight="30.0" prefWidth="207.0" style="-fx-font-size: 20; -fx-font-weight: bold; -fx-text-fill: blavk;" text="Name " />
+            <Label layoutX="4.0" layoutY="76.0" prefHeight="30.0" prefWidth="125.0" style="-fx-font-size: 13; -fx-font-weight: bold; -fx-text-fill: blavk;" text="Number of trades :" />
+            <Label layoutX="4.0" layoutY="111.0" prefHeight="30.0" prefWidth="146.0" style="-fx-font-size: 13; -fx-font-weight: bold; -fx-text-fill: blavk;" text="Number of customers :" />
+            <Label fx:id="acctivetradergetnbtrades" layoutX="154.0" layoutY="76.0" prefHeight="30.0" prefWidth="58.0" style="-fx-font-size: 13; -fx-font-weight: bold; -fx-text-fill: blavk;" text="1022" />
+            <Label fx:id="activetradernbcustomers" layoutX="157.0" layoutY="111.0" prefHeight="30.0" prefWidth="58.0" style="-fx-font-size: 13; -fx-font-weight: bold; -fx-text-fill: blavk;" text="1022" />
          </children></Pane>
-      <Pane layoutX="14.0" layoutY="275.0" prefHeight="180.0" prefWidth="307.0" style="-fx-effect: dropshadow(gaussian, rgb(0.0, 0.0, 0.0, 0.15), 6.0, 0.7, 0.0,1.5); -fx-background-color: white;">
+      <Pane layoutX="6.0" layoutY="230.0" prefHeight="157.0" prefWidth="216.0" style="-fx-effect: dropshadow(gaussian, rgb(0.0, 0.0, 0.0, 0.15), 6.0, 0.7, 0.0,1.5); -fx-background-color: white;">
          <children>
-            <Label layoutX="5.0" layoutY="3.0" prefHeight="29.0" prefWidth="207.0" style="-fx-font-size: 20; -fx-font-weight: bold; -fx-text-fill: #7387A8;" text="Laziest Trader" />
-            <Separator layoutX="2.0" layoutY="31.0" prefHeight="3.0" prefWidth="299.0" />
-            <Label fx:id="lazytradername" layoutX="3.0" layoutY="36.0" prefHeight="30.0" prefWidth="299.0" style="-fx-font-size: 20; -fx-font-weight: bold; -fx-text-fill: blavk;" text="Name " />
-            <Label layoutX="4.0" layoutY="69.0" prefHeight="30.0" prefWidth="125.0" style="-fx-font-size: 13; -fx-font-weight: bold; -fx-text-fill: blavk;" text="Number of trades :" />
-            <Label layoutX="4.0" layoutY="104.0" prefHeight="30.0" prefWidth="146.0" style="-fx-font-size: 13; -fx-font-weight: bold; -fx-text-fill: blavk;" text="Number of customers :" />
-            <Label fx:id="lazytradernbtrades" layoutX="154.0" layoutY="69.0" prefHeight="30.0" prefWidth="58.0" style="-fx-font-size: 13; -fx-font-weight: bold; -fx-text-fill: blavk;" text="1022" />
-            <Label fx:id="lazytradernbcustomers" layoutX="157.0" layoutY="104.0" prefHeight="30.0" prefWidth="58.0" style="-fx-font-size: 13; -fx-font-weight: bold; -fx-text-fill: blavk;" text="1022" />
-            <ImageView fitHeight="127.0" fitWidth="100.0" layoutX="201.0" layoutY="94.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../images/businessman-or-an-employee-fall-asleep-lazy_7450-93.jpg" />
-               </image>
-            </ImageView>
+            <Label layoutY="6.0" prefHeight="29.0" prefWidth="207.0" style="-fx-font-size: 20; -fx-font-weight: bold; -fx-text-fill: #7387A8;" text="Laziest Trader">
+               <graphic>
+                  <ImageView fitHeight="42.0" fitWidth="58.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/businessman-or-an-employee-fall-asleep-lazy_7450-93.jpg" />
+                     </image>
+                  </ImageView>
+               </graphic></Label>
+            <Separator layoutX="2.0" layoutY="53.0" prefHeight="3.0" prefWidth="207.0" />
+            <Label fx:id="lazytradername" layoutX="3.0" layoutY="54.0" prefHeight="30.0" prefWidth="207.0" style="-fx-font-size: 20; -fx-font-weight: bold; -fx-text-fill: blavk;" text="Name " />
+            <Label layoutX="4.0" layoutY="81.0" prefHeight="30.0" prefWidth="125.0" style="-fx-font-size: 13; -fx-font-weight: bold; -fx-text-fill: blavk;" text="Number of trades :" />
+            <Label layoutX="4.0" layoutY="116.0" prefHeight="30.0" prefWidth="146.0" style="-fx-font-size: 13; -fx-font-weight: bold; -fx-text-fill: blavk;" text="Number of customers :" />
+            <Label fx:id="lazytradernbtrades" layoutX="150.0" layoutY="81.0" prefHeight="30.0" prefWidth="58.0" style="-fx-font-size: 13; -fx-font-weight: bold; -fx-text-fill: blavk;" text="1022" />
+            <Label fx:id="lazytradernbcustomers" layoutX="153.0" layoutY="116.0" prefHeight="30.0" prefWidth="58.0" style="-fx-font-size: 13; -fx-font-weight: bold; -fx-text-fill: blavk;" text="1022" />
          </children>
       </Pane>
-      <Pane layoutX="14.0" layoutY="473.0" prefHeight="201.0" prefWidth="307.0" style="-fx-effect: dropshadow(gaussian, rgb(0.0, 0.0, 0.0, 0.15), 6.0, 0.7, 0.0,1.5); -fx-background-color: white;">
+      <Pane layoutX="7.0" layoutY="398.0" prefHeight="109.0" prefWidth="216.0" style="-fx-effect: dropshadow(gaussian, rgb(0.0, 0.0, 0.0, 0.15), 6.0, 0.7, 0.0,1.5); -fx-background-color: white;">
          <children>
-            <Label layoutX="5.0" layoutY="4.0" prefHeight="29.0" prefWidth="207.0" style="-fx-font-size: 20; -fx-font-weight: bold; -fx-text-fill: #7387A8;" text="Newest Customer" />
-            <Separator layoutX="2.0" layoutY="31.0" prefHeight="3.0" prefWidth="299.0" />
-            <Label fx:id="newestcustomername" layoutX="3.0" layoutY="36.0" prefHeight="30.0" prefWidth="299.0" style="-fx-font-size: 20; -fx-font-weight: bold; -fx-text-fill: blavk;" text="Name " />
+            <Label layoutX="5.0" layoutY="4.0" prefHeight="19.0" prefWidth="207.0" style="-fx-font-size: 20; -fx-font-weight: bold; -fx-text-fill: #7387A8;" text="Newest Customer">
+               <graphic>
+                  <ImageView fitHeight="27.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/fedback-icon-2.png" />
+                     </image>
+                  </ImageView>
+               </graphic></Label>
+            <Separator layoutX="7.0" layoutY="38.0" prefHeight="3.0" prefWidth="195.0" />
+            <Label fx:id="newestcustomername" layoutX="3.0" layoutY="36.0" prefHeight="30.0" prefWidth="207.0" style="-fx-font-size: 20; -fx-font-weight: bold; -fx-text-fill: blavk;" text="Name " />
             <Label layoutX="4.0" layoutY="69.0" prefHeight="30.0" prefWidth="47.0" style="-fx-font-size: 13; -fx-font-weight: bold; -fx-text-fill: blavk;" text="Trader:" />
-            <Label fx:id="newestcustomertrader" layoutX="5.0" layoutY="99.0" prefHeight="30.0" prefWidth="184.0" style="-fx-font-size: 13; -fx-font-weight: bold; -fx-text-fill: blavk;" text="1022" />
-            <ImageView fitHeight="100.0" fitWidth="101.0" layoutX="193.0" layoutY="87.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../images/fedback-icon-2.png" />
-               </image>
-            </ImageView>
+            <Label fx:id="newestcustomertrader" layoutX="58.0" layoutY="69.0" prefHeight="30.0" prefWidth="149.0" style="-fx-font-size: 13; -fx-font-weight: bold; -fx-text-fill: blavk;" text="1022" />
          </children>
       </Pane>
-      <HBox alignment="CENTER" layoutX="335.0" layoutY="63.0" prefHeight="220.0" prefWidth="494.0" spacing="20.0">
+      <HBox alignment="CENTER" layoutX="230.0" layoutY="63.0" prefHeight="220.0" prefWidth="611.0" spacing="20.0">
          <children>
-            <AnchorPane prefHeight="220.0" prefWidth="493.0" styleClass="card">
+            <AnchorPane prefHeight="220.0" prefWidth="625.0" styleClass="card">
                <children>
-                  <Pane layoutY="3.0" prefHeight="53.0" prefWidth="506.0" style="-fx-background-color: #008F82; -fx-background-radius: 5 5 0 0;">
+                  <Pane layoutY="3.0" prefHeight="53.0" prefWidth="611.0" style="-fx-background-color: #008F82; -fx-background-radius: 5 5 0 0;">
                      <children>
                         <FontAwesomeIconView fill="WHITE" glyphName="EXCLAMATION" layoutX="14.0" layoutY="31.0" size="18" />
                         <Text fill="WHITE" layoutX="34.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Notifications">
@@ -81,17 +87,17 @@
                         </Text>
                      </children>
                   </Pane>
-                  <Pane layoutX="6.0" layoutY="90.0" prefHeight="128.0" prefWidth="231.0" style="-fx-background-color: #DD4B39; -fx-effect: dropshadow(gaussian, rgb(0.0, 0.0, 0.0, 0.15), 6.0, 0.7, 0.0,1.5);">
+                  <Pane layoutX="6.0" layoutY="90.0" prefHeight="128.0" prefWidth="164.0" style="-fx-background-color: #DD4B39; -fx-effect: dropshadow(gaussian, rgb(0.0, 0.0, 0.0, 0.15), 6.0, 0.7, 0.0,1.5);">
                      <children>
-                        <Pane layoutY="101.0" prefHeight="27.0" prefWidth="231.0" style="-fx-background-color: #B13C2E;">
+                        <Pane layoutY="101.0" prefHeight="27.0" prefWidth="164.0" style="-fx-background-color: #B13C2E;">
                            <children>
-                              <Label fx:id="moreinfountleave" alignment="CENTER" contentDisplay="CENTER" layoutX="27.0" layoutY="1.0" onMouseClicked="#untleavemoreinfo" prefHeight="20.0" prefWidth="155.0" style="-fx-font-size: 16; -fx-font-weight: bold; -fx-text-fill: #F0F0F0;" text="More Info" />
+                              <Label fx:id="moreinfountleave" alignment="CENTER" contentDisplay="CENTER" layoutX="-2.0" layoutY="1.0" onMouseClicked="#untleavemoreinfo" prefHeight="25.0" prefWidth="164.0" style="-fx-font-size: 16; -fx-font-weight: bold; -fx-text-fill: #F0F0F0;" text="More Info" />
                            </children>
                         </Pane>
-                        <VBox layoutY="12.0" prefHeight="66.0" prefWidth="231.0">
+                        <VBox layoutY="12.0" prefHeight="66.0" prefWidth="164.0">
                            <children>
                               <Label fx:id="untreatedleavesnb" prefHeight="43.0" prefWidth="64.0" style="-fx-font-size: 26; -fx-font-weight: bold; -fx-text-fill: white;" text="150" />
-                              <Label prefHeight="25.0" prefWidth="203.0" style="-fx-font-size: 16; -fx-font-weight: bold; -fx-text-fill: white;" text="Pending customers " />
+                              <Label prefHeight="25.0" prefWidth="149.0" style="-fx-font-size: 16; -fx-font-weight: bold; -fx-text-fill: white;" text="Pending customers " />
                            </children>
                            <padding>
                               <Insets left="10.0" />
@@ -99,17 +105,17 @@
                         </VBox>
                      </children>
                   </Pane>
-                  <Pane layoutX="265.0" layoutY="90.0" prefHeight="128.0" prefWidth="231.0" style="-fx-background-color: #00C0EF; -fx-effect: dropshadow(gaussian, rgb(0.0, 0.0, 0.0, 0.15), 6.0, 0.7, 0.0,1.5);">
+                  <Pane layoutX="174.0" layoutY="90.0" prefHeight="128.0" prefWidth="132.0" style="-fx-background-color: #00C0EF; -fx-effect: dropshadow(gaussian, rgb(0.0, 0.0, 0.0, 0.15), 6.0, 0.7, 0.0,1.5);">
                      <children>
-                        <Pane layoutY="101.0" prefHeight="27.0" prefWidth="231.0" style="-fx-background-color: #009ABF;">
+                        <Pane layoutY="101.0" prefHeight="27.0" prefWidth="132.0" style="-fx-background-color: #009ABF;">
                            <children>
-                              <Label alignment="CENTER" contentDisplay="CENTER" layoutX="35.0" prefHeight="20.0" prefWidth="155.0" style="-fx-font-size: 16; -fx-font-weight: bold; -fx-text-fill: #F0F0F0;" text="This month" />
+                              <Label alignment="CENTER" contentDisplay="CENTER" layoutX="1.0" prefHeight="25.0" prefWidth="132.0" style="-fx-font-size: 16; -fx-font-weight: bold; -fx-text-fill: #F0F0F0;" text="This month" />
                            </children>
                         </Pane>
-                        <VBox layoutY="12.0" prefHeight="66.0" prefWidth="231.0">
+                        <VBox layoutY="12.0" prefHeight="66.0" prefWidth="130.0">
                            <children>
                               <Label fx:id="nbbanned" prefHeight="43.0" prefWidth="64.0" style="-fx-font-size: 26; -fx-font-weight: bold; -fx-text-fill: white;" text="150" />
-                              <Label prefHeight="25.0" prefWidth="265.0" style="-fx-font-size: 16; -fx-font-weight: bold; -fx-text-fill: white;" text="Banned traders" />
+                              <Label prefHeight="25.0" prefWidth="125.0" style="-fx-font-size: 16; -fx-font-weight: bold; -fx-text-fill: white;" text="Banned traders" />
                            </children>
                            <padding>
                               <Insets left="10.0" />
@@ -117,12 +123,36 @@
                         </VBox>
                      </children>
                   </Pane>
-                  <Text fill="#aeaeae" layoutX="271.0" layoutY="74.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Banned traders : " wrappingWidth="135.00000190734863">
+                  <Text fill="#aeaeae" layoutX="172.0" layoutY="74.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Banned traders : " wrappingWidth="135.00000190734863">
                      <font>
                         <Font name="Roboto Medium" size="14.0" />
                      </font>
                   </Text>
                   <Text fill="#aeaeae" layoutX="6.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pending customers :" wrappingWidth="184.00000190734863">
+                     <font>
+                        <Font name="Roboto Medium" size="14.0" />
+                     </font>
+                  </Text>
+                  <Pane layoutX="313.0" layoutY="90.0" prefHeight="128.0" prefWidth="135.0" style="-fx-background-color: #F39C12; -fx-effect: dropshadow(gaussian, rgb(0.0, 0.0, 0.0, 0.15), 6.0, 0.7, 0.0,1.5);">
+                     <children>
+                        <Pane layoutY="102.0" prefHeight="27.0" prefWidth="135.0" style="-fx-background-color: #C37D0E;">
+                           <children>
+                              <Label alignment="CENTER" contentDisplay="CENTER" layoutX="20.0" layoutY="1.0" prefHeight="25.0" prefWidth="90.0" style="-fx-font-size: 16; -fx-font-weight: bold; -fx-text-fill: #F0F0F0;" text="This month" />
+                           </children>
+                        </Pane>
+                        <VBox layoutY="12.0" prefHeight="88.0" prefWidth="125.0">
+                           <children>
+                              <Label fx:id="totalbannedcom" prefHeight="43.0" prefWidth="64.0" style="-fx-font-size: 26; -fx-font-weight: bold; -fx-text-fill: white;" text="150" />
+                              <Label prefHeight="25.0" prefWidth="111.0" style="-fx-font-size: 16; -fx-font-weight: bold; -fx-text-fill: white;" text="Banned" />
+                              <Label prefHeight="25.0" prefWidth="110.0" style="-fx-font-size: 16; -fx-font-weight: bold; -fx-text-fill: white;" text="Comments" />
+                           </children>
+                           <padding>
+                              <Insets left="10.0" />
+                           </padding>
+                        </VBox>
+                     </children>
+                  </Pane>
+                  <Text fill="#aeaeae" layoutX="313.0" layoutY="77.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Banned traders : " wrappingWidth="135.00000190734863">
                      <font>
                         <Font name="Roboto Medium" size="14.0" />
                      </font>
@@ -221,9 +251,9 @@
             </AnchorPane>
          </children>
       </HBox>
-      <AnchorPane layoutX="332.0" layoutY="301.0" prefHeight="392.0" prefWidth="1056.0" style="-fx-background-color: white;" styleClass="card">
+      <AnchorPane layoutX="234.0" layoutY="301.0" prefHeight="392.0" prefWidth="1154.0" style="-fx-background-color: white;" styleClass="card">
          <children>
-            <Pane prefHeight="65.0" prefWidth="1051.0" style="-fx-background-color: rgb(41, 61, 82,0.9); -fx-background-radius: 8;">
+            <Pane prefHeight="65.0" prefWidth="1154.0" style="-fx-background-color: rgb(41, 61, 82,0.9); -fx-background-radius: 8;">
                <children>
                   <HBox alignment="CENTER" layoutX="29.0" layoutY="23.0" spacing="10.0">
                      <children>
@@ -314,11 +344,11 @@
                   <Separator layoutX="5.0" layoutY="38.0" prefHeight="3.0" prefWidth="256.0" />
                </children>
             </Pane>
-            <TitledPane animated="false" layoutX="578.0" layoutY="71.0" prefHeight="306.0" prefWidth="471.0" styleClass="blue-titledPane" stylesheets="@styles.css" text="Stocks list">
+            <TitledPane animated="false" layoutX="578.0" layoutY="71.0" prefHeight="306.0" prefWidth="572.0" styleClass="blue-titledPane" stylesheets="@styles.css" text="Stocks list">
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="236.0" prefWidth="1066.0">
                      <children>
-                        <JFXTreeTableView fx:id="tableviewstocks" layoutX="3.0" layoutY="4.0" prefHeight="264.0" prefWidth="463.0" />
+                        <JFXTreeTableView fx:id="tableviewstocks" layoutX="3.0" layoutY="4.0" prefHeight="264.0" prefWidth="563.0" />
                      </children>
                   </AnchorPane>
                </content>
@@ -333,5 +363,27 @@
             </JFXButton>
          </children>
       </AnchorPane>
+      <Pane layoutX="8.0" layoutY="518.0" prefHeight="174.0" prefWidth="216.0" style="-fx-effect: dropshadow(gaussian, rgb(0.0, 0.0, 0.0, 0.15), 6.0, 0.7, 0.0,1.5); -fx-background-color: white;">
+         <children>
+            <Label layoutX="5.0" layoutY="4.0" prefHeight="19.0" prefWidth="207.0" style="-fx-font-size: 10; -fx-font-weight: bold; -fx-text-fill: #7387A8;" text="User with most banned comments">
+               <graphic>
+                  <ImageView fitHeight="27.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/x.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Label>
+            <Separator layoutX="7.0" layoutY="38.0" prefHeight="3.0" prefWidth="195.0" />
+            <Label fx:id="mostbannedcommentsusername" layoutX="3.0" layoutY="36.0" prefHeight="30.0" prefWidth="207.0" style="-fx-font-size: 20; -fx-font-weight: bold; -fx-text-fill: blavk;" text="Name " />
+            <Label layoutX="4.0" layoutY="69.0" prefHeight="30.0" prefWidth="207.0" style="-fx-font-size: 13; -fx-font-weight: bold; -fx-text-fill: blavk;" text="Number of banned comments : " />
+            <Label fx:id="mostbannedcommentsusernb" layoutX="7.0" layoutY="105.0" prefHeight="30.0" prefWidth="184.0" style="-fx-font-size: 13; -fx-font-weight: bold; -fx-text-fill: blavk;" text="1022" />
+            <Label fx:id="mostbannedcommentermsg" layoutX="2.0" layoutY="131.0" prefHeight="42.0" prefWidth="207.0" text="* This user is bothering the community, &lt;br&gt; contacting him is demanded" textFill="#791717">
+               <font>
+                  <Font name="System Italic" size="10.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
    </children>
 </AnchorPane>

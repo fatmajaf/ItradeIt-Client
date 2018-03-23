@@ -45,9 +45,11 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.paint.Color;
+import tn.esprit.SLTS_server.persistence.Comment;
 import tn.esprit.SLTS_server.persistence.Customer;
 import tn.esprit.SLTS_server.persistence.Trader;
 import tn.esprit.SLTS_server.persistence.User;
+import tn.esprit.SLTS_server.services.CommentServiceRemote;
 import tn.esprit.SLTS_server.services.UserServiceRemote;
 import tn.esprit.sltsclient.Utils.Navigation;
 import tn.esprit.sltsclient.main.CurrencyConvert;
@@ -156,6 +158,19 @@ public class HomeManagementController implements Initializable {
 
 	    @FXML
 	    private Label stockexchangeyf;
+	    @FXML
+	    private Label mostbannedcommentsusername;
+	    @FXML
+	    private Label mostbannedcommentermsg;
+	    @FXML
+	    private Label mostbannedcommentsusernb;
+	    @FXML
+	    private Label totalbannedcom;
+	    List<Comment> comments;
+		String jndiNamec = "SLTS_server-ear/SLTS_server-ejb/CommentService!tn.esprit.SLTS_server.services.CommentServiceRemote";
+		Context contextc;
+		CommentServiceRemote servicecommenr;
+
 
     @FXML
     private JFXTreeTableView<Stocks> tableviewstocks;
@@ -185,6 +200,7 @@ public class HomeManagementController implements Initializable {
 			populatelazytrader();
 			newestcustomerpopulate();
 			 populatenotifications();
+			 populateusermostbannedcomments();
 		} catch (NamingException e) {
 			 Logger.getLogger(HomeManagementController.class.getName()).log(Level.
 					  SEVERE, null, e); 
@@ -192,6 +208,33 @@ public class HomeManagementController implements Initializable {
 
     	suggestionspopulate();
        
+    }
+    
+    private void populateusermostbannedcomments(){
+    	try {
+			contextc = new InitialContext();
+		} catch (NamingException e1) {
+
+			e1.printStackTrace();
+		}
+		try {
+			servicecommenr = (CommentServiceRemote) contextc.lookup(jndiNamec);
+		} catch (NamingException e1) {
+
+			Logger.getLogger(ProfileUserController.class.getName()).log(Level.SEVERE, null, e1);
+		}
+		User u=servicecommenr.getmostbannedcommenter();
+		mostbannedcommentsusername.setText(u.getFirstName()+" "+u.getLastName());
+		Long nb=servicecommenr.getnbmaxbannedcomments();
+		mostbannedcommentsusernb.setText(nb.toString());
+		if (nb>=5){
+			mostbannedcommentermsg.setVisible(true);
+		}
+		else {
+			mostbannedcommentermsg.setVisible(false);
+		}
+		totalbannedcom.setText(servicecommenr.totalbannedcommentscurmonth().toString());
+    	
     }
 	private void populateactivetrader() throws NamingException {
 		context = new InitialContext();

@@ -32,7 +32,7 @@
             <Label fx:id="name" layoutX="14.0" layoutY="14.0" prefHeight="17.0" prefWidth="255.0" style="-fx-text-fill: #162E3B; -fx-font-size: 16; -fx-font-weight: bold; -fx-alignment: left;" text="name" />
             <Separator layoutX="14.0" layoutY="232.0" prefHeight="4.0" prefWidth="244.0" />
             <Separator layoutX="14.0" layoutY="198.0" prefHeight="4.0" prefWidth="244.0" />
-            <Separator layoutX="18.0" layoutY="486.0" prefHeight="4.0" prefWidth="244.0" />
+            <Separator layoutX="18.0" layoutY="469.0" prefHeight="4.0" prefWidth="244.0" />
             <Label fx:id="email" layoutX="28.0" layoutY="239.0" prefHeight="31.0" prefWidth="244.0" text="Email" wrapText="true">
                <font>
                   <Font name="Roboto Light" size="14.0" />
@@ -84,7 +84,7 @@
                   </ImageView>
                </graphic>
             </Label>
-            <Label fx:id="bdate" layoutX="28.0" layoutY="347.0" prefHeight="31.0" prefWidth="244.0" text="Address" wrapText="true">
+            <Label fx:id="bdate" layoutX="28.0" layoutY="349.0" prefHeight="31.0" prefWidth="244.0" text="Address" wrapText="true">
                <font>
                   <Font name="Roboto Light" size="14.0" />
                </font>
@@ -96,7 +96,7 @@
                   </ImageView>
                </graphic>
             </Label>
-            <Label fx:id="since" layoutX="13.0" layoutY="495.0" prefHeight="31.0" prefWidth="244.0" text="Since" wrapText="true">
+            <Label fx:id="since" layoutX="13.0" layoutY="475.0" prefHeight="31.0" prefWidth="244.0" text="Since" wrapText="true">
                <font>
                   <Font name="Roboto Light" size="14.0" />
                </font>
@@ -120,21 +120,24 @@
                   </ImageView>
                </graphic>
             </Label>
-            <Label fx:id="banned" layoutX="41.0" layoutY="435.0" prefHeight="20.0" prefWidth="169.0" style="-fx-alignment: center; -fx-background-color: #00A65A; -fx-background-radius: 6; -fx-text-fill: white; -fx-font-size: 12; -fx-font-weight: bold;" text="Banned for the moment">
+            <Label fx:id="banned" layoutX="41.0" layoutY="423.0" prefHeight="20.0" prefWidth="169.0" style="-fx-alignment: center; -fx-background-color: #00A65A; -fx-background-radius: 6; -fx-text-fill: white; -fx-font-size: 12; -fx-font-weight: bold;" text="Banned for the moment">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
             </Label>
-            <Label fx:id="active" layoutX="79.0" layoutY="467.0" prefHeight="17.0" prefWidth="94.0" style="-fx-alignment: center; -fx-background-color: #00C0EF; -fx-background-radius: 6; -fx-text-fill: white; -fx-font-size: 12; -fx-font-weight: bold;" text="active /not">
+            <Label fx:id="active" layoutX="79.0" layoutY="447.0" prefHeight="17.0" prefWidth="94.0" style="-fx-alignment: center; -fx-background-color: #00C0EF; -fx-background-radius: 6; -fx-text-fill: white; -fx-font-size: 12; -fx-font-weight: bold;" text="active /not">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
             </Label>
-            <Label layoutX="10.0" layoutY="547.0" prefHeight="29.0" prefWidth="189.0" style="-fx-font-size: 15; -fx-font-weight: bold; -fx-text-fill: #7387A8;" text="Positive impressions :" />
-            <Separator layoutX="13.0" layoutY="530.0" prefHeight="4.0" prefWidth="244.0" />
-            <Label layoutX="10.0" layoutY="581.0" prefHeight="29.0" prefWidth="195.0" style="-fx-font-size: 15; -fx-font-weight: bold; -fx-text-fill: #7387A8;" text="negative impressions :" />
-            <Label fx:id="positiveimp" layoutX="211.0" layoutY="548.0" prefHeight="29.0" prefWidth="52.0" style="-fx-font-size: 15; -fx-font-weight: bold; -fx-text-fill: black;" text="1022" />
-            <Label fx:id="negativeimp" layoutX="210.0" layoutY="584.0" prefHeight="29.0" prefWidth="52.0" style="-fx-font-size: 15; -fx-font-weight: bold; -fx-text-fill: black;" text="1022" />
+            <Label layoutX="10.0" layoutY="515.0" prefHeight="29.0" prefWidth="189.0" style="-fx-font-size: 15; -fx-font-weight: bold; -fx-text-fill: #7387A8;" text="Positive impressions :" />
+            <Separator layoutX="13.0" layoutY="510.0" prefHeight="4.0" prefWidth="244.0" />
+            <Label layoutX="10.0" layoutY="549.0" prefHeight="29.0" prefWidth="195.0" style="-fx-font-size: 15; -fx-font-weight: bold; -fx-text-fill: #7387A8;" text="negative impressions :" />
+            <Label fx:id="positiveimp" layoutX="211.0" layoutY="516.0" prefHeight="29.0" prefWidth="52.0" style="-fx-font-size: 15; -fx-font-weight: bold; -fx-text-fill: black;" text="1022" />
+            <Label fx:id="negativeimp" layoutX="210.0" layoutY="552.0" prefHeight="29.0" prefWidth="52.0" style="-fx-font-size: 15; -fx-font-weight: bold; -fx-text-fill: black;" text="1022" />
+            <Label layoutX="11.0" layoutY="588.0" prefHeight="29.0" prefWidth="195.0" style="-fx-font-size: 15; -fx-font-weight: bold; -fx-text-fill: #7387A8;" text="Banned comments : " />
+            <Separator layoutX="12.0" layoutY="583.0" prefHeight="4.0" prefWidth="244.0" />
+            <Label fx:id="nbbannedcomments" layoutX="211.0" layoutY="591.0" prefHeight="29.0" prefWidth="52.0" style="-fx-font-size: 15; -fx-font-weight: bold; -fx-text-fill: black;" text="1022" />
          </children>
       </AnchorPane>
       <JFXTabPane layoutX="300.0" layoutY="368.0" prefHeight="327.0" prefWidth="669.0">

@@ -182,6 +182,8 @@ public class ProfileController implements Initializable {
 	@FXML
 	private ImageView commentedit4;
 
+    @FXML
+    private Label nbbannedcomments;
 	List<Comment> comments;
 	String jndiNamec = "SLTS_server-ear/SLTS_server-ejb/CommentService!tn.esprit.SLTS_server.services.CommentServiceRemote";
 	Context contextc;
@@ -400,7 +402,7 @@ public class ProfileController implements Initializable {
 	public void preparecomments() {
 
 		comments = servicecommenr.viewusercomments(user);
-
+nbbannedcomments.setText(servicecommenr.getnbbannedcommentsbycommenterid(iduserprofile).toString());
 		try {
 			map = SentimentAnalysisWithCount.commentsanalysis(comments);
 		} catch (TwitterException | IOException | NamingException e) {

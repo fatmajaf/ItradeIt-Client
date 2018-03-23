@@ -152,6 +152,7 @@
                      </opaqueInsets>
                   </Label>
                   <Separator layoutX="23.0" layoutY="514.0" prefHeight="4.0" prefWidth="244.0" />
+                  <Separator layoutX="18.0" layoutY="603.0" prefHeight="4.0" prefWidth="244.0" />
                </children>
             </AnchorPane>
             <JFXTabPane layoutX="305.0" layoutY="374.0" prefHeight="351.0" prefWidth="669.0">
@@ -237,47 +238,62 @@
                                     <Label fx:id="id2" layoutX="607.0" layoutY="62.0" text="Label" visible="false" />
                                     <Label fx:id="id3" layoutX="607.0" layoutY="108.0" text="Label" visible="false" />
                                     <Label fx:id="id4" layoutX="607.0" layoutY="156.0" text="Label" visible="false" />
-                                    <ImageView fx:id="commentsupp1" fitHeight="31.0" fitWidth="15.0" layoutX="621.0" layoutY="19.0" onMouseClicked="#commentsup1clicked" pickOnBounds="true" preserveRatio="true">
+                                    <ImageView fx:id="commentsupp1" fitHeight="31.0" fitWidth="15.0" layoutX="621.0" layoutY="19.0" onMouseClicked="#commentsup1clicked" pickOnBounds="true" preserveRatio="true" visible="false">
                                        <image>
                                           <Image url="@../images/remove.png" />
                                        </image>
                                     </ImageView>
-                                    <ImageView fx:id="commentsupp2" fitHeight="31.0" fitWidth="15.0" layoutX="621.0" layoutY="65.0" onMouseClicked="#commentsup2clicked" pickOnBounds="true" preserveRatio="true">
+                                    <ImageView fx:id="commentsupp2" fitHeight="31.0" fitWidth="15.0" layoutX="621.0" layoutY="65.0" onMouseClicked="#commentsup2clicked" pickOnBounds="true" preserveRatio="true" visible="false">
                                        <image>
                                           <Image url="@../images/remove.png" />
                                        </image>
                                     </ImageView>
-                                    <ImageView fx:id="commentsupp4" fitHeight="31.0" fitWidth="15.0" layoutX="622.0" layoutY="156.0" onMouseClicked="#commentsupp4clicked" pickOnBounds="true" preserveRatio="true">
+                                    <ImageView fx:id="commentsupp4" fitHeight="31.0" fitWidth="15.0" layoutX="622.0" layoutY="156.0" onMouseClicked="#commentsupp4clicked" pickOnBounds="true" preserveRatio="true" visible="false">
                                        <image>
                                           <Image url="@../images/remove.png" />
                                        </image>
                                     </ImageView>
-                                    <ImageView fx:id="commentsupp3" fitHeight="31.0" fitWidth="15.0" layoutX="621.0" layoutY="108.0" onMouseClicked="#commentsupp3clicked" pickOnBounds="true" preserveRatio="true">
+                                    <ImageView fx:id="commentsupp3" fitHeight="31.0" fitWidth="15.0" layoutX="621.0" layoutY="108.0" onMouseClicked="#commentsupp3clicked" pickOnBounds="true" preserveRatio="true" visible="false">
                                        <image>
                                           <Image url="@../images/remove.png" />
                                        </image>
                                     </ImageView>
-                                    <ImageView fx:id="commentedit1" fitHeight="17.0" fitWidth="16.0" layoutX="597.0" layoutY="18.0" onMouseClicked="#commentedit1clicked" pickOnBounds="true" preserveRatio="true">
+                                    <ImageView fx:id="commentedit1" fitHeight="17.0" fitWidth="16.0" layoutX="597.0" layoutY="18.0" onMouseClicked="#commentedit1clicked" pickOnBounds="true" preserveRatio="true" visible="false">
                                        <image>
                                           <Image url="@../images/edit.png" />
                                        </image>
                                     </ImageView>
-                                    <ImageView fx:id="commentedit2" fitHeight="17.0" fitWidth="16.0" layoutX="594.0" layoutY="65.0" onMouseClicked="#commentedit2clicked" pickOnBounds="true" preserveRatio="true">
+                                    <ImageView fx:id="commentedit2" fitHeight="17.0" fitWidth="16.0" layoutX="594.0" layoutY="65.0" onMouseClicked="#commentedit2clicked" pickOnBounds="true" preserveRatio="true" visible="false">
                                        <image>
                                           <Image url="@../images/edit.png" />
                                        </image>
                                     </ImageView>
-                                    <ImageView fx:id="commededit3" fitHeight="17.0" fitWidth="16.0" layoutX="595.0" layoutY="109.0" onMouseClicked="#commentedit3clicked" pickOnBounds="true" preserveRatio="true">
+                                    <ImageView fx:id="commededit3" fitHeight="17.0" fitWidth="16.0" layoutX="595.0" layoutY="109.0" onMouseClicked="#commentedit3clicked" pickOnBounds="true" preserveRatio="true" visible="false">
                                        <image>
                                           <Image url="@../images/edit.png" />
                                        </image>
                                     </ImageView>
-                                    <ImageView fx:id="commentedit4" fitHeight="17.0" fitWidth="16.0" layoutX="594.0" layoutY="156.0" onMouseClicked="#commentedit4clicked" pickOnBounds="true" preserveRatio="true">
+                                    <ImageView fx:id="commentedit4" fitHeight="17.0" fitWidth="16.0" layoutX="594.0" layoutY="156.0" onMouseClicked="#commentedit4clicked" pickOnBounds="true" preserveRatio="true" visible="false">
                                        <image>
                                           <Image url="@../images/edit.png" />
                                        </image>
                                     </ImageView>
-                                    <ImageView fitHeight="150.0" fitWidth="70.0" layoutX="413.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+                                    <ImageView fx:id="commentban1" fitHeight="20.0" fitWidth="18.0" layoutX="573.0" layoutY="18.0" onMouseClicked="#commentban1clicked" pickOnBounds="true" preserveRatio="true" visible="false">
+                                       <image>
+                                          <Image url="@../images/16.png" />
+                                       </image>
+                                    </ImageView>
+                                    <ImageView fx:id="commentban2" fitHeight="20.0" fitWidth="18.0" layoutX="571.0" layoutY="65.0" onMouseClicked="#commentban2clicked" pickOnBounds="true" preserveRatio="true" visible="false">
+                                       <image>
+                                          <Image url="@../images/16.png" />
+                                       </image>
+                                    </ImageView>
+                                    <ImageView fx:id="commentban3" fitHeight="20.0" fitWidth="18.0" layoutX="570.0" layoutY="109.0" onMouseClicked="#commentban3clicked" pickOnBounds="true" preserveRatio="true" visible="false">
+                                       <image>
+                                          <Image url="@../images/16.png" />
+                                       </image>
+                                    </ImageView>
+                                    <ImageView fx:id="commentban4" fitHeight="20.0" fitWidth="18.0" layoutX="570.0" layoutY="158.0" onMouseClicked="#commentban4clicked" pickOnBounds="true" preserveRatio="true" visible="false">
                                        <image>
                                           <Image url="@../images/16.png" />
                                        </image>
@@ -331,11 +347,6 @@
                   <Separator layoutX="2.0" layoutY="33.0" prefHeight="3.0" prefWidth="390.0" />
                </children>
             </Pane>
-            <ImageView fx:id="back" fitHeight="25.0" fitWidth="39.0" layoutX="1343.0" layoutY="47.0" onMouseClicked="#backClicked" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../images/remove.png" />
-               </image>
-            </ImageView>
             <Pane layoutX="980.0" layoutY="55.0" prefHeight="264.0" prefWidth="399.0" style="-fx-effect: dropshadow(gaussian, rgb(0.0, 0.0, 0.0, 0.15), 6.0, 0.7, 0.0,1.5); -fx-background-color: white;">
                <children>
                   <Label layoutX="10.0" layoutY="5.0" prefHeight="29.0" prefWidth="207.0" style="-fx-font-size: 20; -fx-font-weight: bold; -fx-text-fill: #7387A8;" text="Latest trade" />
@@ -355,10 +366,10 @@
                   </ImageView>
                </children>
             </Pane>
-            <Label layoutX="22.0" layoutY="605.0" prefHeight="29.0" prefWidth="189.0" style="-fx-font-size: 15; -fx-font-weight: bold; -fx-text-fill: #7387A8;" text="Positive impressions :" />
-            <Label layoutX="22.0" layoutY="639.0" prefHeight="29.0" prefWidth="195.0" style="-fx-font-size: 15; -fx-font-weight: bold; -fx-text-fill: #7387A8;" text="negative impressions :" />
-            <Label fx:id="positiveimp" layoutX="223.0" layoutY="606.0" prefHeight="29.0" prefWidth="52.0" style="-fx-font-size: 15; -fx-font-weight: bold; -fx-text-fill: black;" text="1022" />
-            <Label fx:id="negativeimp" layoutX="222.0" layoutY="642.0" prefHeight="29.0" prefWidth="52.0" style="-fx-font-size: 15; -fx-font-weight: bold; -fx-text-fill: black;" text="1022" />
+            <Label layoutX="22.0" layoutY="582.0" prefHeight="29.0" prefWidth="189.0" style="-fx-font-size: 15; -fx-font-weight: bold; -fx-text-fill: #7387A8;" text="Positive impressions :" />
+            <Label layoutX="22.0" layoutY="616.0" prefHeight="29.0" prefWidth="195.0" style="-fx-font-size: 15; -fx-font-weight: bold; -fx-text-fill: #7387A8;" text="negative impressions :" />
+            <Label fx:id="positiveimp" layoutX="223.0" layoutY="583.0" prefHeight="29.0" prefWidth="52.0" style="-fx-font-size: 15; -fx-font-weight: bold; -fx-text-fill: black;" text="1022" />
+            <Label fx:id="negativeimp" layoutX="222.0" layoutY="619.0" prefHeight="29.0" prefWidth="52.0" style="-fx-font-size: 15; -fx-font-weight: bold; -fx-text-fill: black;" text="1022" />
             <Pane layoutX="980.0" layoutY="523.0" prefHeight="194.0" prefWidth="399.0" style="-fx-effect: dropshadow(gaussian, rgb(0.0, 0.0, 0.0, 0.15), 6.0, 0.7, 0.0,1.5); -fx-background-color: white;">
                <children>
                   <AnchorPane fx:id="twitterfeedanchor" prefHeight="194.0" prefWidth="399.0">
@@ -368,6 +379,8 @@
                   </AnchorPane>
                </children>
             </Pane>
+            <Label layoutX="21.0" layoutY="676.0" prefHeight="29.0" prefWidth="195.0" style="-fx-font-size: 15; -fx-font-weight: bold; -fx-text-fill: #7387A8;" text="Banned comments : " />
+            <Label fx:id="nbbannedcomments" layoutX="221.0" layoutY="679.0" prefHeight="29.0" prefWidth="52.0" style="-fx-font-size: 15; -fx-font-weight: bold; -fx-text-fill: black;" text="1022" />
          </children></AnchorPane>
    </children>
 </AnchorPane>
