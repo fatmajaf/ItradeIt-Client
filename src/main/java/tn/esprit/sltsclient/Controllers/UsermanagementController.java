@@ -235,7 +235,7 @@ public class UsermanagementController implements Initializable {
 	List<Customer> customers;
 	/**getnbcust
 	 *  */
-	
+	 
 	public void nbnotactivatedCustomers(){
 	nbnotactivecustomers.setText(service.getNbCustomersNotActivated().toString());
 	}
