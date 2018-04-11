@@ -43,12 +43,12 @@ public class TestService {
 System.out.println(from);
 		//Stock google = YahooFinance.get("GOOG", from, to, Interval.MONTHLY);
 Stock google = YahooFinance.get("GOOG", true);
-		System.out.println(google.getHistory());
+		/*System.out.println(google.getHistory());
 		google.print();
 		System.out.println("book value "+google.getStats().getBookValuePerShare());
 		System.out.println("shares "+google.getStats().getSharesFloat());
 		System.out.println("price sales"+google.getStats().getPriceSales());
-		System.out.println("symbol "+google.getStats().getSymbol());
+		System.out.println("symbol "+google.getStats().getSymbol());*/
 		List<HistoricalQuote> listehq= new ArrayList<HistoricalQuote>();
 		listehq = google.getHistory();
 		System.out.println("hhdjdjdjjd");

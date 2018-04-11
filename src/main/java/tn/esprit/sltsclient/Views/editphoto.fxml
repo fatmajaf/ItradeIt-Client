@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXSpinner?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIconView?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" fx:id="rootpane" prefHeight="700.0" prefWidth="1400.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.sltsclient.Controllers.EditPhotoController">
+   <children>
+      <Label layoutX="29.0" layoutY="27.0" prefHeight="29.0" prefWidth="207.0" style="-fx-font-size: 20; -fx-font-weight: bold; -fx-text-fill: #7387A8;" text="Profile / Edit photo" />
+      <Separator layoutX="13.0" layoutY="62.0" prefHeight="0.0" prefWidth="1389.0" />
+      <Label fx:id="ide" text="Label" visible="false" />
+      <TitledPane animated="false" layoutX="51.0" layoutY="87.0" prefHeight="92.0" prefWidth="1321.0" styleClass="blue-titledPane" stylesheets="@styles.css" text="From Any account (Facebook, Twitter....)">
+         <content>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="51.0" prefWidth="359.0">
+               <children>
+                  <Text fill="#2c0f0f" layoutX="14.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Account id : " wrappingWidth="101.00000190734863">
+                     <font>
+                        <Font name="Roboto Medium" size="14.0" />
+                     </font>
+                  </Text>
+                  <JFXTextField fx:id="urltext" layoutX="136.0" layoutY="12.0" prefHeight="29.0" prefWidth="1070.0" />
+                  <ImageView fx:id="urlgo" fitHeight="35.0" fitWidth="46.0" layoutX="1225.0" layoutY="18.0" onMouseClicked="#urlgoclicked" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/check.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+         </content>
+      </TitledPane>
+      <TitledPane animated="false" layoutX="51.0" layoutY="196.0" prefHeight="108.0" prefWidth="1321.0" styleClass="blue-titledPane" stylesheets="@styles.css" text="From Desktop">
+         <content>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="64.0" prefWidth="1319.0">
+               <children>
+                  <Text fill="#2c0f0f" layoutX="11.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Import :" wrappingWidth="101.00000190734863">
+                     <font>
+                        <Font name="Roboto Medium" size="14.0" />
+                     </font>
+                  </Text>
+                  <JFXButton fx:id="insertphoto" buttonType="RAISED" layoutX="107.0" layoutY="11.0" onAction="#showphoto" prefHeight="29.0" prefWidth="1106.0" text="Select photo" />
+               </children>
+            </AnchorPane>
+         </content>
+      </TitledPane>
+      <ImageView fx:id="photoshow" fitHeight="301.0" fitWidth="1198.0" layoutX="110.0" layoutY="319.0" pickOnBounds="true" preserveRatio="true" />
+      <JFXButton fx:id="btnClear" buttonType="RAISED" layoutX="666.0" layoutY="647.0" onAction="#clearFields" prefHeight="35.0" prefWidth="116.0" ripplerFill="#f52020" style="-fx-background-color: #EE4D39;" text="Discard" textFill="WHITE">
+         <font>
+            <Font name="Roboto Medium" size="15.0" />
+         </font>
+         <graphic>
+            <FontAwesomeIconView fill="WHITE" glyphName="TRASH_ALT" size="16.0" wrappingWidth="21.571428298950195" />
+         </graphic>
+      </JFXButton>
+      <JFXButton fx:id="editB" buttonType="RAISED" layoutX="521.0" layoutY="647.0" onAction="#editClicked" prefHeight="35.0" prefWidth="90.0" ripplerFill="#3f25d7" style="-fx-background-color: rgb(0, 170, 207);" text="Save" textFill="WHITE">
+         <font>
+            <Font name="Roboto Medium" size="15.0" />
+         </font>
+         <graphic>
+            <MaterialDesignIconView fill="WHITE" glyphName="CHECK_ALL" size="18.0" wrappingWidth="22.0" />
+         </graphic>
+      </JFXButton>
+      <JFXSpinner fx:id="loggingProgress" layoutX="611.0" layoutY="424.0" radius="20.0" />
+   </children>
+</AnchorPane>

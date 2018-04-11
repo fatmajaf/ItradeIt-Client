@@ -7,7 +7,10 @@ package tn.esprit.sltsclient.Controllers;
 
 import javafx.scene.layout.StackPane;
 import javafx.scene.Group;
+
+import java.io.File;
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -88,7 +91,7 @@ import javafx.scene.control.TextInputDialog;
 import tn.esprit.sltsclient.Utils.Trades;
 import twitter4j.TwitterException;
 import javafx.scene.control.Separator;
-
+import javafx.scene.image.Image;
 /**
  * FXML Controller class
  *
@@ -166,8 +169,6 @@ public class ProfileUserController implements Initializable {
 
 	@FXML
 	private Label companynamegal;
-
-	
 
 	@FXML
 	private Label latesttradecust;
@@ -305,8 +306,23 @@ public class ProfileUserController implements Initializable {
 	private JFXTextArea tweets;
 
 	@FXML
-    private Label nbbannedcomments;
+	private Label nbbannedcomments;
 	/*** end comments analysis **/
+	/*** photo user ***/
+	@FXML
+	private ImageView photo;
+	@FXML
+	private ImageView addphotoicon;
+	@FXML
+	private Group groups1;
+
+	@FXML
+	private AnchorPane formPane1;
+
+	@FXML
+	private JFXButton close1;
+
+	/**** end photo user ****/
 
 	@FXML
 	void openEdit(MouseEvent event) {
@@ -326,6 +342,8 @@ public class ProfileUserController implements Initializable {
 	private NumberAxis yAxis;
 	@FXML
 	private StackPane stpane;
+	@FXML
+	private StackPane stpane1;
 
 	@FXML
 	private Group groups;
@@ -368,11 +386,41 @@ public class ProfileUserController implements Initializable {
 		im.setVisible(true);
 	}
 
+	/*** photo section ***/
+	@FXML
+	void photomouseenteredaction(MouseEvent event) {
+		addphotoicon.setVisible(true);
+		/** DropShadow ds = new DropShadow();
+		ds.setOffsetY(3.0);
+		ds.setOffsetX(3.0);
+		ds.setColor(Color.GRAY);
+		photo.setEffect(ds);*/
+
+	}
+
+	@FXML
+	void photomouseexitedaction(MouseEvent event) {
+		// addphotoicon.setVisible(false);
+		// photo.setEffect(null);
+	}
+
+	@FXML
+	void imageiconclicked(MouseEvent event) throws IOException {
+		AnchorPane editphoto = FXMLLoader.load(getClass().getResource(nav.getEditphoto()));
+        
+     
+         setNode(editphoto);
+
+	}
+
+	/*** photo section ***/
+
 	/**
 	 * Initializes the controller class.
 	 */
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {
+		addphotoicon.setVisible(false);
 		try {
 			contextc = new InitialContext();
 		} catch (NamingException e1) {
@@ -409,6 +457,18 @@ public class ProfileUserController implements Initializable {
 			e.printStackTrace();
 		}
 		user = service.findUserById(iduserprofile);
+		if (user.getPhoto()!=null){
+			String localUrl = null;
+			File file = new File(user.getPhoto());
+	        try {
+	           localUrl = file.toURI().toURL().toString();
+	       } catch (MalformedURLException ex) {
+	           Logger.getLogger(ProfileUserController.class.getName()).log(Level.SEVERE, null, ex);
+	       }
+	       
+	        Image image = new Image(localUrl);
+	  photo.setImage(image);
+		}
 		if (user instanceof Customer) {
 			System.out.println("its a customer");
 			labelcompany.setText("Company");
@@ -637,7 +697,7 @@ public class ProfileUserController implements Initializable {
 					comment1.setStyle(
 							"-fx-background-color:#ffe6e6 ; -fx-alignment: center ; -fx-background-radius: 6 ; -fx-font-size:12 ; -fx-font-weight:bold");
 				}
-				
+
 				if (comments.get(i).getBanned() == 1) {
 					comment1.setTextFill(Color.web("#838383"));
 					commentban1.setVisible(false);
@@ -661,15 +721,15 @@ public class ProfileUserController implements Initializable {
 				comment3.setVisible(false);
 				namecommenter4.setVisible(false);
 				comment4.setVisible(false);
-				
+
 				commentsupp2.setVisible(false);
 				commentsupp3.setVisible(false);
 				commentsupp4.setVisible(false);
-				
+
 				commentedit2.setVisible(false);
 				commededit3.setVisible(false);
 				commentedit4.setVisible(false);
-				
+
 				commentban2.setVisible(false);
 				commentban3.setVisible(false);
 				commentban4.setVisible(false);
@@ -685,19 +745,19 @@ public class ProfileUserController implements Initializable {
 				comment3.setVisible(true);
 				namecommenter4.setVisible(true);
 				comment4.setVisible(true);
-				
+
 				commentban2.setVisible(true);
 				commentban3.setVisible(true);
 				commentban4.setVisible(true);
-			
+
 				commentsupp2.setVisible(true);
 				commentsupp3.setVisible(true);
 				commentsupp4.setVisible(true);
-				
+
 				commentedit2.setVisible(true);
 				commededit3.setVisible(true);
 				commentedit4.setVisible(true);
-				
+
 				namecommenter2.setText(comments.get(i + 1).getCommenter().getFirstName() + " "
 						+ comments.get(i + 1).getCommenter().getLastName());
 				id2.setText(comments.get(i + 1).getId().toString());
@@ -731,13 +791,13 @@ public class ProfileUserController implements Initializable {
 				comment3.setVisible(false);
 				namecommenter4.setVisible(false);
 				comment4.setVisible(false);
-				
+
 				commentban3.setVisible(false);
 				commentban4.setVisible(false);
-				
+
 				commentsupp3.setVisible(false);
 				commentsupp4.setVisible(false);
-				
+
 				commededit3.setVisible(false);
 				commentedit4.setVisible(false);
 
@@ -752,10 +812,10 @@ public class ProfileUserController implements Initializable {
 				comment4.setVisible(true);
 				commentban3.setVisible(true);
 				commentban4.setVisible(true);
-				
+
 				commentsupp3.setVisible(true);
 				commentsupp4.setVisible(true);
-				
+
 				commededit3.setVisible(true);
 				commentedit4.setVisible(true);
 				namecommenter3.setText(comments.get(i + 2).getCommenter().getFirstName() + " "
@@ -777,7 +837,7 @@ public class ProfileUserController implements Initializable {
 				} else {
 					comment3.setTextFill(Color.web("#000000"));
 					commentban3.setVisible(true);
-					
+
 				}
 				if (comments.get(i + 2).getCommenter().getId() == idcurrent) {
 					commentsupp3.setVisible(true);
@@ -792,7 +852,7 @@ public class ProfileUserController implements Initializable {
 
 				namecommenter4.setVisible(false);
 				comment4.setVisible(false);
-				
+
 				commentban4.setVisible(false);
 				commentsupp4.setVisible(false);
 				commentedit4.setVisible(false);
@@ -1134,8 +1194,7 @@ public class ProfileUserController implements Initializable {
 
 		{
 			String t = mape.getKey();
-
-			 analysiss = mape.getValue();
+			analysiss = mape.getValue();
 
 			if (analysiss == 1 && (!t.equals("positivecomments")) && (!t.equals("negativecomments"))
 					&& (!t.equals("positivetwitter")) && (!t.equals("negativetwitter"))) {
@@ -1155,39 +1214,37 @@ public class ProfileUserController implements Initializable {
 		tweets.setText(content);
 
 	}
-	public void bantreatement(int bannumber){
+
+	public void bantreatement(int bannumber) {
 		int id = 0;
 		String comment = null;
-		String namecommenter=null;
-		String commentcensored= null;
-		if (bannumber==1){
-			id= Integer.parseInt(id1.getText());
-			commentcensored= comment1.getText();
-			namecommenter= namecommenter1.getText();
-			
+		String namecommenter = null;
+		String commentcensored = null;
+		if (bannumber == 1) {
+			id = Integer.parseInt(id1.getText());
+			commentcensored = comment1.getText();
+			namecommenter = namecommenter1.getText();
+
+		} else if (bannumber == 2) {
+			id = Integer.parseInt(id2.getText());
+			commentcensored = comment2.getText();
+			namecommenter = namecommenter2.getText();
+		} else if (bannumber == 3) {
+			id = Integer.parseInt(id3.getText());
+			commentcensored = comment3.getText();
+			namecommenter = namecommenter3.getText();
+		} else if (bannumber == 4) {
+			id = Integer.parseInt(id4.getText());
+			commentcensored = comment4.getText();
+			namecommenter = namecommenter4.getText();
 		}
-		else if (bannumber==2){
-			id= Integer.parseInt(id2.getText());
-			commentcensored= comment2.getText();
-			namecommenter= namecommenter2.getText();
-		}
-		else if (bannumber==3){
-			id= Integer.parseInt(id3.getText());
-			commentcensored= comment3.getText();
-			namecommenter= namecommenter3.getText();
-		}
-		else if (bannumber==4){
-			id= Integer.parseInt(id4.getText());
-			commentcensored= comment4.getText();
-			namecommenter= namecommenter4.getText();
-		}
-		comment=servicecommenr.findCommentById(id).getBody();
-		
+		comment = servicecommenr.findCommentById(id).getBody();
+
 		System.out.println("----------------------");
-		System.out.println("bannumber : "+bannumber);
-		System.out.println("namecommenter : "+namecommenter);
-		System.out.println("comment : "+comment);
-		System.out.println("id comment"+id);
+		System.out.println("bannumber : " + bannumber);
+		System.out.println("namecommenter : " + namecommenter);
+		System.out.println("comment : " + comment);
+		System.out.println("id comment" + id);
 		List<String> choices = new ArrayList<>();
 		choices.add("this comment contains profanity");
 		choices.add("This comment is offensive");
@@ -1200,77 +1257,71 @@ public class ProfileUserController implements Initializable {
 
 		// Traditional way to get the response value.
 		Optional<String> result = dialog.showAndWait();
-		if (result.isPresent()){
-		    System.out.println("Your choice: " + result.get());
-		String choice= result.get();
-		if (choice.equals("I don't like this comment")){
-			TextInputDialog dialog1 = new TextInputDialog("Reason");
-			dialog1.setTitle("Ban");
-			dialog1.setHeaderText("Ban Comment");
-			dialog1.setContentText("Please enter your reason:");
-			
-			// Traditional way to get the response value.
-			Optional<String> result1 = dialog1.showAndWait();
-			if (result1.isPresent()){
-			    System.out.println("Your reason: " + result1.get());
-			    String emailadr= "fatma.jaafar404@gmail.com";
-		        String recipient= emailadr;
-		         Mail mail = new Mail();
-		        mail.setMailAddressRecipient(recipient);
-		        mail.setPwd("a3outhouBellehminashaitanRajimBeslemmeh123***BESMELLEhYarab552");
-		        
-		        mail.setMailAddressSender("fatma.jaafar404@gmail.com");
-		        mail.setMailSubject("comment blocking request");
-		      
-		        String msg="The user sending the request :  "+user.getFirstName()+" "+user.getLastName()+"\n the comment : "+comment 
-		        +"\n added by : "+namecommenter+"\n reason : "+result1.get();
-		       
-		        mail.setMailObject(msg);
-		    
+		if (result.isPresent()) {
+			System.out.println("Your choice: " + result.get());
+			String choice = result.get();
+			if (choice.equals("I don't like this comment")) {
+				TextInputDialog dialog1 = new TextInputDialog("Reason");
+				dialog1.setTitle("Ban");
+				dialog1.setHeaderText("Ban Comment");
+				dialog1.setContentText("Please enter your reason:");
 
-		        MailConstruction mc = new MailConstruction();
-		        mc.getMailProperties();
+				// Traditional way to get the response value.
+				Optional<String> result1 = dialog1.showAndWait();
+				if (result1.isPresent()) {
+					System.out.println("Your reason: " + result1.get());
+					String emailadr = "fatma.jaafar404@gmail.com";
+					String recipient = emailadr;
+					Mail mail = new Mail();
+					mail.setMailAddressRecipient(recipient);
+					mail.setPwd("a3outhouBellehminashaitanRajimBeslemmeh123***BESMELLEhYarab552");
 
+					mail.setMailAddressSender("fatma.jaafar404@gmail.com");
+					mail.setMailSubject("comment blocking request");
 
-		        mc.getMailMessage( mail);
-		        mc.SendMessage();
-		        nav.showAlert(Alert.AlertType.INFORMATION, "Success", null, "The request is sent and will be treated as soon as possible");
-			}
-			else {
-				nav.showAlert(Alert.AlertType.ERROR, "Error", null, "No action has been made");
-			}
-		}
-		else if (choice.equals("this comment contains profanity")){
-			if (commentcensored.contains("*")){
-				servicecommenr.bancomment(id);
-                nav.showAlert(Alert.AlertType.INFORMATION, "Success", null, "Comment banned");
-                preparecomments();
-				commentsview();
-              }
-			else {
-				nav.showAlert(Alert.AlertType.ERROR, "Error", null, "Comment doesn't contain any swear words.");
-			}
-				}
-			
-			
-			else {
-				if (map.get(comment)==0){
-					servicecommenr.bancomment(id);
-					
-						
-					 nav.showAlert(Alert.AlertType.INFORMATION, "Success", null, "Comment banned");
-					 
-					 preparecomments();
-						commentsview();
-				}
-				else {
-					nav.showAlert(Alert.AlertType.ERROR, "Error", null, "The comment has a positive impression.");
-				}
-}}
-		else {
+					String msg = "The user sending the request :  " + user.getFirstName() + " " + user.getLastName()
+							+ "\n the comment : " + comment + "\n added by : " + namecommenter + "\n reason : "
+							+ result1.get();
+
+					mail.setMailObject(msg);
+
+					MailConstruction mc = new MailConstruction();
+					mc.getMailProperties();
+
+					mc.getMailMessage(mail);
+					mc.SendMessage();
+					nav.showAlert(Alert.AlertType.INFORMATION, "Success", null,
+							"The request is sent and will be treated as soon as possible");
+				} else {
 					nav.showAlert(Alert.AlertType.ERROR, "Error", null, "No action has been made");
 				}
-		
+			} else if (choice.equals("this comment contains profanity")) {
+				if (commentcensored.contains("*")) {
+					servicecommenr.bancomment(id);
+					nav.showAlert(Alert.AlertType.INFORMATION, "Success", null, "Comment banned");
+					preparecomments();
+					commentsview();
+				} else {
+					nav.showAlert(Alert.AlertType.ERROR, "Error", null, "Comment doesn't contain any swear words.");
+				}
+			}
+
+			else {
+				if (map.get(comment) == 0) {
+					servicecommenr.bancomment(id);
+
+					nav.showAlert(Alert.AlertType.INFORMATION, "Success", null, "Comment banned");
+
+					preparecomments();
+					commentsview();
+				} else {
+					nav.showAlert(Alert.AlertType.ERROR, "Error", null, "The comment has a positive impression.");
+				}
+			}
+		} else {
+			nav.showAlert(Alert.AlertType.ERROR, "Error", null, "No action has been made");
+		}
+
 	}
 
 	@FXML
@@ -1700,8 +1751,6 @@ public class ProfileUserController implements Initializable {
 		rootpane.getChildren().clear();
 		rootpane.getChildren().add((Node) node);
 	}
-
-	
 
 	// trades , customer profile
 	private void settableviewTradesforcustomerprofile() {

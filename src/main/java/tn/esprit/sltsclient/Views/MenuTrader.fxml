@@ -38,7 +38,31 @@
             <Font name="Roboto Bold" size="14.0" />
          </font>
          <graphic>
-            <FontAwesomeIconView fill="#a1aec4" glyphName="USER" size="17.0" wrappingWidth="43.0" />
+            <FontAwesomeIconView fill="#a1aec4" glyphName="USER" size="17.0" text="" wrappingWidth="43.0" />
+         </graphic>
+      </JFXButton>
+      <JFXButton fx:id="optioncalculatiobtn" accessibleText="optioncalculation" prefHeight="42.0" prefWidth="234.0" style="-fx-alignment: left;" styleClass="nav-button" text="option calculation" textFill="#a1aec4">
+         <font>
+            <Font name="Roboto Bold" size="14.0" />
+         </font>
+         <graphic>
+            <FontAwesomeIconView fill="#a1aec4" glyphName="USER" size="17.0" text="" wrappingWidth="43.0" />
+         </graphic>
+      </JFXButton>
+      <JFXButton fx:id="optionsshares" accessibleText="optionsshares" prefHeight="42.0" prefWidth="234.0" style="-fx-alignment: left;" styleClass="nav-button" text="Search(Options / shares)" textFill="#a1aec4">
+         <font>
+            <Font name="Roboto Bold" size="14.0" />
+         </font>
+         <graphic>
+            <FontAwesomeIconView fill="#a1aec4" glyphName="USER" size="17.0" text="" wrappingWidth="43.0" />
+         </graphic>
+      </JFXButton>
+      <JFXButton fx:id="usersview" accessibleText="usersview" prefHeight="42.0" prefWidth="234.0" style="-fx-alignment: left;" styleClass="nav-button" text="Users" textFill="#a1aec4">
+         <font>
+            <Font name="Roboto Bold" size="14.0" />
+         </font>
+         <graphic>
+            <FontAwesomeIconView fill="#a1aec4" glyphName="USER" size="17.0" text="" wrappingWidth="43.0" />
          </graphic>
       </JFXButton>
    </children>

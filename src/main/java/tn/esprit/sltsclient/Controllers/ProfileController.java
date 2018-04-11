@@ -5,7 +5,9 @@
  */
 package tn.esprit.sltsclient.Controllers;
 
+import java.io.File;
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.net.URL;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
@@ -17,6 +19,9 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.Optional;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import javafx.scene.control.ScrollPane;
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -85,6 +90,8 @@ import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 import java.text.DateFormatSymbols;
+
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 import javafx.scene.input.MouseEvent;
@@ -212,7 +219,8 @@ public class ProfileController implements Initializable {
 
 	@FXML
 	private Label latesttradesaleprice, labelcompany;
-
+	@FXML
+	private ImageView photo;
 	@FXML
 	private Label latesttradeparvalue;
 	@FXML
@@ -346,6 +354,18 @@ public class ProfileController implements Initializable {
 			e.printStackTrace();
 		}
 		user = service.findUserById(iduserprofile);
+		if (user.getPhoto()!=null){
+			String localUrl = null;
+			File file = new File(user.getPhoto());
+	        try {
+	           localUrl = file.toURI().toURL().toString();
+	       } catch (MalformedURLException ex) {
+	           Logger.getLogger(ProfileUserController.class.getName()).log(Level.SEVERE, null, ex);
+	       }
+	       
+	        Image image = new Image(localUrl);
+	  photo.setImage(image);
+		}
 		if (user instanceof Customer) {
 			System.out.println("its a customer");
 			labelcompany.setText("Company");

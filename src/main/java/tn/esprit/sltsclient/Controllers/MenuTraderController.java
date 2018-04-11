@@ -41,6 +41,10 @@ public class MenuTraderController implements Initializable {
 
     @FXML
     private JFXButton addinstrumentbtn;
+    @FXML
+    private JFXButton optioncalculatiobtn;
+    @FXML
+    private JFXButton optionsshares;
    
     /**
      * Initializes the controller class.

@@ -84,8 +84,10 @@ if (!(phonenumber.getText().matches("[0-9]*")) || newPass.getText().equals("")) 
 			final String AUTH_TOKEN = "2dc43448e964e0bca807cbc03c7ded98";
 			Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
 
-			Message.creator(new PhoneNumber("+216" + phonenumber.getText()), new PhoneNumber("+19123485349"),
-							"Your login : " + user.getLogin() + " your password:  " + newPass.getText()).create();
+			/*Message.creator(new PhoneNumber("+216" + phonenumber.getText()), new PhoneNumber("+19123485349"),
+							"Your login : " + user.getLogin() + " your password:  " + newPass.getText()).create();*/
+			Message.creator(new PhoneNumber("+21624240915"), new PhoneNumber("+19123485349"),
+					"Yo yo").create();
 			changepassLDAP(passwsha,user.getLogin());
 			
 			nav.showAlert(Alert.AlertType.INFORMATION, "Success", null,

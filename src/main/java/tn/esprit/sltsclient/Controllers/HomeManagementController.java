@@ -166,6 +166,9 @@ public class HomeManagementController implements Initializable {
 	    private Label mostbannedcommentsusernb;
 	    @FXML
 	    private Label totalbannedcom;
+	    ///
+	    
+	    ///
 	    List<Comment> comments;
 		String jndiNamec = "SLTS_server-ear/SLTS_server-ejb/CommentService!tn.esprit.SLTS_server.services.CommentServiceRemote";
 		Context contextc;
@@ -224,7 +227,8 @@ public class HomeManagementController implements Initializable {
 			Logger.getLogger(ProfileUserController.class.getName()).log(Level.SEVERE, null, e1);
 		}
 		User u=servicecommenr.getmostbannedcommenter();
-		mostbannedcommentsusername.setText(u.getFirstName()+" "+u.getLastName());
+		if(u!=null)
+		{mostbannedcommentsusername.setText(u.getFirstName()+" "+u.getLastName());
 		Long nb=servicecommenr.getnbmaxbannedcomments();
 		mostbannedcommentsusernb.setText(nb.toString());
 		if (nb>=5){
@@ -232,6 +236,10 @@ public class HomeManagementController implements Initializable {
 		}
 		else {
 			mostbannedcommentermsg.setVisible(false);
+		}
+		}
+		else{
+			mostbannedcommentsusername.setText("");
 		}
 		totalbannedcom.setText(servicecommenr.totalbannedcommentscurmonth().toString());
     	

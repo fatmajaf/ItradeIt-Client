@@ -5,7 +5,9 @@
  */
 package tn.esprit.sltsclient.Controllers;
 
+import java.io.File;
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.sql.Date;
 import java.util.ArrayList;
@@ -15,13 +17,13 @@ import java.util.ResourceBundle;
 import java.util.function.Predicate;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
+import javafx.scene.image.Image;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
-
+import javafx.scene.image.ImageView;
 import org.controlsfx.control.Notifications;
-
+import javafx.scene.shape.*;
 import com.jfoenix.controls.JFXCheckBox;
 import com.jfoenix.controls.JFXRadioButton;
 import com.jfoenix.controls.JFXTextField;
@@ -37,6 +39,7 @@ import javafx.scene.control.Label;
 import javafx.scene.paint.Color;
 import javafx.scene.control.Pagination;
 import javafx.scene.layout.AnchorPane;
+import tn.esprit.SLTS_server.persistence.Admin;
 import tn.esprit.SLTS_server.persistence.Customer;
 import tn.esprit.SLTS_server.persistence.Trader;
 import tn.esprit.SLTS_server.persistence.User;
@@ -77,7 +80,15 @@ import tn.esprit.sltsclient.Utils.Customers;
  * @author Fatma Jaafar
  */
 public class UsermanagementController implements Initializable {
-
+	Image photoavatar = new Image(getClass().getResourceAsStream("/tn/esprit/sltsclient/Images/avatar.png"));
+	@FXML
+    private ImageView photo1;
+	@FXML
+    private ImageView photo2;
+	@FXML
+    private ImageView photo3;
+	@FXML
+    private ImageView photo4;
 	  @FXML
 	    private VBox hboxcards1;
 
@@ -213,14 +224,15 @@ public class UsermanagementController implements Initializable {
 	    private MenuItem deletecustomer;
 
 	   Navigation nav= new Navigation();
-
+	   User currentuser;
 	String viewset = "";
 	String viewset2 = "";
 	String jndiName = "SLTS_server-ear/SLTS_server-ejb/UserService!tn.esprit.SLTS_server.services.UserServiceRemote";
-	List<User> listeuserr;
+	List<User> listeuserr=new ArrayList<User>();
 	UserServiceRemote service;
 	Context context;
 	String roleuser = null;
+	List<Customer> customers;
 	/**getnbcust
 	 *  */
 	
@@ -235,10 +247,30 @@ public class UsermanagementController implements Initializable {
 	
 	
 /***/
-	public void populateusers() throws NamingException {
-		context = new InitialContext();
-		service = (UserServiceRemote) context.lookup(jndiName);
-		listeuserr = service.findAllUsers();
+	public void populateusers() {
+	
+		
+		if(currentuser instanceof Trader){
+			listeuserr = service.findAllTraders();
+			System.out.println("//////////////////////////////////////");
+			for (User u: ((Trader) currentuser).getCustomers()) {
+				System.out.println(u);
+				listeuserr.add(u);
+					
+			}
+			System.out.println("//////////////////////////////////////");
+			customers = new ArrayList<Customer>();
+	        
+	        for (User user : listeuserr) {
+	        	if (user instanceof Customer)
+	        	{Customer tr= (Customer)user;
+	        	
+				customers.add(tr);}
+			}
+		}
+		else {
+			listeuserr = service.findAllUsers();
+		}
 	}
 
 	public int itemsPerPage() {
@@ -248,19 +280,16 @@ public class UsermanagementController implements Initializable {
 	public AnchorPane createPage(int pageIndex) {
 
 		AnchorPane box = new AnchorPane();
-		System.out.println("page Index   :" + pageIndex);
+	
 
 		int page = pageIndex * itemsPerPage();
-		System.out.println("page    :" + page);
+		
 
 		for (int i = page; i < page + itemsPerPage(); i = i + 4) {
 			int j = i + 1;
 			int k = i + 2;
 			int r = i + 3;
-			System.out.println("iiiii  " + i);
-			System.out.println("j  " + j);
-			System.out.println("k  " + k);
-			System.out.println("r  " + r);
+			
 			if (i >= listeuserr.size()) {
 				emp1.setVisible(false);
 				emp2.setVisible(false);
@@ -284,6 +313,26 @@ public class UsermanagementController implements Initializable {
 				nati1.setText(listeuserr.get(i).getNationality());
 				creadate1.setText(listeuserr.get(i).getNationality().toString());
 				phone1.setText(listeuserr.get(i).getPhone().toString());
+				if (listeuserr.get(i).getPhoto()!=null){
+					String localUrl = null;
+					File file = new File(listeuserr.get(i).getPhoto());
+			        try {
+			           localUrl = file.toURI().toURL().toString();
+			       } catch (MalformedURLException ex) {
+			           Logger.getLogger(UsermanagementController.class.getName()).log(Level.SEVERE, null, ex);
+			       }
+			       
+			        Image image = new Image(localUrl);
+			        photo1.setImage(image);
+			        Ellipse ellipse = new Ellipse(image.getWidth() / 2, image.getHeight() / 2, image.getWidth() / 2, image.getHeight() / 2);
+					
+			        photo1.setClip(ellipse);
+				}
+				else {
+					photo1.setImage(photoavatar);
+					Ellipse ellipse = new Ellipse(photoavatar.getWidth() / 2, photoavatar.getHeight() / 2, photoavatar.getWidth() / 2, photoavatar.getHeight() / 2);
+					photo1.setClip(ellipse);
+				}
 
 
 			}
@@ -313,6 +362,26 @@ public class UsermanagementController implements Initializable {
 				nati2.setText(listeuserr.get(i + 1).getNationality());
 				creadate2.setText(listeuserr.get(i + 1).getNationality());
 				phone2.setText(listeuserr.get(i + 1).getPhone().toString());
+				if (listeuserr.get(i+1).getPhoto()!=null){
+					String localUrl = null;
+					File file = new File(listeuserr.get(i+1).getPhoto());
+			        try {
+			           localUrl = file.toURI().toURL().toString();
+			       } catch (MalformedURLException ex) {
+			           Logger.getLogger(UsermanagementController.class.getName()).log(Level.SEVERE, null, ex);
+			       }
+			       
+			        Image image = new Image(localUrl);
+			  photo2.setImage(image);
+			   Ellipse ellipse = new Ellipse(image.getWidth() / 2, image.getHeight() / 2, image.getWidth() / 2, image.getHeight() / 2);
+				
+		        photo2.setClip(ellipse);
+				}
+				else {
+					photo2.setImage(photoavatar);
+					Ellipse ellipse = new Ellipse(photoavatar.getWidth() / 2, photoavatar.getHeight() / 2, photoavatar.getWidth() / 2, photoavatar.getHeight() / 2);
+					photo2.setClip(ellipse);
+				}
 
 			}
 			if (k >= listeuserr.size()) {
@@ -341,6 +410,27 @@ public class UsermanagementController implements Initializable {
 				creadate3.setText(listeuserr.get(i + 2).getNationality().toString());
 				phone3.setText(listeuserr.get(i + 2).getPhone().toString());
 
+				if (listeuserr.get(i+2).getPhoto()!=null){
+					String localUrl = null;
+					File file = new File(listeuserr.get(i+2).getPhoto());
+			        try {
+			           localUrl = file.toURI().toURL().toString();
+			       } catch (MalformedURLException ex) {
+			           Logger.getLogger(UsermanagementController.class.getName()).log(Level.SEVERE, null, ex);
+			       }
+			       
+			        Image image = new Image(localUrl);
+			  photo3.setImage(image);
+			   Ellipse ellipse = new Ellipse(image.getWidth() / 2, image.getHeight() / 2, image.getWidth() / 2, image.getHeight() / 2);
+				
+		        photo3.setClip(ellipse);
+				}
+				else {
+					photo3.setImage(photoavatar);
+					Ellipse ellipse = new Ellipse(photoavatar.getWidth() / 2, photoavatar.getHeight() / 2, photoavatar.getWidth() / 2, photoavatar.getHeight() / 2);
+					photo3.setClip(ellipse);
+				}
+				
 			}
 			if (r >= listeuserr.size()) {
 
@@ -365,6 +455,25 @@ public class UsermanagementController implements Initializable {
 				nati4.setText(listeuserr.get(i + 3).getNationality());
 				creadate4.setText(listeuserr.get(i + 3).getNationality().toString());
 				phone4.setText(listeuserr.get(i + 3).getPhone().toString());
+				if (listeuserr.get(i+3).getPhoto()!=null){
+					String localUrl = null;
+					File file = new File(listeuserr.get(i+3).getPhoto());
+			        try {
+			           localUrl = file.toURI().toURL().toString();
+			       } catch (MalformedURLException ex) {
+			           Logger.getLogger(UsermanagementController.class.getName()).log(Level.SEVERE, null, ex);
+			       }
+			       
+			        Image image = new Image(localUrl);
+			  photo4.setImage(image);
+			   Ellipse ellipse = new Ellipse(image.getWidth() / 2, image.getHeight() / 2, image.getWidth() / 2, image.getHeight() / 2);
+			   photo4.setClip(ellipse);
+				}
+				else {
+					photo4.setImage(photoavatar);
+					Ellipse ellipse = new Ellipse(photoavatar.getWidth() / 2, photoavatar.getHeight() / 2, photoavatar.getWidth() / 2, photoavatar.getHeight() / 2);
+					photo4.setClip(ellipse);
+				}
 			}
 		}
 		return box;
@@ -375,15 +484,26 @@ public class UsermanagementController implements Initializable {
 	 */
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {
+		
+		   
 
-			try {
+		try {
+			context = new InitialContext();
+		} catch (NamingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			service = (UserServiceRemote) context.lookup(jndiName);
+		} catch (NamingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		currentuser= service.findUserById(HomeController.idcurrentuser);
 				populateusers();
-			} catch (NamingException e) {
-			
-				 Logger.getLogger(UsermanagementController.class.getName()).log(Level.
-						  SEVERE, null, e);
-				 }
-			
+		
+			System.out.println("current "+HomeController.idcurrentuser);
+			 
 		
 		nbnotactivatedCustomers();
 		NbbannedTrader();
@@ -467,7 +587,7 @@ public class UsermanagementController implements Initializable {
 
 				
 				listeuserr = service.SearchAllUsers(newValue);
-
+//azerty
 				double a = Math.ceil((float) listeuserr.size() / 4);
 				pagination.setPageCount((int) a);
 				pagination.setCurrentPageIndex(0);
@@ -602,7 +722,7 @@ public class UsermanagementController implements Initializable {
         ObservableList<Traders> atts = FXCollections.observableArrayList();
      
         
-        listeuserr = service.findAllTraders();
+       // listeuserr = service.findAllTraders();
         System.out.println(listeuserr);
         List<Trader> tradersss = new ArrayList<Trader>();
         for (User user : listeuserr) {
@@ -819,16 +939,10 @@ public class UsermanagementController implements Initializable {
              }});
         ObservableList<Customers> atts = FXCollections.observableArrayList();
        
-        listeuserr = service.findAllCustomers();
+   
        
-        List<Customer> tradersss = new ArrayList<Customer>();
-        for (User user : listeuserr) {
-        	if (user instanceof Customer)
-        	{Customer tr= (Customer)user;
-        	
-			tradersss.add(tr);}
-		}
-        for (Customer t : tradersss) {
+        
+        for (Customer t :customers) {
             Customers atable;
             String namea= t.getFirstName()+" "+t.getLastName();
             String activ;

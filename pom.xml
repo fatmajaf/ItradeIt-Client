@@ -170,8 +170,31 @@
         <artifactId>image-resolver</artifactId>
         <version>0.1.0</version>
     </dependency>
-
-        
+<!-- https://mvnrepository.com/artifact/com.zavtech/morpheus-yahoo -->
+		<!-- https://mvnrepository.com/artifact/com.zavtech/morpheus-yahoo -->
+<dependency>
+    <groupId>com.zavtech</groupId>
+    <artifactId>morpheus-yahoo</artifactId>
+    <version>0.9.21</version>
+</dependency>
+<!-- https://mvnrepository.com/artifact/com.zavtech/morpheus-viz -->
+<dependency>
+    <groupId>com.zavtech</groupId>
+    <artifactId>morpheus-viz</artifactId>
+    <version>0.9.21</version>
+</dependency>
+		
+  	<!-- https://mvnrepository.com/artifact/nz.ac.waikato.cms.weka/weka-stable -->
+<dependency>
+    <groupId>nz.ac.waikato.cms.weka</groupId>
+    <artifactId>weka-stable</artifactId>
+    <version>3.8.0</version>
+</dependency>
+  	<dependency> 
+    <groupId>xml-apis</groupId>
+    <artifactId>xml-apis</artifactId>
+    <version>1.4.01</version>
+</dependency>
 				</dependencies>
 	<build>
 		<plugins>

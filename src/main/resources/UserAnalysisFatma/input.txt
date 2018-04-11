@@ -84,7 +84,7 @@
 1	Smiling
 0	Big pain to see my team loosing
 0	Bitter defeat tonight
-0	My bike was stollen
+0	My bike was stolen
 1	Great to see you!
 0	I lost every hope for seeing him again
 1	Nice dress!
@@ -94,7 +94,7 @@
 1	Feeling proud
 1	Cute bunnies
 0	Cold winter ahead
-0	Hopless struggle..
+0	Hopeless struggle..
 0	Ugly hat
 1	Big hug and lots of love
 1	I hope you have a wonderful celebration
@@ -108,3 +108,11 @@
 0	liar
 0	asshole
 0	you are hopeless
+0	fuck
+0	not good
+1	hahahaha you are awesome
+1	hahahaha you are hilarious
+1	good
+0	damn you
+0	shit
+0	go away

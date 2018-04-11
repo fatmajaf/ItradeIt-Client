@@ -23,6 +23,9 @@ public class Navigation {
 	private final String forgetPassword = "/tn/esprit/sltsclient/Views/forgotpassword.fxml";
 	private final String addcustomer = "/tn/esprit/sltsclient/Views/Addcustomer.fxml";
 	private final String editaddress = "/tn/esprit/sltsclient/Views/editaddress.fxml";
+	private final String editphoto = "/tn/esprit/sltsclient/Views/editphoto.fxml";
+	private final String optionscalculation = "/tn/esprit/sltsclient/Views/optioncalculation.fxml";
+	private final String optionsshares = "/tn/esprit/sltsclient/Views/SearchOptionsshares.fxml";
 	//asma 
 	private final String addinstrument = "/tn/esprit/sltsclient/Views/addinstrument.fxml";
 	private final String instrumentman = "/tn/esprit/sltsclient/Views/instrumentmanagement.fxml";
@@ -31,11 +34,21 @@ public class Navigation {
 	public String getLogin() {
 		return login;
 	}
+	public String getOptionsshares() {
+		return optionsshares;
+	}
+	public String getOptionscalculation() {
+		return optionscalculation;
+	}
     public String getAddcustomer() {
 		return addcustomer;
 	}
 	public String getTest() {
 		return test;
+	}
+	
+public String getEditphoto() {
+		return editphoto;
 	}
 public String getAddinstrument() {
 	return addinstrument;

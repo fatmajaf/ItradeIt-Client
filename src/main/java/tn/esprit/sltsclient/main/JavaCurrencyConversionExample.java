@@ -51,7 +51,7 @@ public class JavaCurrencyConversionExample {
     double rate = convert.convert(fromCurrency,toCurrency);
                             rate = rate * Double.parseDouble("1");
                             System.out.println(rate);
-    	    
+    	    System.out.println("ex rate"+findExchangeRateAndConvert("United States", "Switzerland", 1));
 
     }
    

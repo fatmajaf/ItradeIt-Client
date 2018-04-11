@@ -125,6 +125,8 @@ public class HomeController implements Initializable {
                AnchorPane addcustomer =FXMLLoader.load(getClass().getResource(nav.getAddcustomer()));
                AnchorPane homeman = FXMLLoader.load(getClass().getResource(nav.getHomemmanagement()));
                AnchorPane profileuser = FXMLLoader.load(getClass().getResource(nav.getProfileuser()));
+               AnchorPane optioncalculation = FXMLLoader.load(getClass().getResource(nav.getOptionscalculation()));
+               AnchorPane optionshares = FXMLLoader.load(getClass().getResource(nav.getOptionsshares()));
                //asma
                AnchorPane addinstrument = FXMLLoader.load(getClass().getResource(nav.getAddinstrument()));
                AnchorPane instrumentmanagement = FXMLLoader.load(getClass().getResource(nav.getInstrumentman()));
@@ -176,7 +178,18 @@ public class HomeController implements Initializable {
                                    drawer.close();
                                    setNode(instrumentmanagement);
                                    break;  
-                              
+                               case "optioncalculation":
+                                   drawer.close();
+                                   setNode(optioncalculation);
+                                   break; 
+                               case "optionsshares":
+                                   drawer.close();
+                                   setNode(optionshares);
+                                   break; 
+                               case "usersview":
+                                   drawer.close();
+                                   setNode(usermanagement);
+                                   break; 
                                                              
                            }
                        });

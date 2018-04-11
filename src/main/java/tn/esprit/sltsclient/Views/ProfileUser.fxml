@@ -52,7 +52,7 @@
                   <Separator layoutX="14.0" layoutY="224.0" prefHeight="4.0" prefWidth="244.0" />
                   <Separator layoutX="14.0" layoutY="191.0" prefHeight="4.0" prefWidth="244.0" />
                   <Separator layoutX="18.0" layoutY="470.0" prefHeight="4.0" prefWidth="244.0" />
-                  <JFXTextField fx:id="emailedit" layoutX="56.0" layoutY="293.0" onAction="#emaileditdone" prefHeight="25.0" prefWidth="201.0" visible="false" />
+                  <JFXTextField fx:id="emailedit" layoutX="56.0" layoutY="230.0" onAction="#emaileditdone" prefHeight="25.0" prefWidth="201.0" visible="false" />
                   <Label fx:id="email" layoutX="28.0" layoutY="231.0" onMouseClicked="#updateemail" prefHeight="31.0" prefWidth="244.0" text="Email" wrapText="true">
                      <font>
                         <Font name="Roboto Light" size="14.0" />
@@ -75,12 +75,12 @@
                         <Insets />
                      </opaqueInsets>
                   </Label>
-                  <ImageView fitHeight="144.0" fitWidth="159.0" layoutX="47.0" layoutY="45.0" pickOnBounds="true">
+                  <ImageView fx:id="photo" fitHeight="121.0" fitWidth="142.0" layoutX="62.0" layoutY="62.0" onMouseEntered="#photomouseenteredaction" onMouseExited="#photomouseexitedaction" pickOnBounds="true">
                      <image>
                         <Image url="@../images/contacts-256.png" />
                      </image>
                   </ImageView>
-                  <JFXTextField fx:id="phoneedit" layoutX="58.0" layoutY="331.0" onAction="#editphonedone" prefHeight="25.0" prefWidth="214.0" visible="false" />
+                  <JFXTextField fx:id="phoneedit" layoutX="58.0" layoutY="220.0" onAction="#editphonedone" prefHeight="25.0" prefWidth="214.0" visible="false" />
                   <Label fx:id="phone" layoutX="28.0" layoutY="269.0" onMouseClicked="#phoneeditshow" prefHeight="31.0" prefWidth="244.0" text="Phone" wrapText="true">
                      <font>
                         <Font name="Roboto Light" size="14.0" />
@@ -153,6 +153,11 @@
                   </Label>
                   <Separator layoutX="23.0" layoutY="514.0" prefHeight="4.0" prefWidth="244.0" />
                   <Separator layoutX="18.0" layoutY="603.0" prefHeight="4.0" prefWidth="244.0" />
+                  <ImageView fx:id="addphotoicon" fitHeight="56.0" fitWidth="30.0" layoutX="176.0" layoutY="65.0" onMouseClicked="#imageiconclicked" pickOnBounds="true" preserveRatio="true" visible="false">
+                     <image>
+                        <Image url="@../images/camera.png" />
+                     </image>
+                  </ImageView>
                </children>
             </AnchorPane>
             <JFXTabPane layoutX="305.0" layoutY="374.0" prefHeight="351.0" prefWidth="669.0">

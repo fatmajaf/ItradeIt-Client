@@ -2,6 +2,7 @@ package tn.esprit.sltsclient.main;
 
 
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Currency;
 import java.util.Date;
@@ -15,12 +16,17 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 
 import tn.esprit.SLTS_server.persistence.Address;
+import tn.esprit.SLTS_server.persistence.Comment;
 import tn.esprit.SLTS_server.persistence.Customer;
 import tn.esprit.SLTS_server.persistence.Trader;
 import tn.esprit.SLTS_server.persistence.TradingExchange;
 import tn.esprit.SLTS_server.persistence.User;
+import tn.esprit.SLTS_server.services.CommentServiceRemote;
+import tn.esprit.SLTS_server.services.UserService;
 import tn.esprit.SLTS_server.services.UserServiceRemote;
 import tn.esprit.sltsclient.Controllers.HomeController;
+import tn.esprit.sltsclient.Utils.SentimentAnalysisWithCount;
+import twitter4j.TwitterException;
 
 public class test {
 
@@ -31,8 +37,13 @@ public class test {
 	//	UserServiceRemote us;
 		
 		UserServiceRemote service = (UserServiceRemote) context.lookup(jndiName);
+		
+	//	UserServiceRemote service = (UserServiceRemote) context.lookup(jndiName);
+	//	UserServiceRemote us;
+		service.updatephotouserbyid(41,"C:/wamp64/www/ImagesItradeit/45.PNG");
+		
 		Trader trader= new Trader();
-		  trader.setBirthdate(new Date("2014/02/02"));
+		  /*trader.setBirthdate(new Date("2014/02/02"));
 		    trader.setLastName("ab");
 		    trader.setFirstName("ab");
 		    trader.setEmail("ab");
@@ -43,16 +54,80 @@ public class test {
 		    a.setState("jj");
 		    a.setZipcode(6);
 		    trader.setAddress(a);
-		    TokenGenerator tg= new TokenGenerator();
+		    TokenGenerator tg= new TokenGenerator();*/
+		
+		/****add c *////
+		String jndiNamec="SLTS_server-ear/SLTS_server-ejb/CommentService!tn.esprit.SLTS_server.services.CommentServiceRemote";
+		Context contextc=new InitialContext();
+		CommentServiceRemote servicecommenr = (CommentServiceRemote) contextc.lookup(jndiNamec);
+		    User commenter=  service.findUserById(30);
+		   User traderc= service.findUserById(29);
+		    Comment comment= new Comment();
+		    comment.setBody("yeaaaaaaaaaaa");
+		    comment.setCreationDate(new Date());
+		    comment.setCommenter(commenter);
+		    comment.setUser(traderc);
+		    System.out.println("*************** most banned user **********");
+		    System.out.println(servicecommenr.getmostbannedcommenter());
+		    System.out.println("*************** most banned user **********");
+		 //  int a=servicecommenr.addComment(comment);
+		 // comment.setId(a);
+		  //  System.out.println("bbbb"+a);
+		  
+		   /*****end add c ****/
+		    /***** view all *****/
+		List<Comment> cs=servicecommenr.viewall();
+		for (Comment comm : cs) {
+			System.out.println(comm.getBody());	
+		}
+		/***** end view all *****/
+		/**** iew user comment****/
+		/*System.out.println("view 31 comments ");
+		List<Comment>cc=servicecommenr.viewusercomments(traderc);
+		HashMap map = null;
+		try {
+			 map =SentimentAnalysisWithCount.commentsanalysis(cc);
+		} catch (TwitterException | IOException e) {
+		
+			e.printStackTrace();
+		}
+		System.out.println("mmmmmmmmmmmmmmmmmmmmmmmaaaaaaaaaaaaaap");
+		System.out.println(map.get("positivetwitter"));
+		System.out.println("mmmmmmmmmmmmmmmmmmmmmmmaaaaaaaaaaaaaap");
+		for (Comment comm : cc) {
+			System.out.println(comm.getBody());	
+		}*/
+		/****end *****/
+		/*** find commment by id****/
+		System.out.println("find comment by id ");
+		//Comment co = servicecommenr.findCommentById(12);
+		//System.out.println(co);
+		/****end find comment by id****/
+		
+		/*****supp comment****/
+		System.out.println("supp comment 4");
+		//System.out.println(servicecommenr.deletecomment(17));
+		/***end supp comment***/
+		
+		/*** supp all user comment ***/
+		System.out.println("supp all user comments ");
+		//System.out.println(servicecommenr.deleteallusercomments(traderc));
+		/**end comment **/
+		/****** update comment *****/
+	//	servicecommenr.updatecommentbody(52	, "wooooow");
+		/****end update comment*****/
+	
+		    //traderc.addcomment(ne);
+		    
 		   // System.out.println(tg.generateToken("fa"));
 		   // User user= service.findUserById(19);
 		   // user.setEmail("jjjjjjjjj");
 		   // service.updateUser(user);
 		    //service.ajouterUser(trader);
-		    List<Customer> customers=service.getalltradercustomersbyid(19);
-		    System.out.println(customers);
+		    /*List<Customer> customers=service.getalltradercustomersbyid(19);
+		    System.out.println(customers);*/
 		  /*  Trader trder=service.findtraderactivelazynbtrades("asc");
-			
+			Trade==
 			
 			
 			Integer nbcust = trder.getCustomers().size();

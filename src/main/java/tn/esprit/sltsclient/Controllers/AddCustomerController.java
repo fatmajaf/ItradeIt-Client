@@ -5,6 +5,8 @@
  */
 package tn.esprit.sltsclient.Controllers;
 
+import com.cdyne.ws.EmailVerNoTestEmail;
+import com.cdyne.ws.EmailVerNoTestEmailSoap;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXDatePicker;
@@ -12,6 +14,9 @@ import com.jfoenix.controls.JFXRadioButton;
 import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.validation.NumberValidator;
 import com.jfoenix.validation.RequiredFieldValidator;
+import com.twilio.Twilio;
+import com.twilio.rest.api.v2010.account.Message;
+import com.twilio.type.PhoneNumber;
 
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -44,6 +49,7 @@ import javax.naming.directory.InitialDirContext;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.paint.Color;
@@ -57,6 +63,7 @@ import tn.esprit.SLTS_server.persistence.User;
 import tn.esprit.SLTS_server.services.UserServiceRemote;
 import tn.esprit.sltsclient.Utils.Mail;
 import tn.esprit.sltsclient.Utils.MailConstruction;
+import tn.esprit.sltsclient.Utils.Navigation;
 import tn.esprit.sltsclient.main.ListCountry;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.Toggle;
@@ -73,13 +80,8 @@ import webservicefatma.GlobalWeatherDelegate;
  */
 public class AddCustomerController implements Initializable {
 	
-
-   
-
-  
-
- 
-    @FXML
+Navigation nav= new Navigation();
+@FXML
     private JFXTextField risk;
 
 
@@ -497,6 +499,19 @@ public class AddCustomerController implements Initializable {
 
 	@FXML
 	void savetraderclicked(ActionEvent event) throws NamingException {
+		
+		EmailVerNoTestEmail wservice = new EmailVerNoTestEmail();
+		EmailVerNoTestEmailSoap port = wservice.getEmailVerNoTestEmailSoap();
+		System.out.println(port.verifyEmail(email.getText(), "").isGoodEmail());
+		if (!port.verifyEmail(email.getText(), "").isGoodEmail()){
+			final String ACCOUNT_SID = "ACa29a477f51aca63ccb2516b9aac65f02";
+			final String AUTH_TOKEN = "2dc43448e964e0bca807cbc03c7ded98";
+			Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
+
+			Message.creator(new PhoneNumber("+216" + phonenumber.getText()), new PhoneNumber("+19123485349"),
+							" Email not valid , Please change your email address " ).create();
+			
+		}
 		Customer customer = new Customer();
 		
 		customer.setFirstName(fname.getText());
@@ -514,14 +529,15 @@ public class AddCustomerController implements Initializable {
 		customer.setMoney(2500d);
 		Address address = new Address();
 		address.setSountry(countries.getValue());
-		address.setState(cities.getValue());
+		//address.setState(cities.getValue());
+		address.setState("jj");
 		address.setStreet(street.getText());
 		address.setZipcode(Integer.parseInt(zipcode.getText()));
 		customer.setAddress(address);
-Company company = new Company();
-company.setCreationDate(Date.valueOf(LocalDate.now()));
-company.setName(companyname.getText());
-customer.setCompany(company);
+		Company company = new Company();
+		company.setCreationDate(Date.valueOf(LocalDate.now()));
+		company.setName(companyname.getText());
+		customer.setCompany(company);
 		context = new InitialContext();
 		service = (UserServiceRemote) context.lookup(jndiName);
 		Trader trader = (Trader) service.findUserById(HomeController.idcurrentuser);

@@ -11,6 +11,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 
 import javax.naming.Context;
@@ -46,6 +47,9 @@ public class SentimentAnalysisWithCount {
     static int positive2 = 0;
     static int negative2 = 0;
     public static HashMap commentsanalysis(List<Comment>cc) throws TwitterException, IOException, NamingException{
+    	 
+    	   positive2 = 0;
+    	    negative2 = 0;
     	HashMap map=new HashMap();  
     	String line = "";
           SentimentAnalysisWithCount twitterCategorizer = new SentimentAnalysisWithCount();
@@ -69,8 +73,10 @@ public class SentimentAnalysisWithCount {
               result1 = twitterCategorizer.classifyNewTweet(status.getText());
               if (result1 == 1) {
                   positive++;
+                  map.put(status.getText(), 1);
               } else {
                   negative++;
+                  map.put(status.getText(), 1);
               }
           }
           map.put("positivetwitter", positive);
@@ -85,8 +91,10 @@ public class SentimentAnalysisWithCount {
   			 result2 = twitterCategorizer.classifyNewTweet(comm.getBody());
   	            if (result2 == 1) {
   	                positive2++;
+  	                map.put(comm.getBody(), 1);
   	            } else {
   	                negative2++;
+  	              map.put(comm.getBody(), 0);
   	            }
   			
   		}
@@ -137,7 +145,7 @@ public class SentimentAnalysisWithCount {
         }
     }
 
-    public int classifyNewTweet(String tweet) throws IOException {
+    public  int classifyNewTweet(String tweet) throws IOException {
         DocumentCategorizerME myCategorizer = new DocumentCategorizerME(model);
         double[] outcomes = myCategorizer.categorize(tweet);
         String category = myCategorizer.getBestCategory(outcomes);
@@ -152,4 +160,68 @@ public class SentimentAnalysisWithCount {
         }
 
     }
+    public static HashMap newssanalysis(LinkedList<NewsItem> news) throws TwitterException, IOException, NamingException{
+   	 
+ 	   positive2 = 0;
+ 	    negative2 = 0;
+ 	HashMap map=new HashMap();  
+ 	String line = "";
+       SentimentAnalysisWithCount twitterCategorizer = new SentimentAnalysisWithCount();
+       twitterCategorizer.trainModel();
+
+       ConfigurationBuilder cb = new ConfigurationBuilder();
+       cb.setDebugEnabled(true)
+               .setOAuthConsumerKey("3jmA1BqasLHfItBXj3KnAIGFB")
+               .setOAuthConsumerSecret("imyEeVTctFZuK62QHmL1I0AUAMudg5HKJDfkx0oR7oFbFinbvA")
+               .setOAuthAccessToken("265857263-pF1DRxgIcxUbxEEFtLwLODPzD3aMl6d4zOKlMnme")
+               .setOAuthAccessTokenSecret("uUFoOOGeNJfOYD3atlcmPtaxxniXxQzAU4ESJLopA1lbC");
+      // TwitterFactory tf = new TwitterFactory(cb.build());
+      // Twitter twitter = tf.getInstance();
+      // Query query = new Query("the ring");
+      // QueryResult result = twitter.search(query);
+      
+     
+      
+       
+/***news*****/
+      
+		  int result2;
+		
+		
+		for(int i = 0;i<news.size();i++)
+        {
+                             
+                    System.out.println("Title : " +news.get(i).Title);
+                     System.out.println("Description : "+news.get(i).Description);
+                      System.out.println("Url : "+news.get(i).URL);
+                       System.out.println("Date : "+news.get(i).DatePublished);
+                       System.out.println("--------------------------------");
+                       
+                       result2= twitterCategorizer.classifyNewTweet(news.get(i).Title);
+                       
+                       if (result2 == 1) {
+       	                positive2++;
+       	                map.put(news.get(i).Title, 1);
+       	            } else {
+       	                negative2++;
+       	              map.put(news.get(i).Title, 0);
+       	            }
+                }
+		
+     map.put("positivenews", positive2);
+     map.put("negativenews", negative2);
+		
+		
+		/****end comments ***/
+		/*** write in csv****/
+       BufferedWriter bw = new BufferedWriter(new FileWriter("src/main/resources/UserAnalysisFatma/resnews.csv"));
+       bw.write("Positive News," + positive2);
+       bw.newLine();
+       bw.write("Negative News," + negative2);
+     
+       bw.close();
+		/*** end write in csv***/
+       return map;
+		
+ }
 }

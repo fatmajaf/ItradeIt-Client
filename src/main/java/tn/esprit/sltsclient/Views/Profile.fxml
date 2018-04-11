@@ -55,7 +55,7 @@
                   <Insets />
                </opaqueInsets>
             </Label>
-            <ImageView fitHeight="144.0" fitWidth="159.0" layoutX="47.0" layoutY="51.0" pickOnBounds="true">
+            <ImageView fx:id="photo" fitHeight="144.0" fitWidth="159.0" layoutX="47.0" layoutY="51.0" pickOnBounds="true">
                <image>
                   <Image url="@../images/contacts-256.png" />
                </image>
