@@ -191,6 +191,8 @@ public class instrumentmanagementController implements Initializable {
 				
 			
 				settableviewleaves();
+				
+				setpiechart();
 	}
 	
 
@@ -200,54 +202,56 @@ public class instrumentmanagementController implements Initializable {
 		context = new InitialContext();
 		InstrumentServiceRemote InstProxy = (InstrumentServiceRemote) context.lookup(jndiName);
 		ObservableList<Bond> InstList = FXCollections.observableArrayList(InstProxy.findAllBonds());
+		//System.out.println(InstList);
 		return InstList;
+		
 	}
 	
 	 private void settableviewleaves() {
 	       
-		    JFXTreeTableColumn<Instruments, String> parvalue = new JFXTreeTableColumn<>("start");
+		    JFXTreeTableColumn<Instruments, String> parvalue = new JFXTreeTableColumn<>("Par Value");
 		        parvalue.setPrefWidth(150);
 		       parvalue.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<Instruments, String>, ObservableValue<String>>() {
 		            @Override
 		            public ObservableValue<String> call(TreeTableColumn.CellDataFeatures<Instruments, String> param) {
 		                return param.getValue().getValue().parvalue;
 		            }});
-		       JFXTreeTableColumn<Instruments, String> saleprice = new JFXTreeTableColumn<>("start");
+		       JFXTreeTableColumn<Instruments, String> saleprice = new JFXTreeTableColumn<>("Sale Price");
 		       saleprice.setPrefWidth(150);
 		       saleprice.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<Instruments, String>, ObservableValue<String>>() {
 		            @Override
 		            public ObservableValue<String> call(TreeTableColumn.CellDataFeatures<Instruments, String> param) {
 		                return param.getValue().getValue().saleprice;
 		            }});
-		       JFXTreeTableColumn<Instruments, String> couponrate = new JFXTreeTableColumn<>("start");
+		       JFXTreeTableColumn<Instruments, String> couponrate = new JFXTreeTableColumn<>("Coupon Rate");
 		       couponrate.setPrefWidth(150);
 		       couponrate.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<Instruments, String>, ObservableValue<String>>() {
 		            @Override
 		            public ObservableValue<String> call(TreeTableColumn.CellDataFeatures<Instruments, String> param) {
-		                return param.getValue().getValue().saleprice;
+		                return param.getValue().getValue().couponrate;
 		            }});
-		       JFXTreeTableColumn<Instruments, String> availablecoupon = new JFXTreeTableColumn<>("start");
+		       JFXTreeTableColumn<Instruments, String> availablecoupon = new JFXTreeTableColumn<>("Available Coupons");
 		       availablecoupon.setPrefWidth(150);
 		       availablecoupon.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<Instruments, String>, ObservableValue<String>>() {
 		            @Override
 		            public ObservableValue<String> call(TreeTableColumn.CellDataFeatures<Instruments, String> param) {
 		                return param.getValue().getValue().availablecoupon;
 		            }});
-		       JFXTreeTableColumn<Instruments, String> issuer = new JFXTreeTableColumn<>("start");
+		       JFXTreeTableColumn<Instruments, String> issuer = new JFXTreeTableColumn<>("Isuuer");
 		       issuer.setPrefWidth(150);
 		       issuer.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<Instruments, String>, ObservableValue<String>>() {
 		            @Override
 		            public ObservableValue<String> call(TreeTableColumn.CellDataFeatures<Instruments, String> param) {
 		                return param.getValue().getValue().issuer;
 		            }});
-		       JFXTreeTableColumn<Instruments, String> id = new JFXTreeTableColumn<>("start");
+		       JFXTreeTableColumn<Instruments, String> id = new JFXTreeTableColumn<>("Bond's Code");
 		       id.setPrefWidth(150);
 		       id.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<Instruments, String>, ObservableValue<String>>() {
 		            @Override
 		            public ObservableValue<String> call(TreeTableColumn.CellDataFeatures<Instruments, String> param) {
 		                return param.getValue().getValue().id;
 		            }});
-		       JFXTreeTableColumn<Instruments, String> idissuer = new JFXTreeTableColumn<>("start");
+		       JFXTreeTableColumn<Instruments, String> idissuer = new JFXTreeTableColumn<>("Issuer's Code");
 		       idissuer.setPrefWidth(150);
 		       idissuer.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<Instruments, String>, ObservableValue<String>>() {
 		            @Override
@@ -264,6 +268,7 @@ public class instrumentmanagementController implements Initializable {
 		     
 		     
 		     List<Bond>bonds=proxy.findAllBonds();
+		     
 		        for (Bond le : bonds) {
 		        	String issuerrr="t";
 		        	String idiss="k";
@@ -272,6 +277,7 @@ public class instrumentmanagementController implements Initializable {
 		            	issuerrr= le.getInstrumentIssuer().getFirstName()+" "+le.getInstrumentIssuer().getLastName();
 		            	idiss=le.getInstrumentIssuer().getId().toString();
 		            }
+		            System.out.println("-----------------------"+le);
 		           Instruments ltable= new Instruments(le.getParvalue().toString(), le.getSaleprice().toString(), le.getCouponrate().toString(), le.getAvailablecoupon().toString(),issuerrr,le.getId().toString(),idiss);
 		            leaves.add(ltable);
 		        }
@@ -293,28 +299,30 @@ public class instrumentmanagementController implements Initializable {
 			
 		}}
 	 
-	 private void setpiechart(){
-	        /*AttendanceService as= new AttendanceService();
-	        int nbRH= as.getNbHoursPerDep("Euro");
+	 private void setpiechart(){/*
+	        
+	        int nbEu= proxy.getNbEu("Euro");
 	        int nbFinance = as.getNbHoursPerDep("Dinar");
 	        int nbCRM= as.getNbHoursPerDep("Dollar");
 	        
-	        
-	        
 	        */
 	        
-	   /*  ObservableList<PieChart.Data> pieChartData =
+	        
+	        
+	     ObservableList<PieChart.Data> pieChartData =
 	                FXCollections.observableArrayList(
-	                new PieChart.Data("Euro", nbRH),
-	                new PieChart.Data("Dollar", nbCRM),
+	                new PieChart.Data("Euro", 2),
+	                new PieChart.Data("Dollar",2),
 	             
-	                new PieChart.Data("Dinar", nbFinance));
+	                new PieChart.Data("Dinar", 2));
 
 	        piechart = new PieChart(pieChartData);
-	        piechart.setTitle("Attendance Per Department");
+	        piechart.setTitle("Bonds VS Currency");
 	        final Label caption = new Label("");
 	        caption.setTextFill(Color.DARKORANGE);
 	        caption.setStyle("-fx-font: 24 arial;");
+	        piechart.setLayoutX(840);
+	        piechart.setLayoutY(99);
 
 	        for (final PieChart.Data data : piechart.getData()) {
 	            data.getNode().addEventHandler(MouseEvent.MOUSE_PRESSED,
@@ -329,9 +337,9 @@ public class instrumentmanagementController implements Initializable {
 	        }
 	        
 	                att.getChildren().addAll(piechart, caption);
-	      //  ((Group) scene.getRoot()).getChildren().addAll(chart, caption);
+	        //((Group) scene.getRoot()).getChildren().addAll(chart, caption);
 	    
-	    */
+	    
 	    }
 	    
 	

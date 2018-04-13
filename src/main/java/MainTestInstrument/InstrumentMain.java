@@ -23,7 +23,8 @@ public class InstrumentMain {
 	public static void main(String[] args) throws NamingException {
 		
     	String jndiName = "SLTS_server-ear/SLTS_server-ejb/InstrumentService!tn.esprit.SLTS_server.instrumentServices.InstrumentServiceRemote";
-		//String jndiName2="SLTS_server-ear/SLTS_server-ejb/TradingExchangeService!tradingExchangeService.TradingExchangeServiceRemote";
+		
+    	//String jndiName2="SLTS_server-ear/SLTS_server-ejb/TradingExchangeService!tradingExchangeService.TradingExchangeServiceRemote";
 		String jndiName3="SLTS_server-ear/SLTS_server-ejb/UserService!tn.esprit.SLTS_server.services.UserServiceRemote";
 		
 		Context context = new InitialContext();
@@ -32,21 +33,13 @@ public class InstrumentMain {
 		InstrumentServiceRemote proxy = (InstrumentServiceRemote) context.lookup(jndiName);
 		List<Bond>bonds=proxy.findAllBonds();
 		System.out.println(bonds);
-	//	TradingExchange proxy2=(TradingExchange) context.lookup(jndiName2);
-		/*UserServiceRemote proxy3=(UserServiceRemote) context3.lookup(jndiName3);
-		
+		Bond bond=new Bond();
 		Instrument inst = new Instrument();
-		Instrument inst2 = new Instrument();
 		
-		//Instanciation d'un objet detype instrument
+		bond.setCallable(1);
+		inst.setId(1);
+		proxy.create(inst);
 		
-		inst.setChangee(20);
-		
-		inst.setCurrency("Dinar");
-		inst.setHighh(205);
-		inst.setOpen(200);
-		inst.setVolume(203);
-	//	proxy.create(inst);
 		//reste à affecter l id de l instrument issuer
 		
 		/***************************************************/

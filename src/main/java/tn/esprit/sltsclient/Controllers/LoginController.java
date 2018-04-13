@@ -213,11 +213,12 @@ public class LoginController implements Initializable {
 			/***System.out.println(user);*////
 
 			if (user == null || (!loginfromLDAP(passwordtext, usernametext))) {
-		/**	if (user == null){**/
-				/**System.out.println("not found");**/
-				
-				Logger.getLogger(LoginController.class.getName()).log(Level.
-						  SEVERE, null, "not found");
+				/**	if (user == null){**/
+						/**System.out.println("not found");**/
+			
+		
+				System.out.println("not found");
+
 				nav.showAlert(Alert.AlertType.ERROR, "Error", null, "Username or password incorrect");
 
 			} else {

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="646.0" prefWidth="1064.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.sltsclient.Controllers.AdviceCallableController">
+   <children>
+      <AnchorPane />
+      <AnchorPane layoutX="-3.0" layoutY="-6.0" prefHeight="73.0" prefWidth="1071.0" style="-fx-background-color: #C0C0C0;">
+         <children>
+            <ImageView fitHeight="67.0" fitWidth="65.0" layoutX="503.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/logocomplete1.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <JFXButton fx:id="closeButtonAdviceId" layoutX="437.0" layoutY="592.0" onAction="#closeAdvice" prefHeight="40.0" prefWidth="203.0" style="-fx-background-color: #F5F5F5;" text="Received !" textAlignment="CENTER">
+         <font>
+            <Font name="System Bold" size="26.0" />
+         </font>
+      </JFXButton>
+      <ImageView fitHeight="356.0" fitWidth="984.0" layoutX="-1.0" layoutY="67.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/IRE-Financial-Advice-2906.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

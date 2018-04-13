@@ -13,6 +13,7 @@
 
 <AnchorPane id="AnchorPane" fx:id="att" prefHeight="700.0" prefWidth="1400.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.sltsclient.Controllers.instrumentmanagementController">
    <children>
+      <PieChart fx:id="piechart" layoutX="840.0" layoutY="99.0" />
       <Label layoutX="19.0" layoutY="17.0" prefHeight="30.0" prefWidth="353.0" style="-fx-font-size: 20; -fx-font-weight: bold; -fx-text-fill: #7387A8;" text="Instruments management" />
       <Separator layoutX="3.0" layoutY="52.0" prefHeight="0.0" prefWidth="1389.0" />
       <AnchorPane layoutX="30.0" layoutY="146.0" prefHeight="513.0" prefWidth="723.0" style="-fx-background-color: white;" styleClass="card">
@@ -41,9 +42,8 @@
                   <Font name="System Italic" size="12.0" />
                </font>
             </Label>
-            <JFXTreeTableView fx:id="tableInstrumentAll" layoutX="10.0" layoutY="122.0" prefHeight="346.0" prefWidth="738.0" />
+            <JFXTreeTableView fx:id="tableInstrumentAll" layoutX="10.0" layoutY="122.0" prefHeight="280.0" prefWidth="738.0" style="-fx-background-color: #ffffff;" />
          </children>
       </AnchorPane>
-      <PieChart fx:id="piechart" layoutX="825.0" layoutY="79.0" prefHeight="597.0" prefWidth="551.0" />
    </children>
 </AnchorPane>

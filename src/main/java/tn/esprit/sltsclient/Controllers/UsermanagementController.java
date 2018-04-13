@@ -27,7 +27,7 @@ import javafx.scene.shape.*;
 import com.jfoenix.controls.JFXCheckBox;
 import com.jfoenix.controls.JFXRadioButton;
 import com.jfoenix.controls.JFXTextField;
-
+import javafx.scene.control.ContextMenu;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -222,6 +222,10 @@ public class UsermanagementController implements Initializable {
 	    private MenuItem activatetrader;
 	    @FXML
 	    private MenuItem deletecustomer;
+	    @FXML
+	    private ContextMenu customercontextmenu;
+	    @FXML
+	    private ContextMenu tradercontectmenu;
 
 	   Navigation nav= new Navigation();
 	   User currentuser;
@@ -232,7 +236,7 @@ public class UsermanagementController implements Initializable {
 	UserServiceRemote service;
 	Context context;
 	String roleuser = null;
-	List<Customer> customers;
+	
 	/**getnbcust
 	 *  */
 	 
@@ -252,24 +256,16 @@ public class UsermanagementController implements Initializable {
 		
 		if(currentuser instanceof Trader){
 			listeuserr = service.findAllTraders();
-			System.out.println("//////////////////////////////////////");
-			for (User u: ((Trader) currentuser).getCustomers()) {
-				System.out.println(u);
-				listeuserr.add(u);
-					
-			}
-			System.out.println("//////////////////////////////////////");
-			customers = new ArrayList<Customer>();
+			List<Customer> customers = new ArrayList<Customer>();
 	        
-	        for (User user : listeuserr) {
-	        	if (user instanceof Customer)
-	        	{Customer tr= (Customer)user;
-	        	
-				customers.add(tr);}
-			}
-		}
+			for (User u: ((Trader) currentuser).getCustomers()) {
+				System.out.println("rrrrr"+u.getFirstName());
+				listeuserr.add(u);
+				customers.add((Customer) u);}
+            }
 		else {
 			listeuserr = service.findAllUsers();
+			
 		}
 	}
 
@@ -560,7 +556,16 @@ public class UsermanagementController implements Initializable {
 
 						listeuserr = service.findAllTraders();
 					} else {
-						listeuserr = service.findAllCustomers();
+					
+						if (currentuser instanceof Trader){
+							listeuserr.clear();
+							
+							   List<Customer>customers= service.getalltradercustomersbyid(currentuser.getId());
+				            listeuserr.addAll(customers);
+							
+						}
+						else  {listeuserr = service.findAllCustomers();}
+						
 
 					}
 					double a = Math.ceil((float) listeuserr.size() / 4);
@@ -588,6 +593,13 @@ public class UsermanagementController implements Initializable {
 				
 				listeuserr = service.SearchAllUsers(newValue);
 //azerty
+				if (currentuser instanceof Trader){
+					 
+					listeuserr.clear();
+					
+					   List<Customer>customers= service.getalltradercustomersbyid(currentuser.getId());
+		            listeuserr.addAll(customers);
+				}
 				double a = Math.ceil((float) listeuserr.size() / 4);
 				pagination.setPageCount((int) a);
 				pagination.setCurrentPageIndex(0);
@@ -941,8 +953,30 @@ public class UsermanagementController implements Initializable {
        
    
        
-        
+        List<Customer> customers=new ArrayList<Customer>();
+        if(currentuser instanceof Trader){
+        customers= service.getalltradercustomersbyid(currentuser.getId());
+        activatecustomer.setVisible(false);
+        refuseactivatecutomer.setVisible(false);
+        deletecustomer.setVisible(false);
+        bantrader.setVisible(false);
+        activatetrader.setVisible(false);
+        deletetrader.setVisible(false);
+        }
+        else {
+        	List<User> r= service.findAllCustomers();
+        	for (User user : r) {
+				customers.add((Customer) user);
+			}
+        	activatecustomer.setVisible(true);
+            refuseactivatecutomer.setVisible(true);
+            deletecustomer.setVisible(true);
+            bantrader.setVisible(true);
+            activatetrader.setVisible(true);
+            deletetrader.setVisible(true);
+        }
         for (Customer t :customers) {
+        	System.out.println("cuuuuus"+t.getFirstName());
             Customers atable;
             String namea= t.getFirstName()+" "+t.getLastName();
             String activ;
@@ -972,9 +1006,7 @@ public class UsermanagementController implements Initializable {
              
             atts.add(atable);
         }
-       /*(String name,String login, String phone, String nationality,
-				String address, String birthdate, String creationdate, String activee, String email, String isbanned,
-				String tradertype)*/
+      
         final TreeItem<Customers> root;
         root = new RecursiveTreeItem<>(atts, RecursiveTreeObject::getChildren);
         tableviewcustomers.getColumns().setAll(name, login, phone, nationality, address, birthdate, creationdate, activee, email, risk, nameTr, company);

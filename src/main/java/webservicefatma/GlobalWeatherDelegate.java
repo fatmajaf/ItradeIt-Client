@@ -40,8 +40,8 @@ public class GlobalWeatherDelegate {
                  Element element = (Element) nodes.item(i);
                  NodeList subnode = element.getElementsByTagName("City");
                  Element subelement = (Element) subnode.item(0);
-                 cityList.add(subelement.getTextContent());
-                 System.out.println(subelement.getTextContent());
+                /* cityList.add(subelement.getTextContent());
+                 System.out.println(subelement.getTextContent());*/
            }
         } catch (ParserConfigurationException e) {
                 e.printStackTrace();

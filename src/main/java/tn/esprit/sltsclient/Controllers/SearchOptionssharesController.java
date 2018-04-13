@@ -66,6 +66,7 @@ import javafx.scene.control.TreeTableCell;
 import javafx.scene.control.TreeTableColumn;
 import javafx.scene.paint.Color;
 import tn.esprit.SLTS_server.util.OptionsYahoo;
+import tn.esprit.SLTS_server.util.TextToSpeechConvertor;
 import tn.esprit.sltsclient.Utils.DataCollector;
 import tn.esprit.sltsclient.Utils.FadeInTransition;
 import tn.esprit.sltsclient.Utils.Navigation;
@@ -1287,6 +1288,8 @@ public class SearchOptionssharesController implements Initializable {
 		}
 	}
 	public void populatestatnews(){
+		chart1.getProperties().clear();
+		chart1.getData().clear();
 		 HashMap<String, Integer> map = null;
          try {
 			 map=  SentimentAnalysisWithCount.newssanalysis(linews);
@@ -1324,6 +1327,8 @@ int somme=nbnegativenews+nbpositivenews;
      			});
      		}
      		rootpane.getChildren().addAll(chart1, caption);
+     		TextToSpeechConvertor ttsc = new TextToSpeechConvertor();
+    		ttsc.speak(nameyf.getText()+" "+"has : good impressions "+nbpositivenews+" negative impressions :"+nbnegativenews);
              
 	}
 

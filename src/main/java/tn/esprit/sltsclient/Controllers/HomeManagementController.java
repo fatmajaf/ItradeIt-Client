@@ -248,6 +248,7 @@ public class HomeManagementController implements Initializable {
 		context = new InitialContext();
 		service = (UserServiceRemote) context.lookup(jndiName);
 		Trader trader=service.findtraderactivelazynbtrades("desc");
+		System.out.println("trader : ---------"+trader);
 		nameactivetrader.setText(trader.getFirstName()+" "+trader.getLastName());
 		
 		

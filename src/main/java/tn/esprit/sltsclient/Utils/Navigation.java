@@ -10,6 +10,13 @@ import javafx.scene.image.Image;
 import javafx.util.Duration;
 
 public class Navigation {
+    	private final String gestion = "/tn/esprit/sltsclient/Views/Portfolio_managment.fxml";
+    	private final String stat = "/tn/esprit/sltsclient/Views/stati.fxml";
+    	private final String forum = "/tn/esprit/sltsclient/Views/liste.fxml";
+	private final String reponse = "/tn/esprit/sltsclient/Views/reponse.fxml";
+	private final String row = "/tn/esprit/sltsclient/Views/row.fxml";
+    	private final String porfolio = "/tn/esprit/sltsclient/Views/add_portfolio.fxml";
+	private final String delete = "/tn/esprit/sltsclient/Views/delete_portfolio.fxml";
 	private final String test = "/tn/esprit/sltsclient/Views/Main.fxml";
 	private final String login = "/tn/esprit/sltsclient/Views/Login.fxml";
 	private final String home = "/tn/esprit/sltsclient/Views/Home.fxml";
@@ -30,6 +37,34 @@ public class Navigation {
 	private final String addinstrument = "/tn/esprit/sltsclient/Views/addinstrument.fxml";
 	private final String instrumentman = "/tn/esprit/sltsclient/Views/instrumentmanagement.fxml";
 	public Image applicationIcon = new Image(getClass().getResourceAsStream("/tn/esprit/sltsclient/Images/logo.png"));
+    	public String getrow() {
+		return row;
+	}
+    public String getStat() {
+		return stat;
+	}
+	public String getReponse() {
+		return reponse;
+	}
+	public String getForum() {
+		return forum;
+	}
+
+	public String getTest() {
+		return test;
+	}
+
+	public String getPorfolio() {
+		return porfolio;
+	}
+
+	public String getDelete() {
+		return delete;
+	}
+
+	public String getGestion() {
+		return gestion;
+	}
 
 	public String getLogin() {
 		return login;
@@ -43,10 +78,7 @@ public class Navigation {
     public String getAddcustomer() {
 		return addcustomer;
 	}
-	public String getTest() {
-		return test;
-	}
-	
+
 public String getEditphoto() {
 		return editphoto;
 	}

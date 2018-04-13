@@ -94,7 +94,7 @@ import javafx.scene.control.Separator;
 import javafx.scene.image.Image;
 /**
  * FXML Controller class
- *
+ * 
  * @author AGORA
  */
 public class ProfileUserController implements Initializable {
