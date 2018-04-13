@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.*?>
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.sltsclient.Controllers.Portfolio_managmentController">
+   <children>
+      <Label layoutX="267.0" layoutY="14.0" text="portfolio managment">
+         <font>
+            <Font name="Algerian" size="26.0" />
+         </font>
+      </Label>
+      <PieChart fx:id="pie" layoutX="7.0" layoutY="132.0" prefHeight="332.0" prefWidth="238.0" />
+      <TableView fx:id="table1" layoutX="259.0" layoutY="123.0" prefHeight="356.0" prefWidth="451.0">
+        <columns>
+          <TableColumn fx:id="idcol" prefWidth="56.0" text="ID" />
+          <TableColumn fx:id="usercol" prefWidth="60.0" text="Id User" />
+            <TableColumn fx:id="datecol" prefWidth="114.0" text="Date  de creation" />
+            <TableColumn fx:id="currencycol" prefWidth="101.0" text="Currency" />
+            <TableColumn fx:id="cashcol" prefWidth="120.0" text="Cash" />
+        </columns>
+      </TableView>
+      <Label fx:id="id" layoutX="771.0" layoutY="130.0" prefHeight="30.0" prefWidth="193.0" />
+      <Label fx:id="id_user" layoutX="771.0" layoutY="184.0" prefHeight="30.0" prefWidth="193.0" />
+      <Label fx:id="date_creation" layoutX="771.0" layoutY="250.0" prefHeight="30.0" prefWidth="193.0" />
+      <Label fx:id="currency" layoutX="771.0" layoutY="313.0" prefHeight="30.0" prefWidth="193.0" />
+      <JFXTextField fx:id="cash" layoutX="769.0" layoutY="366.0" prefHeight="30.0" prefWidth="186.0" />
+      <Button fx:id="update" layoutX="836.0" layoutY="428.0" mnemonicParsing="false" onAction="#update_portfolio" text="Update" />
+      <JFXTextField fx:id="recheche" layoutX="264.0" layoutY="74.0" prefHeight="25.0" prefWidth="310.0" promptText="Rechercher selon le Cash" />
+      <Text fx:id="Moyenne" layoutX="5.0" layoutY="146.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="112.13671875" />
+      <Text fx:id="nbrclurrency" layoutX="5.0" layoutY="146.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="108.13671875" />
+   </children>
+</AnchorPane>

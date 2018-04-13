@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="450.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.sltsclient.Controllers.Add_portfolioController">
+   <children>
+      <Pane layoutY="-2.0" prefHeight="506.0" prefWidth="180.0" style="-fx-background-color: #2b579a;" />
+      <Label layoutX="257.0" layoutY="29.0" text="Welcome to POrtfolio Space" textFill="#f25d5d">
+         <font>
+            <Font name="Algerian" size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="585.0" layoutY="93.0" text="Add Portfolio" textFill="#f25d5d">
+         <font>
+            <Font name="Algerian" size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="319.0" layoutY="172.0" text="Currency   :" textFill="#2b579a">
+         <font>
+            <Font name="System Italic" size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="344.0" layoutY="275.0" text="Cash    :" textFill="#2b579a">
+         <font>
+            <Font name="System Italic" size="24.0" />
+         </font>
+      </Label>
+      <Button fx:id="add" layoutX="651.0" layoutY="374.0" mnemonicParsing="false" onAction="#add_portfolio" prefHeight="25.0" prefWidth="74.0" style="-fx-background-color: #2b579a;" text="ADD" textFill="WHITE" />
+      <JFXComboBox fx:id="currency" layoutX="488.0" layoutY="177.0" prefHeight="25.0" prefWidth="150.0" />
+      <JFXTextField fx:id="cash" layoutX="490.0" layoutY="275.0" prefHeight="25.0" prefWidth="150.0" />
+   </children>
+</AnchorPane>

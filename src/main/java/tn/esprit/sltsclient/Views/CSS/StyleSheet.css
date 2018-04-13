@@ -1,0 +1,105 @@
+.jfx-combo-box .list-cell 
+{
+    -fx-background: white;
+    -fx-background-color: transparent;
+    -fx-text-fill: -fx-text-base-color;
+    -fx-padding: 3 0 2 7;
+    -fx-cell-size: 1.66667em; 
+}
+
+.jfx-combo-box-popup .list-view 
+{
+    -fx-background-color: white, white;
+    -fx-background-insets: 0, 1;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 8, 0.0 , 0 , 0 );
+}    
+
+.jfx-combo-box-popup .list-view .list-cell 
+{
+    -fx-padding: 4 0 4 5;
+
+    /* No alternate highlighting */
+    -fx-background-color: white;
+}
+
+.jfx-combo-box-popup .list-view .list-cell:filled:selected, .jfx-combo-box-popup .list-view .list-cell:filled:selected:hover 
+{
+    -fx-background: -fx-accent;
+    -fx-background-color: -fx-selection-bar;
+    -fx-text-fill: -fx-selection-bar-text;
+}
+
+.jfx-combo-box-popup .list-view .list-cell:filled:hover 
+{
+    -fx-background-color: white;
+    -fx-text-fill: -fx-text-inner-color;
+}
+
+.jfx-combo-box-base  
+{
+    -fx-skin: "com.sun.javafx.scene.control.skin.ComboBoxBaseSkin";
+    -fx-background-color: white, white, white, white;
+    -fx-background-radius: 5, 5, 4, 3;
+    -fx-background-insets: 0 0 -1 0, 0, 1, 2;
+    -fx-padding: 0;
+}
+
+.jfx-combo-box-base:hover
+{
+    -fx-color: -fx-hover-base;
+}
+
+.jfx-combo-box-base:showing 
+{
+    -fx-color: -fx-pressed-base;
+}
+
+.jfx-combo-box-base:focused {
+    -fx-background-color: -fx-focus-color, -fx-outer-border, -fx-inner-border, -fx-body-color;
+    -fx-background-radius: 6.4, 4, 5, 3;
+    -fx-background-insets: -1.4, 0, 1, 2;
+}
+
+-base:disabled {
+    -fx-opacity: .4;
+}
+
+#btn:hover{
+   -fx-background-color: #E21C1C; 
+   -fx-text-decoration-line: underline ; 
+   -fx-text-underline-position:below; 
+}
+#btn:pressed{
+    -fx-background-color: #d63c3c; 
+}
+.list-view {
+    -fx-background-color:  #E21C1C;
+}
+
+.list-view .list-cell:hover {
+    -fx-background-color: #434343;
+}
+
+.list-view .list-cell:selected {
+    -fx-background-color: #434343;
+}
+
+.list-view .list-cell {
+    -fx-background-color:  #E21C1C;
+    -fx-text-fill: white;
+  
+}
+
+.list-view .label {
+    -fx-text-fill: white;
+}
+
+.jfx-rippler {
+    -jfx-rippler-fill: red;
+}
+#Table {
+    .list-cell {
+            -fx-background-color:  #E21C1C;
+
+    }
+}
